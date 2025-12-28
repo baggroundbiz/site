@@ -139,43 +139,103 @@
   }
 }
 /* ==========================
-   MOBILE NAV (LOCKED)
+   MOBILE NAV – FINAL (DO NOT MODIFY)
 ========================== */
 
 @media (max-width: 768px) {
+
+  /* Hide desktop-only items */
   .desktop-only {
     display: none !important;
   }
 
+  /* Slide-in panel */
   .nav-links {
     position: fixed;
-    inset: 0 0 0 auto;
+    top: 0;
+    right: 0;
+    height: 100vh;
     width: 86vw;
     max-width: 420px;
-    height: 100vh;
 
     background: rgba(0,0,0,0.92);
     backdrop-filter: blur(10px);
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
 
-    padding: 110px 24px 32px;
+    padding: 120px 24px 32px;
     transform: translateX(100%);
-    transition: transform .4s ease;
+    transition: transform 0.4s ease;
+    z-index: 1000;
   }
 
   .nav.open .nav-links {
     transform: translateX(0);
   }
 
-  .nav-main {
+  /* Mobile logo (fixed position) */
+  .mobile-brand {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .mobile-brand svg {
+    width: 72px;
+    height: auto;
+    display: block;
+  }
+
+  /* MAIN MENU STACK */
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nav-menu a {
     font-size: 20px;
     color: #fff;
     text-decoration: none;
+    font-weight: 500;
   }
+
+  /* Bottom actions pinned */
+  .mobile-nav-actions {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
+  }
+
+  .mobile-contact {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    background: #fff;
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+  }
+
+  .mobile-socials {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .mobile-socials a {
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    text-decoration: none;
+  }
+}
 
   .mobile-brand {
     position: absolute;
