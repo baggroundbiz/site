@@ -200,43 +200,49 @@
     margin-bottom: 20px;
   }
 
-  /* Hamburger Toggle & Close Animation */
+  @media (max-width: 768px) {
+  /* Toggle Button positioning */
   .nav-toggle {
-    position: relative;
-    z-index: 1100; /* Ensure toggle stays above the panel */
+    position: fixed; /* Keep it visible while scrolling menu */
+    top: 18px;
+    right: 22px;
+    z-index: 2001; /* Above the overlay */
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 10px;
   }
 
+  /* The Hamburger Lines */
   .nav-toggle span {
     display: block;
-    width: 28px;
-    height: 3px;
-    background: #111;
-    transition: all 0.3s ease-in-out;
+    width: 26px;
+    height: 2px;
+    background: #111; /* Default black */
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
   }
 
-  /* Turn hamburger into white X when menu is open */
-  .nav.open + .nav-toggle span {
-    background: #fff;
+  /* ANIMATION: When menu is open */
+  /* We use JavaScript to add .open to the nav. 
+     If your JS adds .open to the BODY or a parent, adjust selectors accordingly */
+  .nav.open ~ .nav-toggle span {
+    background: #ffffff; /* Turn white on black background */
   }
 
-  .nav.open + .nav-toggle span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+  .nav.open ~ .nav-toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
   }
 
-  .nav.open + .nav-toggle span:nth-child(2) {
+  .nav.open ~ .nav-toggle span:nth-child(2) {
     opacity: 0;
   }
 
-  .nav.open + .nav-toggle span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+  .nav.open ~ .nav-toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
+}
 
   /* Bottom actions pinned */
   .mobile-nav-actions {
@@ -324,5 +330,41 @@ body.lock-scroll {
 @media (max-width: 768px) {
   .logo-svg {
     width: 90px; 
+  }
+}
+/* =====================
+   BRAND & LOGO - UNIFIED
+   ===================== */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-svg {
+  width: 120px; /* Standardized Desktop Size */
+  height: auto;
+  display: block;
+  image-rendering: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect for Desktop */
+@media (hover: hover) {
+  .brand:hover .logo-svg {
+    transform: scale(1.05);
+  }
+}
+
+/* Standardized Mobile Size */
+@media (max-width: 764px) {
+  .logo-svg {
+    width: 96px; 
+  }
+  
+  .brand-text {
+    font-size: 14px;
   }
 }
