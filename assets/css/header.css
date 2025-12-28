@@ -306,4 +306,16 @@ body.lock-scroll {
   max-width: 96px;
   height: auto;
 }
+/* This controls the logo size on ALL pages */
+.logo-svg {
+  width: 110px; /* Adjust this value to your preferred size */
+  height: auto;
+  display: block;
+}
 
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+  .logo-svg {
+    width: 90px; 
+  }
+}
