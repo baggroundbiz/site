@@ -202,37 +202,34 @@
 
   @media (max-width: 768px) {
   /* Toggle Button positioning */
+  @media (max-width: 768px) {
   .nav-toggle {
-    position: fixed; /* Keep it visible while scrolling menu */
-    top: 18px;
-    right: 22px;
-    z-index: 2001; /* Above the overlay */
+    position: relative;
+    z-index: 1100; /* Stays above the overlay */
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    padding: 10px;
   }
 
-  /* The Hamburger Lines */
   .nav-toggle span {
     display: block;
-    width: 26px;
-    height: 2px;
-    background: #111; /* Default black */
-    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    width: 28px;
+    height: 3px;
+    background: #111;
+    transition: all 0.3s ease-in-out;
   }
 
-  /* ANIMATION: When menu is open */
-  /* We use JavaScript to add .open to the nav. 
-     If your JS adds .open to the BODY or a parent, adjust selectors accordingly */
+  /* Animation when .nav has the .open class */
   .nav.open ~ .nav-toggle span {
-    background: #ffffff; /* Turn white on black background */
+    background: #fff; /* Turns white for contrast on black panel */
   }
 
   .nav.open ~ .nav-toggle span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(9px) rotate(45deg);
   }
 
   .nav.open ~ .nav-toggle span:nth-child(2) {
@@ -240,7 +237,7 @@
   }
 
   .nav.open ~ .nav-toggle span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-9px) rotate(-45deg);
   }
 }
 
