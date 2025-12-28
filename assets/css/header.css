@@ -220,3 +220,9 @@ body.lock-scroll {
   overflow: hidden;
   height: 100vh;
 }
+/* Hide mega-menu parent links ONLY in mobile nav */
+@media (max-width: 764px) {
+  .nav-links .has-mega {
+    display: none !important;
+  }
+}
