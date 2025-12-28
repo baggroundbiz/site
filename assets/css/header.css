@@ -241,12 +241,6 @@
   border-radius: 12px;
   font-weight: 600;
 }
-
-@media (max-width: 768px) {
-  .nav-links > .nav-cta {
-    display: none;
-  }
-}
 /* MOBILE: hide mega menu parent items completely */
 @media (max-width: 768px) {
   .nav-links > .nav-item.has-mega {
@@ -254,3 +248,13 @@
   }
 }
 
+/* Desktop: style Contact like a CTA */
+@media (min-width: 769px) {
+  .nav-contact span {
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    font-weight: 500;
+  }
+}
