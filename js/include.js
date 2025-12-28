@@ -29,3 +29,26 @@ function initNav() {
 
 document.addEventListener('DOMContentLoaded', includeHTML);
 window.addEventListener("load", () => document.body.classList.add("loaded"));
+
+function initNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    const body = document.body;
+    const navLinks = document.querySelectorAll('.nav-links a'); // Select all links inside the menu
+
+    if (toggle && nav) {
+        // Toggle menu on hamburger click
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            body.classList.toggle('lock-scroll');
+        });
+
+        // NEW: Close menu when any link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                body.classList.remove('lock-scroll');
+            });
+        });
+    }
+}
