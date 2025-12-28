@@ -125,6 +125,18 @@
     border: 1px solid #e5e7eb;
   }
 }
+/* Ensure Contact CTA is always visible on desktop */
+@media (min-width: 769px) {
+  .nav-links {
+    flex-wrap: nowrap;
+  }
+
+  .nav-cta {
+    margin-left: 12px;
+    flex-shrink: 0;
+  }
+}
+
 /* =====================
    MOBILE NAV PANEL
    ===================== */
@@ -193,6 +205,32 @@
   padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.2);
 }
+/* MOBILE NAV CLEANUP */
+@media (max-width: 768px) {
+
+  .nav-links {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .nav-links > a {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+    text-align: left;
+  }
+
+  .mobile-nav-actions {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  .mobile-contact {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .mobile-contact {
   display: inline-flex;
@@ -203,24 +241,15 @@
   border-radius: 12px;
   font-weight: 600;
 }
-/* MOBILE: hide mega menu parents completely */
+
 @media (max-width: 768px) {
-  nav .nav-links > .nav-item.has-mega {
-    display: none !important;
+  .nav-links > .nav-cta {
+    display: none;
   }
 }
-
-/* =====================
-   SCROLL LOCK
-   ===================== */
-
-body.lock-scroll {
-  overflow: hidden;
-  height: 100vh;
-}
-/* FORCE HIDE MEGA ITEMS ON MOBILE */
+/* MOBILE: hide mega menu parent items completely */
 @media (max-width: 768px) {
-  .mobile-hide {
+  .nav-links > .nav-item.has-mega {
     display: none !important;
   }
 }
