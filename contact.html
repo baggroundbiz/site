@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | Bagground</title>
+
+<link rel="icon" type="image/png" href="https://i.ibb.co/N61SZKtX/BG-3-removebg-preview.png">
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<style>
+:root {
+  --dark:#111111;
+  --light:#ffffff;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --hover:#f3f4f6;
+
+  --font-body: Manrope, system-ui, sans-serif;
+  --font-heading: "Playfair Display", serif;
+
+  --ease-premium: cubic-bezier(.22,1,.36,1);
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family: var(--font-body);
+  background:#fff;
+  color:#111;
+}
+
+.container {
+  max-width:1200px;
+  margin:auto;
+  padding:0 22px;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+
+.header {
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid #eee;
+  z-index:10;
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  padding:18px 0;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Make logo link behave like a normal container */
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Prevent browser link states from affecting SVG or text */
+.brand-link:link,
+.brand-link:visited,
+.brand-link:hover,
+.brand-link:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Prevent filters from affecting logo */
+.brand-link svg,
+.brand-link image {
+  filter: none !important;
+}
+
+/* Keep your existing hover animation */
+@media (hover: hover) {
+  .brand-link:hover .logo-svg {
+    transform: scale(1.05);
+  }
+}
+
+
+.logo-svg {
+  width:64px;
+}
+
+.brand-copy {
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+
+.brand-text,
+.brand-tagline {
+  opacity:0;
+  transform:translateY(8px);
+}
+
+body.loaded .brand-text {
+  animation: brandIn .6s var(--ease-premium) forwards;
+}
+
+body.loaded .brand-tagline {
+  animation: brandIn .6s var(--ease-premium) forwards;
+  animation-delay:.15s;
+}
+
+@keyframes brandIn {
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.brand-text {
+  font-weight:600;
+  font-size:14px;
+}
+
+.brand-tagline {
+  font-size:11px;
+  color:#6b7280;
+}
+
+/* =====================
+   CONTACT HERO
+   ===================== */
+
+.contact-hero {
+  padding:30px 0 50px; /* ⬅️ reduced bottom space */
+  background:#fafafa;
+}
+
+.contact-hero h1 {
+  font-family: var(--font-heading);
+  font-size:42px;
+  max-width:640px;
+}
+
+.contact-hero p {
+  max-width:520px;
+  color:#475569;
+  margin-top:8px;   /* ⬅️ tighter */
+  font-size:17px;
+}
+
+/* =====================
+   CONTACT FORM
+   ===================== */
+
+.contact-section {
+  position: relative;
+  padding: 100px 0 120px;
+  overflow: hidden;
+
+  /* 🔥 BACKGROUND IMAGE */
+  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
+  background-size: cover;
+  background-position: center;
+}
+/* Glass blur overlay */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  z-index: 0;
+}
+.contact-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Darken + blur the background image */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  z-index: 0;
+}
+
+.contact-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =====================
+   FORM GRID
+   ===================== */
+
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.form-group {
+  display:flex;
+  flex-direction:column;
+  webkit-text-fill-color: black;
+  text-emphasis-color: black;
+}
+
+.form-group.full {
+  grid-column:1 / -1;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151; /* ✅ DARK TEXT */
+}
+
+
+input,
+select,
+textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+
+  background: rgba(255,255,255,0.95);
+  color: #111;
+
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+
+select option {
+  color: #111;
+  background: #ffffff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #111;
+  background: rgba(255,255,255,0.95);
+}
+
+
+/* ✅ FIX DROPDOWN TEXT VISIBILITY */
+select option {
+  color: #111;
+  background: #ffffff;
+}
+
+textarea {
+  resize:vertical;
+  min-height:120px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline:none;
+  border-color:#fff;
+}
+
+/* =====================
+   SERVICES
+   ===================== */
+
+.services-select {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.service-pill {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.25);
+  cursor:pointer;
+}
+
+.service-pill input {
+  accent-color:#fff;
+}
+
+/* =====================
+   ACTIONS
+   ===================== */
+
+.form-actions {
+  margin-top:40px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.btn-primary {
+  padding:16px 34px;
+  background:#fff;
+  color:#111;
+  border-radius:12px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.form-note {
+  font-size:13px;
+  color:rgb(0, 0, 0);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+
+.footer {
+  border-top:1px solid #e5e7eb;
+  padding:28px 0;
+  margin-top:120px;
+}
+
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer-socials {
+  display:flex;
+  gap:14px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px; /* smooth edge square */
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+
+  color: #111111;
+  font-size: 18px;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-socials a:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+/* RIGHT: Copyright */
+.footer-copy {
+  white-space: nowrap;
+}
+
+/* =====================
+   MOBILE
+   ===================== */
+
+@media (max-width:764px) {
+  .form-grid {
+    grid-template-columns:1fr;
+  }
+
+  .contact-card {
+  max-width: 900px;
+  margin: auto;
+  padding: 56px;
+  border-radius: 28px;
+
+  /* 🧊 TRUE GLASS */
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255,255,255,0.7);
+
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+
+  color: #111; /* ✅ FORCE DARK TEXT */
+}
+
+
+  .contact-hero h1 {
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div data-include="components/header.html"></div>
+
+<section class="contact-hero">
+  <div class="container">
+    <h1>Let’s Talk About Your Growth</h1>
+    <p>
+      This isn’t a sales call. We first understand your business, goals and current challenges — then decide if we’re the right fit.
+    </p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <form class="contact-card">
+
+      <h2>Tell Us About Your Business</h2>
+      <p class="intro">The more context you share, the better the strategy we can build.</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input required>
+        </div>
+
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone / WhatsApp *</label>
+          <input required>
+        </div>
+
+        <div class="form-group">
+          <label>Business Name</label>
+          <input>
+        </div>
+
+        <div class="form-group">
+          <label>Business Type</label>
+          <select>
+            <option>Service Business</option>
+            <option>E-commerce</option>
+            <option>Personal Brand</option>
+            <option>Startup</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Website / Instagram</label>
+          <input>
+        </div>
+
+        <div class="form-group full">
+          <label>What do you need help with?</label>
+          <div class="services-select">
+            <label class="service-pill"><input type="checkbox"> Website</label>
+            <label class="service-pill"><input type="checkbox"> Instagram</label>
+            <label class="service-pill"><input type="checkbox"> SEO</label>
+            <label class="service-pill"><input type="checkbox"> Lead Gen</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Monthly Budget</label>
+          <select>
+            <option>Under ₹25k</option>
+            <option>₹25k – ₹50k</option>
+            <option>₹50k – ₹1L</option>
+            <option>₹1L+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Timeline</label>
+          <select>
+            <option>Immediately</option>
+            <option>30 Days</option>
+            <option>3 Months</option>
+            <option>Exploring</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>Describe your goal</label>
+          <textarea placeholder="What would success look like for you?"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-primary">Request Strategy Call</button>
+        <span class="form-note">We usually respond within 24 hours.</span>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<div data-include="components/footer.html"></div>
+
+<script>
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
+</script>
+
+<script src="js/include.js"></script>
+
+</body>
+</html>
