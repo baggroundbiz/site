@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2832,6 +2831,55 @@ window.addEventListener("scroll", () => {
 </script>
 
 <script src="js/include.js"></script>
+
+<script>
+  const modalOverlay = document.getElementById("whyModal");
+  const modalTitle = document.getElementById("whyModalTitle");
+  const modalContent = document.getElementById("whyModalContent");
+  const closeBtn = document.querySelector(".why-close");
+
+  const modalData = {
+    "modal-1": {
+      title: "No Templates. No Guesswork.",
+      content:
+        "Every brand has a different problem to solve. We design from scratch based on your goals, audience, and positioning — not recycled layouts."
+    },
+    "modal-2": {
+      title: "Strategy Before Design",
+      content:
+        "We don’t decorate websites. We build systems. Every design choice is guided by clarity, hierarchy, and conversion logic."
+    },
+    "modal-3": {
+      title: "Built for Long-Term Growth",
+      content:
+        "Our work compounds. From SEO-friendly structure to scalable systems, we focus on growth that lasts — not quick wins."
+    }
+  };
+
+  document.querySelectorAll(".why-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const key = card.dataset.modal;
+      if (!modalData[key]) return;
+
+      modalTitle.textContent = modalData[key].title;
+      modalContent.textContent = modalData[key].content;
+
+      modalOverlay.classList.add("active");
+      document.body.classList.add("lock-scroll");
+    });
+  });
+
+  closeBtn.addEventListener("click", closeModal);
+  modalOverlay.addEventListener("click", e => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  function closeModal() {
+    modalOverlay.classList.remove("active");
+    document.body.classList.remove("lock-scroll");
+  }
+</script>
+
 
 </body>
 </html>
