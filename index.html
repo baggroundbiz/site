@@ -2864,8 +2864,14 @@ window.addEventListener("scroll", () => {
       modalTitle.textContent = modalData[key].title;
       modalContent.textContent = modalData[key].content;
 
-      modalOverlay.classList.add("active");
-      document.body.classList.add("lock-scroll");
+      scrollY = window.scrollY;
+
+document.body.style.position = "fixed";
+document.body.style.top = `-${scrollY}px`;
+document.body.style.width = "100%";
+
+modalOverlay.classList.add("active");
+
     });
   });
 
@@ -2875,9 +2881,15 @@ window.addEventListener("scroll", () => {
   });
 
   function closeModal() {
-    modalOverlay.classList.remove("active");
-    document.body.classList.remove("lock-scroll");
-  }
+  modalOverlay.classList.remove("active");
+
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.width = "";
+
+  window.scrollTo(0, scrollY);
+}
+
 </script>
 
 
