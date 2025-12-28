@@ -299,3 +299,11 @@
 body.lock-scroll {
   overflow: hidden;
 }
+/* === HARD LOCK LOGO SIZE === */
+.header .logo-svg {
+  width: 96px;
+  min-width: 96px;
+  max-width: 96px;
+  height: auto;
+}
+
