@@ -27,7 +27,6 @@
   gap: 10px;
   text-decoration: none;
   color: inherit;
-
 }
 
 .brand:visited,
@@ -132,14 +131,16 @@
     border: 1px solid #e5e7eb;
   }
 }
+
 /* Ensure Contact CTA is always visible on desktop */
 @media (min-width: 769px) {
   .nav-links {
     flex-wrap: nowrap;
   }
 }
+
 /* ==========================
-   MOBILE NAV – FINAL (DO NOT MODIFY)
+   MOBILE NAV – UPDATED
 ========================== */
 
 @media (max-width: 768px) {
@@ -150,18 +151,18 @@
   }
 
   /* Slide-in panel */
-    .nav-links {
-    position: relative;
+  .nav-links {
+    position: fixed; /* Changed to fixed for proper overlay */
     top: 0;
     right: 0;
     height: 100vh;
     width: 86vw;
     max-width: 420px;
-    background: rgba(0,0,0,0.92);
+    background: rgba(0,0,0,0.95);
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-    padding: 120px 24px 32px;
+    padding: 100px 24px 32px; /* Adjusted padding for logo space */
     transform: translateX(100%);
     transition: transform 0.4s ease;
     z-index: 1000;
@@ -171,31 +172,63 @@
     transform: translateX(0);
   }
 
-  /* Mobile logo (fixed position) */
+  /* Mobile logo (now stays inside panel) */
   .mobile-brand {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    margin-bottom: 40px;
+    display: block;
   }
 
   .mobile-brand svg {
-    width: 72px;
+    width: 120px;
     height: auto;
     display: block;
   }
 
   /* MAIN MENU STACK */
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .nav-menu a {
-    font-size: 20px;
+  .nav-links a.nav-main {
+    font-size: 22px;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  /* Hamburger Toggle & Close Animation */
+  .nav-toggle {
+    position: relative;
+    z-index: 1100; /* Ensure toggle stays above the panel */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #111;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Turn hamburger into white X when menu is open */
+  .nav.open + .nav-toggle span {
+    background: #fff;
+  }
+
+  .nav.open + .nav-toggle span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .nav.open + .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav.open + .nav-toggle span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
   }
 
   /* Bottom actions pinned */
@@ -245,6 +278,7 @@
     display: none !important;
   }
 }
+
 /* =====================
    DESKTOP NAV LAYOUT FIX
    ===================== */
@@ -258,7 +292,6 @@
   .nav-links {
     display: flex;
     align-items: center;
-    margin-left: auto; /* pushes menu to the right */
+    margin-left: auto;
   }
 }
-
