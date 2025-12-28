@@ -6,7 +6,8 @@ async function includeHTML() {
             const response = await fetch(file);
             if (response.ok) {
                 el.innerHTML = await response.text();
-                if (file.includes('header')) initNav(); // Start menu logic after loading
+                // Initialize nav logic ONLY if header was loaded
+                if (file.includes('header')) initNav(); 
             }
         } catch (err) {
             console.error("Error loading component:", err);
@@ -18,33 +19,16 @@ function initNav() {
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');
     const body = document.body;
+    const links = document.querySelectorAll('.nav-main, .mobile-contact');
 
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
             nav.classList.toggle('open');
             body.classList.toggle('lock-scroll');
         });
-    }
-}
 
-document.addEventListener('DOMContentLoaded', includeHTML);
-window.addEventListener("load", () => document.body.classList.add("loaded"));
-
-function initNav() {
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    const body = document.body;
-    const navLinks = document.querySelectorAll('.nav-links a'); // Select all links inside the menu
-
-    if (toggle && nav) {
-        // Toggle menu on hamburger click
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            body.classList.toggle('lock-scroll');
-        });
-
-        // NEW: Close menu when any link is clicked
-        navLinks.forEach(link => {
+        // Close menu when a link is clicked
+        links.forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('open');
                 body.classList.remove('lock-scroll');
@@ -52,3 +36,6 @@ function initNav() {
         });
     }
 }
+
+document.addEventListener('DOMContentLoaded', includeHTML);
+window.addEventListener("load", () => document.body.classList.add("loaded"));
