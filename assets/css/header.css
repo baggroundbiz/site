@@ -125,12 +125,6 @@
     flex-wrap: nowrap;
   }
 
-  .nav-cta {
-    margin-left: 12px;
-    flex-shrink: 0;
-  }
-}
-
 /* =====================
    MOBILE NAV PANEL
    ===================== */
