@@ -315,7 +315,7 @@ body.lock-scroll {
 }
 /* This controls the logo size on ALL pages */
 .logo-svg {
-  width: 110px; /* Adjust this value to your preferred size */
+  width: 130px; /* Adjust this value to your preferred size */
   height: auto;
   display: block;
 }
