@@ -25,7 +25,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: inherit;
+
 }
+
+.brand:visited,
+.brand:hover,
+.brand:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 
 .logo-svg {
   width: 96px;
@@ -48,6 +59,8 @@
   font-size: 11px;
   color: #6b7280;
 }
+
+
 /* =====================
    NAV LINKS (DESKTOP)
    ===================== */
