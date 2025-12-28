@@ -203,17 +203,13 @@
   border-radius: 12px;
   font-weight: 600;
 }
-/* =====================
-   MOBILE: REMOVE MEGA ITEMS FROM HAMBURGER
-   ===================== */
-@media (max-width: 764px) {
-
-  /* Hide entire mega nav items */
-  .nav-links .nav-item.has-mega {
+/* MOBILE: hide mega menu parents completely */
+@media (max-width: 768px) {
+  nav .nav-links > .nav-item.has-mega {
     display: none !important;
   }
-
 }
+
 /* =====================
    SCROLL LOCK
    ===================== */
