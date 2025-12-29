@@ -108,6 +108,16 @@
   transform: translateX(-50%) translateY(0);
 }
 
+/* FIX: Handle Digital Marketing Menu Overflow (Open to Left) */
+.nav-item.has-mega:last-of-type .mega-menu {
+  left: auto;
+  right: 0;
+  transform: translateY(20px);
+}
+.nav-item.has-mega:last-of-type:hover .mega-menu {
+  transform: translateY(0);
+}
+
 .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .mega-card { padding: 16px; border-radius: 12px; background: #f9fafb; text-decoration: none; display: block; }
 .mega-card:hover { background: #f3f4f6; }
@@ -117,9 +127,9 @@
 
 
 /* ==================================================
-   4. MOBILE NAVIGATION (Max-Width 360px)
+   4. MOBILE NAVIGATION (Updated for Phones & iPads)
    ================================================== */
-@media (max-width: 360px) {
+@media (max-width: 1024px) {
   
   /* Show Hamburger, Hide Desktop Items */
   .nav-toggle { display: block; margin-left: auto; cursor: pointer; background: none; border: none; z-index: 2001; }
@@ -188,7 +198,8 @@
 .footer { border-top: 1px solid #e5e7eb; padding: 40px 0; background: #fff; margin-top: auto; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; }
 .footer-socials { display: flex; gap: 12px; }
-.footer-socials a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #fff; border: 1px solid #eee; color: #111; font-size: 18px; transition: all 0.2s ease; }
+/* FIX: Removed Underscore from Social Icons */
+.footer-socials a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #fff; border: 1px solid #eee; color: #111; font-size: 18px; transition: all 0.2s ease; text-decoration: none; }
 .footer-socials a:hover { background: #f3f4f6; transform: translateY(-3px); }
 .footer-copy { color: #6b7280; font-size: 14px; }
 @media (max-width: 768px) { .footer-inner { flex-direction: column; gap: 20px; text-align: center; } }
