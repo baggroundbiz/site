@@ -1,15 +1,6 @@
-
-/* ==================================================
-   GLOBAL RESET (HEADER SCOPE ONLY)
-   ================================================== */
-
-.header * {
-  box-sizing: border-box;
-}
-
-/* ==================================================
+/* =====================
    HEADER BASE
-   ================================================== */
+   ===================== */
 
 .header {
   position: sticky;
@@ -25,9 +16,10 @@
   justify-content: space-between;
 }
 
-/* ==================================================
+
+/* =====================
    BRAND / LOGO
-   ================================================== */
+   ===================== */
 
 .brand {
   display: flex;
@@ -60,62 +52,32 @@
   color: #6b7280;
 }
 
-.logo-svg {
-  width: 120px;
-  height: auto;
-  display: block;
+
+/* =====================
+   NAV LINKS (DESKTOP)
+   ===================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
-/* ==================================================
-   🔥 CRITICAL: HARD MOBILE KILL SWITCH
-   (THIS PREVENTS THE WHITE PANEL BUG)
-   ================================================== */
-
-@media (max-width: 768px) {
-
-  /* Remove ALL desktop nav structures from layout */
-  .nav > .nav-item,
-  .nav > .has-mega,
-  .nav > .desktop-only,
-  .mega-menu,
-  .mega-grid,
-  .mega-card {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-  }
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  position: relative;
 }
 
-/* ==================================================
-   DESKTOP NAV
-   ================================================== */
-
-@media (min-width: 769px) {
-
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-left: auto;
-  }
-
-  .mobile-brand,
-  .mobile-nav-actions {
-    display: none !important;
-  }
+.nav-links a span {
+  position: relative;
+  z-index: 1;
 }
 
-/* ==================================================
-   DESKTOP MEGA MENU (SAFE – NO LAYOUT LEAK)
-   ================================================== */
+/* =====================
+   MEGA MENU (DESKTOP)
+   ===================== */
 
 @media (min-width: 769px) {
 
@@ -124,8 +86,8 @@
   }
 
   .mega-menu {
-    position: absolute;
-    top: calc(100% + 18px);
+    position: fixed;
+    top: 86px;
     left: 50%;
     transform: translateX(-50%);
     width: min(900px, calc(100vw - 48px));
@@ -138,12 +100,15 @@
     border: 1px solid rgba(0,0,0,0.08);
     box-shadow: 0 40px 90px rgba(0,0,0,0.18);
 
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease, transform .35s ease;
     z-index: 999;
   }
 
   .has-mega:hover .mega-menu {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .mega-grid {
@@ -160,56 +125,53 @@
   }
 }
 
-/* ==================================================
-   MOBILE NAV (SLIDE PANEL ONLY)
-   ================================================== */
+/* Ensure Contact CTA is always visible on desktop */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 86vw;
+    max-width: 420px;
+    /* Consistency: solid dark background with slight blur */
+    background: #111111; 
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 100px 24px 32px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1000;
+  }
+}
+
+/* ==========================
+   MOBILE NAV – UPDATED
+========================== */
 
 @media (max-width: 768px) {
 
-  body.lock-scroll {
-    overflow: hidden;
-    height: 100vh;
+  /* Hide desktop-only items */
+  .desktop-only {
+    display: none !important;
   }
 
-  /* Hamburger */
-  .nav-toggle {
-    position: relative;
-    z-index: 1100;
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px;
-  }
-
-  .nav-toggle span {
-    width: 28px;
-    height: 3px;
-    background: #111;
-    transition: all 0.3s ease;
-  }
-
-  /* Slide panel */
+  /* Slide-in panel */
   .nav-links {
-    position: fixed;
-    inset: 0 0 0 auto;
-
+    position: fixed; /* Changed to fixed for proper overlay */
+    top: 0;
+    right: 0;
+    height: 100vh;
     width: 86vw;
     max-width: 420px;
-    height: 100vh;
-
-    background: #111;
-    padding: 96px 28px 32px;
-
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-
+    padding: 100px 24px 32px; /* Adjusted padding for logo space */
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(.22,1,.36,1);
-
+    transition: transform 0.4s ease;
     z-index: 1000;
   }
 
@@ -217,51 +179,74 @@
     transform: translateX(0);
   }
 
-  /* Hamburger → X */
-  .nav.open .nav-toggle span {
-    background: #ffffff;
+  /* Mobile logo (now stays inside panel) */
+  .mobile-brand {
+    margin-bottom: 40px;
+    display: block;
   }
 
-  .nav.open .nav-toggle span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+  .mobile-brand svg {
+    width: 120px;
+    height: auto;
+    display: block;
   }
 
-  .nav.open .nav-toggle span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .nav.open .nav-toggle span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-  }
-
-    .mobile-brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px; /* or your preferred spacing */
-    padding: 0;
-  }
-
-  /* Optional: adjust logo size if needed */
-  .mobile-brand .logo-svg {
-    width: 96px; /* or desired size */
-  }
-
-  /* Mobile links */
+  /* MAIN MENU STACK */
   .nav-links a.nav-main {
     font-size: 22px;
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
     margin-bottom: 20px;
   }
 
-  /* Bottom actions */
+  @media (max-width: 768px) {
+  /* Toggle Button positioning */
+  @media (max-width: 768px) {
+  .nav-toggle {
+    position: relative;
+    z-index: 1100; /* Stays above the overlay */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #111;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Animation when .nav has the .open class */
+  .nav.open ~ .nav-toggle span {
+    background: #fff; /* Turns white for contrast on black panel */
+  }
+
+  .nav.open ~ .nav-toggle span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .nav.open ~ .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav.open ~ .nav-toggle span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+  /* Bottom actions pinned */
   .mobile-nav-actions {
     margin-top: auto;
     padding-top: 24px;
     border-top: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
   }
 
   .mobile-contact {
@@ -269,8 +254,8 @@
     text-align: center;
     padding: 14px;
     border-radius: 12px;
-    background: #ffffff;
-    color: #111111;
+    background: #fff;
+    color: #111;
     font-weight: 600;
     text-decoration: none;
     display: block;
@@ -284,15 +269,99 @@
   }
 
   .mobile-socials a {
-    color: #ffffff;
+    color: #fff;
     padding: 10px 14px;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.3);
     text-decoration: none;
+  }
+}
 
-    min-width: 72px;
-    text-align: center;
-    font-weight: 500;
-    line-height: 1;
+
+/* ==========================
+   DESKTOP: HIDE MOBILE ITEMS
+========================== */
+
+@media (min-width: 769px) {
+  .mobile-brand,
+  .mobile-nav-actions {
+    display: none !important;
+  }
+}
+
+/* =====================
+   DESKTOP NAV LAYOUT FIX
+   ===================== */
+
+@media (min-width: 769px) {
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+}
+/* Add this to your main CSS file */
+body.lock-scroll {
+  overflow: hidden;
+}
+/* === HARD LOCK LOGO SIZE === */
+.header .logo-svg {
+  width: 96px;
+  min-width: 96px;
+  max-width: 96px;
+  height: auto;
+}
+/* This controls the logo size on ALL pages */
+.logo-svg {
+  width: 130px; /* Adjust this value to your preferred size */
+  height: auto;
+  display: block;
+}
+
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+  .logo-svg {
+    width: 90px; 
+  }
+}
+/* =====================
+   BRAND & LOGO - UNIFIED
+   ===================== */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-svg {
+  width: 120px; /* Standardized Desktop Size */
+  height: auto;
+  display: block;
+  image-rendering: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect for Desktop */
+@media (hover: hover) {
+  .brand:hover .logo-svg {
+    transform: scale(1.05);
+  }
+}
+
+/* Standardized Mobile Size */
+@media (max-width: 764px) {
+  .logo-svg {
+    width: 96px; 
+  }
+  
+  .brand-text {
+    font-size: 14px;
   }
 }
