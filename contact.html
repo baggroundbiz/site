@@ -59,6 +59,17 @@ textarea { min-height:120px; resize: vertical; }
   .form-actions { flex-direction: column; }
   .btn-primary { width: 100%; text-align: center; }
 }
+  /* Fix for mobile input overflow */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;              /* Forces it to match the container width */
+    max-width: 100%;          /* Prevents it from ever going larger than the container */
+    box-sizing: border-box;   /* CRITICAL: Includes padding and border in the width calculation */
+}
 </style>
 </head>
 
