@@ -191,10 +191,20 @@ body.lock-scroll { overflow: hidden; height: 100vh; }
 <script src="js/include.js"></script>
 <script>
   const modalData = {
-    "modal-1": { title: "No Templates.", content: "We design from scratch based on your goals, not recycled layouts." },
-    "modal-2": { title: "Strategy First", content: "Every design choice is guided by clarity and conversion logic." },
-    "modal-3": { title: "Long-Term Growth", content: "We focus on growth that lasts, from SEO structure to scalable systems." }
+    "modal-1": { 
+      title: "No Templates. No Guesswork.", 
+      content: "We don’t reuse layouts or strategies. Every website, funnel and content system is built specifically for your business goals, audience and growth stage." 
+    },
+    "modal-2": { 
+      title: "Strategy Before Design", 
+      content: "Before visuals come clarity. We map user intent, positioning and conversion paths so design supports results — not just aesthetics." 
+    },
+    "modal-3": { 
+      title: "Built for Long-Term Growth", 
+      content: "Our systems are designed to compound. SEO, content and lead flows that get stronger month after month instead of quick wins that fade." 
+    }
   };
+  
   function openModal(key) {
     if(modalData[key]) {
       document.getElementById('modalTitle').innerText = modalData[key].title;
