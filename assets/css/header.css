@@ -240,6 +240,15 @@
     margin-bottom: 36px;
   }
 
+   .mobile-brand {
+  margin-bottom: 20px;
+  /* Remove any negative margins or paddings */
+  margin-left: 0;
+  padding-left: 0;
+  display: flex;
+  justify-content: center; /* or flex-start as needed */
+}
+
   .mobile-brand .logo-svg {
     width: 96px;
   }
