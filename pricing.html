@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Bagground</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <style>
+    :root {
+      --dark:#111111;
+      --light:#ffffff;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --primary:#111111;
+      --radius:16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* =====================
+       PRICING HERO
+       ===================== */
+
+    .pricing-hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .pricing-hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .pricing-hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* =====================
+       PRICING GRID
+       ===================== */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .price-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .price-card.popular {
+      border: 2px solid var(--dark);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: #fff;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .plan-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .plan-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .price span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .features li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #374151;
+    }
+
+    .features i {
+      color: var(--dark);
+      font-size: 16px;
+      margin-top: 2px;
+    }
+
+    .cta-btn {
+      margin-top: auto;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--dark);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    /* =====================
+       ADD-ONS
+       ===================== */
+
+    .addons {
+      background: #fafafa;
+      border-top: 1px solid var(--border);
+      padding: 60px 0;
+    }
+
+    .addons h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .addon-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      background: #fff;
+    }
+
+    .addon-card h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .addon-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .addon-price {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    /* =====================
+       CTA FOOTER
+       ===================== */
+
+    .pricing-cta {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .pricing-cta h2 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .pricing-cta p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .pricing-cta a {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* =====================
+       MOBILE
+       ===================== */
+
+    @media (max-width: 600px) {
+      .pricing-hero h1 {
+        font-size: 32px;
+      }
+
+      .pricing-cta h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PRICING HERO -->
+  <section class="pricing-hero container">
+    <h1>Simple, Honest Pricing</h1>
+    <p>
+      Budget-friendly plans designed for small businesses, artists, freelancers,
+      and personal brands—no lock-ins, no unnecessary upsells.
+    </p>
+  </section>
+
+  <!-- PRICING PLANS -->
+  <section class="container pricing-grid">
+
+    <!-- Starter -->
+    <div class="price-card">
+      <div class="plan-name">Starter Ground</div>
+      <div class="plan-desc">Personal brands & first websites</div>
+      <div class="price">₹3,999 <span>/ one-time</span></div>
+
+      <ul class="features">
+        <li><i class="ri-check-line"></i> Single-page website</li>
+        <li><i class="ri-check-line"></i> Mobile-friendly design</li>
+        <li><i class="ri-check-line"></i> WhatsApp / Contact button</li>
+        <li><i class="ri-check-line"></i> Basic SEO setup</li>
+        <li><i class="ri-check-line"></i> GitHub Pages hosting</li>
+      </ul>
+
+      <a href="contact.html" class="cta-btn">Get Started</a>
+    </div>
+
+    <!-- Business -->
+    <div class="price-card popular">
+      <span class="badge">Most Popular</span>
+      <div class="plan-name">Business Ground</div>
+      <div class="plan-desc">Small businesses & services</div>
+      <div class="price">₹7,999 <span>/ one-time</span></div>
+
+      <ul class="features">
+        <li><i class="ri-check-line"></i> Up to 5 pages</li>
+        <li><i class="ri-check-line"></i> Custom UI (no templates)</li>
+        <li><i class="ri-check-line"></i> Contact form integration</li>
+        <li><i class="ri-check-line"></i> Google Maps embed</li>
+        <li><i class="ri-check-line"></i> Basic SEO & performance</li>
+      </ul>
+
+      <a href="contact.html" class="cta-btn">Choose Plan</a>
+    </div>
+
+    <!-- Growth -->
+    <div class="price-card">
+      <div class="plan-name">Growth Ground</div>
+      <div class="plan-desc">Premium look & lead-focused</div>
+      <div class="price">₹12,999 <span>/ one-time</span></div>
+
+      <ul class="features">
+        <li><i class="ri-check-line"></i> Advanced animations</li>
+        <li><i class="ri-check-line"></i> Lead capture forms</li>
+        <li><i class="ri-check-line"></i> SEO-ready structure</li>
+        <li><i class="ri-check-line"></i> Google Business setup</li>
+        <li><i class="ri-check-line"></i> Performance optimization</li>
+      </ul>
+
+      <a href="contact.html" class="cta-btn">Grow With Us</a>
+    </div>
+
+  </section>
+
+  <!-- ADDONS -->
+  <section class="addons">
+    <div class="container">
+      <h2>Optional Add-ons</h2>
+
+      <div class="addon-grid">
+        <div class="addon-card">
+          <h3>Logo & Brand Identity</h3>
+          <p>Clean logo, colors & brand-ready assets</p>
+          <div class="addon-price">₹5,000</div>
+        </div>
+
+        <div class="addon-card">
+          <h3>Monthly Support</h3>
+          <p>Content updates, fixes & priority support</p>
+          <div class="addon-price">₹999 / month</div>
+        </div>
+
+        <div class="addon-card">
+          <h3>Growth Support</h3>
+          <p>SEO updates, GBP optimization & scaling help</p>
+          <div class="addon-price">₹2,999 / month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pricing-cta">
+    <h2>Not sure what you need?</h2>
+    <p>We’ll recommend only what actually helps your growth.</p>
+    <a href="contact.html">Talk to Bagground</a>
+  </section>
+
+</body>
+</html>
