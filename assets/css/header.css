@@ -199,6 +199,15 @@
     font-weight: 500;
     margin-bottom: 20px;
   }
+    
+    @media (max-width: 768px) {
+  .mobile-brand {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 8px;
+  }
+}
 
   @media (max-width: 768px) {
   /* Toggle Button positioning */
@@ -364,4 +373,14 @@ body.lock-scroll {
   .brand-text {
     font-size: 14px;
   }
+}
+.mobile-socials a {
+  min-width: 72px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1;
+}
+    
+    .mobile-socials {
+  align-items: center;
 }
