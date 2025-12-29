@@ -233,24 +233,18 @@
     transform: translateY(-9px) rotate(-45deg);
   }
 
-  /* Mobile logo */
-  .mobile-brand {
+    .mobile-brand {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 36px;
+    width: 100%;
+    margin-bottom: 20px; /* or your preferred spacing */
+    padding: 0;
   }
 
-   .mobile-brand {
-  margin-bottom: 20px;
-  /* Remove any negative margins or paddings */
-  margin-left: 0;
-  padding-left: 0;
-  display: flex;
-  justify-content: center; /* or flex-start as needed */
-}
-
+  /* Optional: adjust logo size if needed */
   .mobile-brand .logo-svg {
-    width: 96px;
+    width: 96px; /* or desired size */
   }
 
   /* Mobile links */
