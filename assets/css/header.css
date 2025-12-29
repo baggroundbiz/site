@@ -1,6 +1,14 @@
-/* =====================
+/* ==================================================
+   GLOBAL RESET (HEADER SCOPE ONLY)
+   ================================================== */
+
+.header * {
+  box-sizing: border-box;
+}
+
+/* ==================================================
    HEADER BASE
-   ===================== */
+   ================================================== */
 
 .header {
   position: sticky;
@@ -16,9 +24,9 @@
   justify-content: space-between;
 }
 
-/* =====================
+/* ==================================================
    BRAND / LOGO
-   ===================== */
+   ================================================== */
 
 .brand {
   display: flex;
@@ -51,25 +59,44 @@
   color: #6b7280;
 }
 
-/* =====================
-   LOGO SIZE (GLOBAL)
-   ===================== */
-
 .logo-svg {
   width: 120px;
   height: auto;
   display: block;
 }
 
-/* =====================
+/* ==================================================
+   🔥 CRITICAL: HARD MOBILE KILL SWITCH
+   (THIS PREVENTS THE WHITE PANEL BUG)
+   ================================================== */
+
+@media (max-width: 768px) {
+
+  /* Remove ALL desktop nav structures from layout */
+  .nav > .nav-item,
+  .nav > .has-mega,
+  .nav > .desktop-only,
+  .mega-menu,
+  .mega-grid,
+  .mega-card {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ==================================================
    DESKTOP NAV
-   ===================== */
+   ================================================== */
 
 @media (min-width: 769px) {
 
   .nav {
     display: flex;
     align-items: center;
+    gap: 24px;
   }
 
   .nav-links {
@@ -85,26 +112,37 @@
   }
 }
 
-/* =====================
-   HARD DISABLE MEGA MENU ON MOBILE
-   ===================== */
-@media (max-width: 768px) {
-  .mega-menu,
-  .has-mega,
-  .desktop-only {
-    display: none !important;
-  }
-}
-
-
-/* =====================
-   MEGA MENU (DESKTOP ONLY)
-   ===================== */
+/* ==================================================
+   DESKTOP MEGA MENU (SAFE – NO LAYOUT LEAK)
+   ================================================== */
 
 @media (min-width: 769px) {
 
   .nav-item {
     position: relative;
+  }
+
+  .mega-menu {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(900px, calc(100vw - 48px));
+    padding: 36px;
+
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px);
+
+    border-radius: 22px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.18);
+
+    display: none;
+    z-index: 999;
+  }
+
+  .has-mega:hover .mega-menu {
+    display: block;
   }
 
   .mega-grid {
@@ -121,25 +159,25 @@
   }
 }
 
-/* =====================
-   MOBILE NAV (CLEAN & FIXED)
-   ===================== */
+/* ==================================================
+   MOBILE NAV (SLIDE PANEL ONLY)
+   ================================================== */
 
 @media (max-width: 768px) {
 
-  /* Lock scroll when menu open */
   body.lock-scroll {
     overflow: hidden;
     height: 100vh;
   }
 
-  /* Hamburger button */
+  /* Hamburger */
   .nav-toggle {
     position: relative;
     z-index: 1100;
     background: none;
     border: none;
     cursor: pointer;
+
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -153,10 +191,11 @@
     transition: all 0.3s ease;
   }
 
-  /* Slide-in panel */
+  /* Slide panel */
   .nav-links {
     position: fixed;
     inset: 0 0 0 auto;
+
     width: 86vw;
     max-width: 420px;
     height: 100vh;
@@ -177,7 +216,7 @@
     transform: translateX(0);
   }
 
-  /* Hamburger → X animation */
+  /* Hamburger → X */
   .nav.open .nav-toggle span {
     background: #ffffff;
   }
@@ -201,8 +240,8 @@
     margin-bottom: 36px;
   }
 
-  .mobile-brand svg {
-    width: 120px;
+  .mobile-brand .logo-svg {
+    width: 96px;
   }
 
   /* Mobile links */
@@ -219,7 +258,6 @@
     margin-top: auto;
     padding-top: 24px;
     border-top: 1px solid rgba(255,255,255,0.2);
-    width: 100%;
   }
 
   .mobile-contact {
@@ -247,23 +285,10 @@
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.3);
     text-decoration: none;
+
     min-width: 72px;
     text-align: center;
     font-weight: 500;
     line-height: 1;
-  }
-}
-
-/* =====================
-   LOGO SIZE (MOBILE)
-   ===================== */
-
-@media (max-width: 768px) {
-  .logo-svg {
-    width: 96px;
-  }
-
-  .brand-text {
-    font-size: 14px;
   }
 }
