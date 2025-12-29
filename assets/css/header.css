@@ -1,3 +1,4 @@
+
 /* ==================================================
    GLOBAL RESET (HEADER SCOPE ONLY)
    ================================================== */
@@ -233,20 +234,19 @@
     transform: translateY(-9px) rotate(-45deg);
   }
 
-    @media (max-width: 768px) {
-  .mobile-brand {
+    .mobile-brand {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 0; /* optional for spacing */
+    margin-bottom: 20px; /* or your preferred spacing */
+    padding: 0;
   }
-  .logo-svg {
-    width: 96px; /* or your desired size */
-    height: auto;
-    display: block;
+
+  /* Optional: adjust logo size if needed */
+  .mobile-brand .logo-svg {
+    width: 96px; /* or desired size */
   }
-}
 
   /* Mobile links */
   .nav-links a.nav-main {
