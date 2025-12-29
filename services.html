@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | Bagground</title>
-  
   <link rel="icon" type="image/png" href="https://i.ibb.co/N61SZKtX/BG-3-removebg-preview.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,68 +14,42 @@
   <link rel="stylesheet" href="assets/css/header.css">
 
 <style>
-/* Core Page Variables */
+/* =====================
+   CORE PAGE STYLES
+   ===================== */
 :root {
-  --dark:#111111;
-  --light:#ffffff;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --hover:#f3f4f6;
   --font-body: Manrope, system-ui, sans-serif;
   --font-heading: "Playfair Display", serif;
-  --ease-premium: cubic-bezier(.22,1,.36,1);
 }
-
+body.lock-scroll { overflow: hidden; height: 100vh; }
 * { box-sizing:border-box; }
-body { margin:0; font-family: var(--font-body); background:#ffffff; color:#111111; overflow-x: hidden; }
 html { font-size: clamp(14px, 1.05vw, 16px); }
+body { margin:0; font-family: var(--font-body); background:#ffffff; color:#111111; }
 .container { max-width:1200px; margin:auto; padding:0 22px; }
 
-/* Services Specific Styles */
+/* =====================
+   SERVICES SPECIFIC
+   ===================== */
 .services-hero { padding: 80px 0 60px; text-align: center; background: #fcfcfc; }
+.section-title { font-family: var(--font-heading); font-size: 42px; margin-bottom: 20px; }
 .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #6b7280; display: block; margin-bottom: 12px; }
-.section-title { font-family: var(--font-heading); font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; }
 
-.services-main-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  gap: 40px; 
-  padding: 60px 0;
-}
-
-.s-card {
-  background: #fff; border-radius: 24px; border: 1px solid #eaeaea; overflow: hidden;
-  transition: all 0.4s var(--ease-premium); display: flex; flex-direction: column;
-}
+.services-main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 60px 0; }
+.s-card { background: #fff; border-radius: 24px; border: 1px solid #eaeaea; overflow: hidden; transition: all 0.4s; display: flex; flex-direction: column; }
 .s-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); border-color: #111; }
 .s-image { width: 100%; height: 220px; background-size: cover; background-position: center; }
 .s-content { padding: 32px; flex-grow: 1; }
-.s-content i { font-size: 28px; color: #111; margin-bottom: 15px; display: block; }
-.s-content h3 { font-size: 22px; margin-bottom: 12px; font-family: var(--font-body); }
-.s-content p { color: #6b7280; line-height: 1.6; margin-bottom: 20px; font-size: 15px; }
-.s-features { list-style: none; padding: 0; margin: 0 0 24px 0; border-top: 1px solid #f0f0f0; padding-top: 20px; }
+.s-content h3 { font-size: 22px; margin-bottom: 12px; }
+.s-features { list-style: none; padding: 0; margin-top: 20px; border-top: 1px solid #f0f0f0; padding-top: 20px; }
 .s-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 8px; color: #4b5563; }
-.s-features li i { font-size: 16px; color: #10b981; margin: 0; }
-.s-badge { display: inline-block; padding: 6px 12px; background: #f3f4f6; border-radius: 6px; font-size: 12px; font-weight: 600; color: #111; }
+.s-features li i { font-size: 16px; color: #10b981; }
 
 .process-section { background: #111; color: #fff; padding: 100px 0; border-radius: 40px; margin: 40px 22px; }
 .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 50px; }
-.step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 32px 26px; transition: transform 0.4s ease; }
-.step:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.25); }
-.step-num { font-size: 40px; font-family: var(--font-heading); opacity: 0.3; margin-bottom: 10px; display: block; }
-.step h4 { font-size: 18px; margin-bottom: 10px; }
-.step p { font-size: 14px; color: #9ca3af; }
+.step { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 32px 26px; }
+.step-num { font-size: 40px; opacity: 0.3; margin-bottom: 10px; display: block; }
 
-.btn-plate-long {
-  display: flex; align-items: center; justify-content: center; width: 100%; max-width: 500px; margin: 40px auto;
-  padding: 20px; background: #111; color: #fff; text-decoration: none; font-weight: 600; border-radius: 15px;
-  transition: all 0.3s ease;
-}
-.btn-plate-long:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.15); background: #25D366; }
-
-@media (max-width: 768px) {
-  .process-section { margin: 20px 0; border-radius: 0; }
-}
+.btn-plate-long { display: block; width: 100%; max-width: 500px; margin: 40px auto; padding: 20px; background: #111; color: #fff; text-align: center; text-decoration: none; font-weight: 600; border-radius: 15px; }
 </style>
 </head>
 
@@ -95,97 +68,28 @@ html { font-size: clamp(14px, 1.05vw, 16px); }
 
   <section class="container">
     <div class="services-main-grid">
-      
       <div class="s-card">
         <div class="s-image" style="background-image: url('https://i.ibb.co/VcTyptV2/web-design.jpg?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="s-content">
-          <i class="ri-window-line"></i>
           <h3>Website Design & Development</h3>
           <p>Your digital home, built to convert. We design fast, responsive, and premium websites that work.</p>
           <ul class="s-features">
-            <li><i class="ri-check-line"></i> Custom design (No templates)</li>
-            <li><i class="ri-check-line"></i> Mobile-first & Speed optimized</li>
-            <li><i class="ri-check-line"></i> WhatsApp Integration</li>
+            <li><i class="ri-check-line"></i> Custom design</li>
+            <li><i class="ri-check-line"></i> Speed optimized</li>
           </ul>
-          <span class="s-badge">Best for: Professionals & Local Brands</span>
         </div>
       </div>
-
       <div class="s-card">
         <div class="s-image" style="background-image: url('https://i.ibb.co/Y4q1CPqG/hand-holding-notebook-with-drew-brand-logo-creative-design-ideas.jpg?auto=format&fit=crop&q=80&w=800');"></div>
         <div class="s-content">
-          <i class="ri-focus-3-line"></i>
-          <h3>Brand Identity & Logo Design</h3>
-          <p>A brand that feels intentional. We craft minimal, timeless identities that scale across all platforms.</p>
-          <ul class="s-features">
-            <li><i class="ri-check-line"></i> Strategic logo architecture</li>
-            <li><i class="ri-check-line"></i> Brand color & typography</li>
-            <li><i class="ri-check-line"></i> Usage-ready digital files</li>
+          <h3>Brand Identity</h3>
+          <p>A brand that feels intentional. We craft minimal, timeless identities.</p>
+           <ul class="s-features">
+            <li><i class="ri-check-line"></i> Logo Architecture</li>
+            <li><i class="ri-check-line"></i> Usage Ready Files</li>
           </ul>
-          <span class="s-badge">Best for: New Brands & Rebrands</span>
         </div>
       </div>
-
-      <div class="s-card">
-        <div class="s-image" style="background-image: url('https://i.ibb.co/x8JhLsJ4/structure-social-media-with-colored-icons.jpg?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="s-content">
-          <i class="ri-instagram-line"></i>
-          <h3>Social Media Management</h3>
-          <p>Show up consistently, without the chaos. We manage your presence so you look active and credible.</p>
-          <ul class="s-features">
-            <li><i class="ri-check-line"></i> Content planning & posting</li>
-            <li><i class="ri-check-line"></i> Professional caption writing</li>
-            <li><i class="ri-check-line"></i> Google Business Profile sync</li>
-          </ul>
-          <span class="s-badge">Best for: Busy Business Owners</span>
-        </div>
-      </div>
-
-      <div class="s-card">
-        <div class="s-image" style="background-image: url('https://i.ibb.co/HfpFXPrs/vecteezy-businessman-using-smartphone-and-touch-on-virtual-screen-18933660.jpg?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="s-content">
-          <i class="ri-rfid-line"></i>
-          <h3>Contact Forms & Lead Flow</h3>
-          <p>Turn conversations into conversions. We set up smart forms that qualify your customers automatically.</p>
-          <ul class="s-features">
-            <li><i class="ri-check-line"></i> Dynamic Lead capture</li>
-            <li><i class="ri-check-line"></i> Service-based custom fields</li>
-            <li><i class="ri-check-line"></i> Automated client routing</li>
-          </ul>
-          <span class="s-badge">Best for: Service Businesses</span>
-        </div>
-      </div>
-
-      <div class="s-card">
-        <div class="s-image" style="background-image: url('https://i.ibb.co/xqmmgjYQ/vecteezy-person-typing-on-laptop-online-search-bar-displayed-73785837.jpg?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="s-content">
-          <i class="ri-search-line"></i>
-          <h3>SEO & Content Optimization</h3>
-          <p>Be found when it matters. We optimize your content so search engines understand your value.</p>
-          <ul class="s-features">
-            <li><i class="ri-check-line"></i> Website SEO structure</li>
-            <li><i class="ri-check-line"></i> Google-friendly formatting</li>
-            <li><i class="ri-check-line"></i> Organic growth strategy</li>
-          </ul>
-          <span class="s-badge">Best for: Long-term Visibility</span>
-        </div>
-      </div>
-
-      <div class="s-card">
-        <div class="s-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800');"></div>
-        <div class="s-content">
-          <i class="ri- customer-service-2-line"></i>
-          <h3>Ongoing Support & Expansion</h3>
-          <p>Your digital partner. As your business grows, your digital presence grows with it through refinements.</p>
-          <ul class="s-features">
-            <li><i class="ri-check-line"></i> Monthly website updates</li>
-            <li><i class="ri-check-line"></i> New service page additions</li>
-            <li><i class="ri-check-line"></i> Performance refinements</li>
-          </ul>
-          <span class="s-badge">Best for: Scaling Businesses</span>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -194,39 +98,20 @@ html { font-size: clamp(14px, 1.05vw, 16px); }
       <span class="section-tag" style="color: #9ca3af;">Workflow</span>
       <h2 class="section-title" style="color: #fff;">How Bagground Works</h2>
       <div class="process-grid">
-        <div class="step">
-          <span class="step-num">01</span>
-          <h4>Understand</h4>
-          <p>We dive deep into your business goals and audience.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">02</span>
-          <h4>Build</h4>
-          <p>We construct the digital foundation using premium design.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">03</span>
-          <h4>Optimize</h4>
-          <p>Fine-tuning for maximum conversion and growth.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">04</span>
-          <h4>Scale</h4>
-          <p>Ongoing support as you reach new milestones.</p>
-        </div>
+        <div class="step"><span class="step-num">01</span><h4>Understand</h4><p>We dive deep into your goals.</p></div>
+        <div class="step"><span class="step-num">02</span><h4>Build</h4><p>We construct the digital foundation.</p></div>
+        <div class="step"><span class="step-num">03</span><h4>Optimize</h4><p>Fine-tuning for maximum conversion.</p></div>
+        <div class="step"><span class="step-num">04</span><h4>Scale</h4><p>Ongoing support as you grow.</p></div>
       </div>
     </div>
   </section>
 
   <div class="container" style="padding: 60px 22px;">
-    <a href="https://wa.me/9663916454" class="btn-plate-long">
-      Let’s build your digital groundwork. WhatsApp us to get started
-    </a>
+    <a href="https://wa.me/9663916454" class="btn-plate-long">Let’s build your digital groundwork. WhatsApp us</a>
   </div>
 </main>
 
 <div data-include="components/footer.html"></div>
-
 <script src="js/include.js"></script>
 
 </body>
