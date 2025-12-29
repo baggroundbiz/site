@@ -117,9 +117,9 @@
 
 
 /* ==================================================
-   4. MOBILE NAVIGATION (Max-Width 991px)
+   4. MOBILE NAVIGATION (Max-Width 360px)
    ================================================== */
-@media (max-width: 991px) {
+@media (max-width: 360px) {
   
   /* Show Hamburger, Hide Desktop Items */
   .nav-toggle { display: block; margin-left: auto; cursor: pointer; background: none; border: none; z-index: 2001; }
