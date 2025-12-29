@@ -4,205 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bagground | Your Full Digital Groundwork Bag</title>
-  
   <link rel="icon" type="image/png" href="https://i.ibb.co/N61SZKtX/BG-3-removebg-preview.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
-
+  
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/header.css">
 
 <style>
 /* =====================
-   VARIABLES & RESET
+   CORE PAGE STYLES
    ===================== */
 :root {
-  --dark:#111111;
-  --light:#ffffff;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --hover:#f3f4f6;
-
   --font-body: Manrope, system-ui, sans-serif;
   --font-heading: "Playfair Display", serif;
-
   --ease-premium: cubic-bezier(.22,1,.36,1);
-  --dur-fast: .25s;
-  --dur-mid: .4s;
-  --dur-slow: .7s;
 }
 
+body.lock-scroll { overflow: hidden; height: 100vh; }
 * { box-sizing:border-box; }
-  
 html { font-size: clamp(14px, 1.05vw, 16px); }
 body { margin:0; font-family: var(--font-body); background:#ffffff; color:#111111; overflow-x: hidden; }
 .container { max-width:1200px; margin:auto; padding:0 22px; }
 
 /* =====================
-   HERO & SECTIONS
+   HERO SECTION
    ===================== */
-.hero-premium {
-  position: relative;
-  padding: 46px 0 60px;
-  background: #000;
-}
-
-/* Background Carousel */
-.hero-bg-carousel {
-  position:absolute; inset:0; z-index:0; height:100%; overflow: hidden;
-}
-.hero-bg-track {
-  display:flex; width:300%; height:100%; animation:heroBgSlide 30s linear infinite;
-}
-.bg-slide {
-  flex:0 0 100%; height:100%; background-size:cover; background-position:center; filter:brightness(0.4) saturate(0.8);
-}
+.hero-premium { position: relative; padding: 46px 0 60px; background: #000; }
+.hero-bg-carousel { position:absolute; inset:0; z-index:0; height:100%; overflow: hidden; }
+.hero-bg-track { display:flex; width:300%; height:100%; animation:heroBgSlide 30s linear infinite; }
+.bg-slide { flex:0 0 100%; height:100%; background-size:cover; background-position:center; filter:brightness(0.4) saturate(0.8); }
 .bg-1 { background-image:url("https://i.ibb.co/pr0svtvz/images.jpg"); }
 .bg-2 { background-image:url("https://i.ibb.co/RpN7HQ2V/digital-marketing-2-jpg.webp"); }
 .bg-3 { background-image:url("https://i.ibb.co/jZJQ9Q8s/24398-i-Stock-1178579178-min-scaled-1f3e5fc2cf.jpg"); }
+.hero-premium::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at top,rgba(0,0,0,.6),rgba(0,0,0,.95)); z-index:1; }
 
-.hero-premium::after {
-  content:""; position:absolute; inset:0; background:radial-gradient(circle at top,rgba(0,0,0,.6),rgba(0,0,0,.95)); z-index:1;
-}
-
-.hero-center {
-  position:relative; z-index:2; display:flex; justify-content:center;
-}
-
-.hero-card {
-  max-width: 920px; padding: 70px 72px; border-radius: 22px;
-  background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
-}
-
+.hero-center { position:relative; z-index:2; display:flex; justify-content:center; }
+.hero-card { max-width: 920px; padding: 70px 72px; border-radius: 22px; background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.75); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
 .hero-eyebrow { color: #64748b; letter-spacing:0.18em; font-size:12px; }
-.hero-card h1 { color: #0f172a; }
-.hero-subtext { color: #475569; }
-
+.hero-card h1 { color: #0f172a; font-family: var(--font-heading); font-size: clamp(24px, 4.2vw, 46px); }
+.hero-subtext { color: #475569; margin-top: 10px; }
 .hero-actions { margin-top:44px; display:flex; gap:18px; }
 
+@keyframes heroBgSlide { 0% { transform:translateX(0); } 100% { transform:translateX(-200%); } }
+
 /* Buttons */
-.btn-primary {
-  background:#111; color:#fff; padding:16px 34px; border-radius:10px; font-weight:600; text-decoration: none !important;
-  box-shadow: 0 10px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.25);
-  transition: transform var(--dur-mid) var(--ease-premium), box-shadow var(--dur-mid) var(--ease-premium), background var(--dur-mid);
-}
-.btn-primary:hover {
-  background: #1a1a1a; transform: translateY(-3px); box-shadow: 0 18px 42px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.18);
-}
-.btn-ghost {
-  background:#111111; padding:16px 30px; border-radius:8px; border:1px solid rgba(255,255,255,0.35); color:#ffffff; text-decoration:none; transition: background 0.3s ease, border-color 0.3s ease;
-}
-.btn-ghost:hover { background: #25D366; border-color: rgba(255,255,255,0.6); }
+.btn-primary { background:#111; color:#fff; padding:14px 28px; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; }
+.btn-ghost { background:transparent; border:1px solid #111; color:#111; padding:14px 28px; border-radius:10px; text-decoration:none; display:inline-block; }
 
-/* Animation */
-@keyframes heroBgSlide {
-  0% { transform:translateX(0); } 33% { transform:translateX(-33.33%); } 66% { transform:translateX(-66.66%); } 100% { transform:translateX(0); }
-}
-
-/* Services */
+/* =====================
+   SERVICES SECTION
+   ===================== */
 .services-premium { padding:120px 0; }
-.services-premium h2 { font-size:42px; max-width:640px; }
+.section-title { font-family: var(--font-heading); font-size: 42px; }
 .services-grid { margin-top:70px; display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
-.service-line {
-  background: var(--light); border-radius:18px; padding:36px 34px; border:1px solid var(--border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.service-line:hover { background: var(--hover); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-.service-icon {
-  width: 48px; height: 48px; border-radius: 12px; background: #f9fafb; border: 1px solid #e5e7eb;
-  display: flex; align-items: center; justify-content: center; margin-bottom: 18px; transition: all 0.35s ease;
-}
-.service-icon i { font-size: 22px; color: #111; }
-.service-line:hover .service-icon { background: #111; border-color: #111; }
-.service-line:hover .service-icon i { color: #fff; transform: rotate(-6deg) scale(1.1); }
+.service-line { background: #fff; border-radius:18px; padding:36px 34px; border:1px solid #e5e7eb; transition: transform 0.3s; }
+.service-line:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.service-icon { width: 48px; height: 48px; background: #f9fafb; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin-bottom: 20px; font-size: 24px; }
 
-/* Why Us */
+/* =====================
+   WHY US SECTION
+   ===================== */
 .why-us { padding: 120px 0; background: #fafafa; }
-.why-grid { display: grid; grid-template-columns: 1fr; gap: 26px; }
-@media (min-width: 764px) { .why-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
-.why-card {
-  background: rgba(255,255,255,.82); backdrop-filter: blur(12px); border-radius:28px; padding:40px 36px;
-  border:1px solid rgba(0,0,0,.08); box-shadow: 0 20px 46px rgba(0,0,0,.10);
-  transition: transform var(--dur-mid) var(--ease-premium), box-shadow var(--dur-mid) var(--ease-premium);
-  text-align: left; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start;
-}
-.why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
-.why-icon {
-  width: 52px; height: 52px; border-radius: 14px; background: rgba(0,0,0,0.05);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
-}
-.why-icon i { font-size: 22px; color: #111; }
-.why-card:hover .why-icon { background: #111; }
-.why-card:hover .why-icon i { color: #fff; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.why-card { background: #fff; border-radius:20px; padding:40px 30px; border:1px solid #eee; text-align: left; cursor: pointer; transition: transform 0.3s; }
+.why-card:hover { transform: translateY(-5px); }
 
-/* CTA */
-.cta-premium { padding-top: 140px; padding-bottom: 120px; background: transparent; }
-.cta-card {
-  max-width: 920px; margin: auto; padding: 76px 72px; border-radius: 28px;
-  background: radial-gradient(120% 140% at top center, rgba(255,255,255,0.12), rgba(0,0,0,0)), linear-gradient(180deg, #111, #0a0a0a);
-  border: 1px solid rgba(255,255,255,0.12); text-align: center; box-shadow: 0 40px 120px rgba(0,0,0,0.6); color: #fff;
-}
-.cta-accent { display: block; width: 48px; height: 3px; margin: 0 auto 26px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); }
-.cta-eyebrow { color: rgba(255,255,255,0.75); letter-spacing: 0.2em; font-size: 10px; margin-bottom: 20px; display: block; }
+/* =====================
+   CTA SECTION
+   ===================== */
+.cta-premium { padding: 100px 0; }
+.cta-card { max-width: 920px; margin: auto; padding: 80px; border-radius: 28px; background: #111; color: #fff; text-align: center; }
 .cta-card h2 { color: #fff; font-size: 42px; margin-bottom: 20px; }
-.cta-card p { color: rgba(255,255,255,0.85); margin-bottom: 30px; }
-.cta-actions { display: flex; justify-content: center; gap: 16px; margin-top: 36px; }
+.cta-actions { margin-top: 40px; display: flex; justify-content: center; gap: 20px; }
+.btn-plate { background: #fff; color: #111; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; }
 
-/* Button Plate */
-.btn-plate {
-  position: relative; display: inline-flex; align-items: center; justify-content: center;
-  padding: 14px 26px; font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none;
-  background: transparent; border: none; cursor: pointer; z-index: 1; isolation: isolate;
-}
-.btn-plate::before {
-  content: ""; position: absolute; inset: 0; background: #2c2c2c; border-radius: 12px; transform: skewX(-12deg); z-index: -1;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-.btn-plate:hover::before { background: #111; transform: skewX(-12deg) translateY(-1px); }
-
-/* Footer Styling */
-.footer { border-top: 1px solid #e5e7eb; padding: 28px 0; font-size: 14px; color: #6b7280; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; }
-.footer-socials { display: flex; gap: 14px; }
-.footer-socials a {
-  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
-  border-radius: 10px; background: #ffffff; border: 1px solid #e5e7eb; color: #111; text-decoration: none;
-  transition: transform 0.2s;
-}
-.footer-socials a:hover { transform: translateY(-2px); background: #f3f4f6; }
-
-/* Mobile Only Tweaks */
-@media (max-width: 764px) {
-  .hero-premium { min-height: calc(100svh - 64px) !important; display: flex; align-items: center; }
-  .hero-card { padding: 32px 24px; border-radius: 18px; }
-  .hero-card h1 { font-size: 28px; line-height: 1.2; }
-  .hero-actions { flex-direction: row; gap: 10px; }
-  .hero-actions a { flex: 1; padding: 10px 14px; font-size: 13px; text-align: center; }
-  .services-premium { padding: 80px 0; }
-  .services-grid { grid-template-columns: 1fr; }
-  .cta-card { padding: 32px 20px; }
-  .cta-card h2 { font-size: 28px; }
+/* =====================
+   MOBILE RESPONSIVE
+   ===================== */
+@media (max-width: 768px) {
+  .hero-premium { padding: 60px 0; }
+  .hero-card { padding: 30px 20px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions a { text-align: center; }
+  .services-grid, .why-grid { grid-template-columns: 1fr; }
+  .cta-card { padding: 40px 20px; }
   .cta-actions { flex-direction: column; }
-  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
 }
 
 /* Modal */
-.why-modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
-}
+.why-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 2000; }
 .why-modal-overlay.active { display: flex; }
-.why-modal {
-  background: rgba(255,255,255,0.95); max-width: 520px; width: 100%; border-radius: 26px; padding: 40px 38px; position: relative;
-}
-.why-close {
-  position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; background: rgba(0,0,0,0.06); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
-}
+.why-modal { background: #fff; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; position: relative; }
+.why-close { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; }
 </style>
 </head>
 
@@ -223,12 +119,10 @@ body { margin:0; font-family: var(--font-body); background:#ffffff; color:#11111
     <div class="hero-card">
       <span class="hero-eyebrow">Build your online groundwork</span>
       <h1>Everything Your Brand Needs to Grow — Built the Right Way</h1>
-      <p class="hero-subtext">
-        Bagground helps businesses establish strong digital ground through strategy, design and systems.
-      </p>
+      <p class="hero-subtext">Bagground helps businesses establish strong digital ground through strategy, design and systems.</p>
       <div class="hero-actions">
         <a href="contact.html" class="btn-primary">Start a Conversation</a>
-        <a href="#" class="btn-ghost">WhatsApp an Expert</a>
+        <a href="#" class="btn-ghost" style="background:white;">WhatsApp an Expert</a>
       </div>
     </div>
   </div>
@@ -236,7 +130,7 @@ body { margin:0; font-family: var(--font-body); background:#ffffff; color:#11111
 
 <section class="services-premium">
   <div class="container">
-    <h2 class="section-title">What We Handle <br><span style="font-size: 18px; color: #6b7280; font-weight: 400;">So You Can Focus on Growth</span></h2>
+    <h2 class="section-title">What We Handle<br><span style="font-size: 18px; color: #6b7280; font-weight: 400;">So You Can Focus on Growth</span></h2>
     <div class="services-grid">
       <div class="service-line">
         <div class="service-icon"><i class="ri-layout-4-line"></i></div>
@@ -266,21 +160,21 @@ body { margin:0; font-family: var(--font-body); background:#ffffff; color:#11111
   <div class="container">
     <h2 class="section-title">Why Brands Choose Bagground</h2>
     <div class="why-grid">
-      <button class="why-card" data-modal="modal-1">
+      <div class="why-card" onclick="openModal('modal-1')">
         <div class="why-icon"><i class="ri-shape-2-line"></i></div>
         <h4>No Templates. No Guesswork.</h4>
         <p>Every solution is custom-built for your business.</p>
-      </button>
-      <button class="why-card" data-modal="modal-2">
+      </div>
+      <div class="why-card" onclick="openModal('modal-2')">
         <div class="why-icon"><i class="ri-compasses-2-line"></i></div>
         <h4>Strategy Before Design</h4>
         <p>Every design decision is backed by business thinking.</p>
-      </button>
-      <button class="why-card" data-modal="modal-3">
+      </div>
+      <div class="why-card" onclick="openModal('modal-3')">
         <div class="why-icon"><i class="ri-line-chart-line"></i></div>
         <h4>Built for Long-Term Growth</h4>
         <p>Systems that compound results over time.</p>
-      </button>
+      </div>
     </div>
   </div>
 </section>
@@ -304,40 +198,30 @@ body { margin:0; font-family: var(--font-body); background:#ffffff; color:#11111
 
 <div class="why-modal-overlay" id="whyModal">
   <div class="why-modal">
-    <button class="why-close" aria-label="Close modal">
-      <svg width="14" height="14" viewBox="0 0 24 24"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-    <h3 id="whyModalTitle"></h3>
-    <p id="whyModalContent"></p>
+    <button class="why-close" onclick="closeModal()">✕</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalContent"></p>
   </div>
 </div>
 
 <script src="js/include.js"></script>
 <script>
-  // Simple Modal Logic
-  const modalOverlay = document.getElementById("whyModal");
-  const modalTitle = document.getElementById("whyModalTitle");
-  const modalContent = document.getElementById("whyModalContent");
-  const closeBtn = document.querySelector(".why-close");
-
   const modalData = {
     "modal-1": { title: "No Templates.", content: "We design from scratch based on your goals, not recycled layouts." },
     "modal-2": { title: "Strategy First", content: "Every design choice is guided by clarity and conversion logic." },
     "modal-3": { title: "Long-Term Growth", content: "We focus on growth that lasts, from SEO structure to scalable systems." }
   };
 
-  document.querySelectorAll(".why-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const key = card.dataset.modal;
-      if (!modalData[key]) return;
-      modalTitle.textContent = modalData[key].title;
-      modalContent.textContent = modalData[key].content;
-      modalOverlay.classList.add("active");
-    });
-  });
-
-  closeBtn.addEventListener("click", () => modalOverlay.classList.remove("active"));
-  modalOverlay.addEventListener("click", e => { if (e.target === modalOverlay) modalOverlay.classList.remove("active"); });
+  function openModal(key) {
+    if(modalData[key]) {
+      document.getElementById('modalTitle').innerText = modalData[key].title;
+      document.getElementById('modalContent').innerText = modalData[key].content;
+      document.getElementById('whyModal').classList.add('active');
+    }
+  }
+  function closeModal() {
+    document.getElementById('whyModal').classList.remove('active');
+  }
 </script>
 
 </body>
