@@ -15,19 +15,19 @@
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes Logo Left, Nav Right */
   width: 100%;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-end; /* Ensures content aligns right */
+  gap: 32px;
 }
 
 /* ==================================================
-   2. BRANDING & LOGO (Standardized)
+   2. BRANDING
    ================================================== */
 .brand {
   display: flex;
@@ -37,9 +37,8 @@
   color: #111;
 }
 
-/* Fixed Logo Size for Desktop */
 .logo-svg {
-  width: 100px; 
+  width: 110px;
   height: auto;
   display: block;
   transition: transform 0.3s ease;
@@ -49,26 +48,9 @@
   transform: scale(1.05);
 }
 
-.brand-copy {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-  text-align: left;
-}
-
-.brand-text {
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #111;
-}
-
-.brand-tagline {
-  font-size: 11px;
-  color: #6b7280;
-  font-weight: 400;
-}
+.brand-copy { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-text { font-size: 16px; font-weight: 700; text-transform: uppercase; color: #111; }
+.brand-tagline { font-size: 11px; color: #6b7280; font-weight: 400; }
 
 /* ==================================================
    3. DESKTOP NAVIGATION
@@ -78,30 +60,25 @@
 @media (min-width: 992px) {
   .desktop-only { display: block; }
   
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .nav-main {
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  
+  .nav-link {
     text-decoration: none;
     color: #111;
     font-weight: 600;
     font-size: 14px;
-    transition: color 0.25s ease;
+    transition: color 0.2s;
   }
+  .nav-link:hover { color: #666; }
 
-  .nav-main:hover { color: #6b7280; }
+  /* Mega Menu Logic */
+  .nav-item.has-mega { position: relative; height: 80px; display: flex; align-items: center; }
 
-  /* Desktop Mega Menu Logic */
-  .nav-item.has-mega { position: relative; padding: 10px 0; }
-  
   .mega-menu {
     position: absolute;
-    top: 100%;
+    top: 80px;
     left: 50%;
-    transform: translateX(-50%) translateY(20px);
+    transform: translateX(-50%) translateY(10px);
     width: 600px;
     background: #fff;
     border: 1px solid #eee;
@@ -111,7 +88,6 @@
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
-    z-index: 1100;
   }
 
   .nav-item.has-mega:hover .mega-menu {
@@ -121,7 +97,7 @@
   }
 
   .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .mega-card { padding: 16px; border-radius: 12px; background: #f9fafb; text-decoration: none; display: block; transition: background 0.2s; }
+  .mega-card { padding: 16px; border-radius: 12px; background: #f9fafb; text-decoration: none; display: block; }
   .mega-card:hover { background: #f3f4f6; }
   .mega-card i { font-size: 20px; color: #111; margin-bottom: 8px; display: block; }
   .mega-card h4 { font-size: 14px; margin-bottom: 4px; font-weight: 700; color: #111; }
@@ -129,7 +105,7 @@
 }
 
 /* ==================================================
-   4. MOBILE NAVIGATION
+   4. MOBILE NAVIGATION (Fixes Hamburger & Menu)
    ================================================== */
 .nav-toggle {
   display: block;
@@ -139,6 +115,7 @@
   padding: 10px;
   z-index: 2001;
   position: relative;
+  margin-left: auto; /* Force right alignment */
 }
 
 .nav-toggle span {
@@ -154,14 +131,11 @@
   .nav-toggle { display: none; }
 }
 
-/* Mobile Menu Panel */
 @media (max-width: 991px) {
   .nav-links {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 80%;
-    max-width: 350px;
+    top: 0; right: 0;
+    width: 80%; max-width: 350px;
     height: 100vh;
     background: #111;
     padding: 80px 40px;
@@ -170,12 +144,9 @@
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 2000;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
   }
 
-  .nav.open .nav-links {
-    transform: translateX(0);
-  }
+  .nav.open .nav-links { transform: translateX(0); }
 
   /* Hamburger Animation */
   .nav.open .nav-toggle span { background: #fff; }
@@ -183,7 +154,10 @@
   .nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
   .nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* Mobile Links */
+  /* Mobile Content */
+  .mobile-brand { margin-bottom: 40px; display: block; }
+  .mobile-brand .logo-svg { width: 100px; filter: brightness(0) invert(1); } /* Force White Logo */
+
   .nav-main {
     display: block;
     color: #fff;
@@ -192,43 +166,94 @@
     font-weight: 600;
     margin-bottom: 24px;
   }
-  
-  /* Mobile Brand Logo Fix */
-  .mobile-brand {
-    display: block;
-    margin-bottom: 40px;
-  }
-  
-  .mobile-brand .logo-svg {
-    width: 100px;
-    /* This makes black logo white */
-    filter: brightness(0) invert(1); 
-  }
 
-  /* Hide Desktop Items */
-  .desktop-only { display: none; }
-
-  /* Mobile Actions */
-  .mobile-nav-actions {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  
-  .mobile-socials {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .mobile-socials a {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
-  }
+  .mobile-nav-actions { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .mobile-socials { display: flex; gap: 20px; }
+  .mobile-socials a { color: #fff; font-size: 24px; text-decoration: none; }
 }
 
-/* Mobile Logo Size Override */
-@media (max-width: 764px) {
-  .header { height: 70px; }
-  .logo-svg { width: 90px; }
+/* ==================================================
+   5. GLOBAL BUTTONS (Fixes Hover Animations)
+   ================================================== */
+.btn-primary {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  background: #000;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: #111;
+  border: 1px solid #111;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+.btn-ghost:hover {
+  background: #25D366; /* WhatsApp Green */
+  border-color: #25D366;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.btn-plate {
+  display: inline-block;
+  padding: 14px 24px;
+  background: #fff;
+  color: #111;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.btn-plate:hover { transform: scale(1.05); }
+
+/* ==================================================
+   6. GLOBAL FOOTER (Fixes Inconsistency)
+   ================================================== */
+.footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 40px 0;
+  background: #fff;
+  margin-top: auto;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-socials { display: flex; gap: 12px; }
+.footer-socials a {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+  color: #111;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.footer-socials a:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+}
+.footer-copy { color: #666; font-size: 14px; }
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
 }
