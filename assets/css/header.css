@@ -233,19 +233,20 @@
     transform: translateY(-9px) rotate(-45deg);
   }
 
-    .mobile-brand {
+    @media (max-width: 768px) {
+  .mobile-brand {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px; /* or your preferred spacing */
-    padding: 0;
+    padding: 10px 0; /* optional for spacing */
   }
-
-  /* Optional: adjust logo size if needed */
-  .mobile-brand .logo-svg {
-    width: 96px; /* or desired size */
+  .logo-svg {
+    width: 96px; /* or your desired size */
+    height: auto;
+    display: block;
   }
+}
 
   /* Mobile links */
   .nav-links a.nav-main {
