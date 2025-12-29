@@ -1,6 +1,14 @@
-/* =====================
+/* ==================================================
+   GLOBAL RESET (HEADER SCOPE ONLY)
+   ================================================== */
+
+.header * {
+  box-sizing: border-box;
+}
+
+/* ==================================================
    HEADER BASE
-   ===================== */
+   ================================================== */
 
 .header {
   position: sticky;
@@ -16,10 +24,9 @@
   justify-content: space-between;
 }
 
-
-/* =====================
+/* ==================================================
    BRAND / LOGO
-   ===================== */
+   ================================================== */
 
 .brand {
   display: flex;
@@ -52,126 +59,38 @@
   color: #6b7280;
 }
 
-
-/* =====================
-   NAV LINKS (DESKTOP)
-   ===================== */
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.logo-svg {
+  width: 120px;
+  height: auto;
+  display: block;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #111;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-links a span {
-  position: relative;
-  z-index: 1;
-}
-
-/* =====================
-   MEGA MENU (DESKTOP)
-   ===================== */
-
-@media (min-width: 769px) {
-
-  .nav-item {
-    position: relative;
-  }
-
-  .mega-menu {
-    position: fixed;
-    top: 86px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(900px, calc(100vw - 48px));
-    padding: 36px;
-
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(16px);
-
-    border-radius: 22px;
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: 0 40px 90px rgba(0,0,0,0.18);
-
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .35s ease, transform .35s ease;
-    z-index: 999;
-  }
-
-  .has-mega:hover .mega-menu {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .mega-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 26px;
-  }
-
-  .mega-card {
-    padding: 22px;
-    border-radius: 16px;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-  }
-}
-
-/* Ensure Contact CTA is always visible on desktop */
+/* ==================================================
+   MOBILE NAV — CLEAN & UNIFIED
+   ================================================== */
 @media (max-width: 768px) {
+  
+  /* Prevent background scrolling when menu is open */
+  body.lock-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* Unified Slide Panel */
   .nav-links {
     position: fixed;
-    top: 0;
-    right: 0;
+    inset: 0 0 0 auto;
+    width: 85vw;
+    max-width: 400px;
     height: 100vh;
-    width: 86vw;
-    max-width: 420px;
-    /* Consistency: solid dark background with slight blur */
-    background: #111111; 
-    backdrop-filter: blur(10px);
+    background: #111; /* Dark premium background */
+    padding: 40px 30px;
     display: flex;
     flex-direction: column;
-    padding: 100px 24px 32px;
+    align-items: center; /* Center everything for a clean look */
+    text-align: center;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    z-index: 1000;
-  }
-}
-
-/* ==========================
-   MOBILE NAV – UPDATED
-========================== */
-
-@media (max-width: 768px) {
-
-  /* Hide desktop-only items */
-  .desktop-only {
-    display: none !important;
-  }
-
-  /* Slide-in panel */
-  .nav-links {
-    position: fixed; /* Changed to fixed for proper overlay */
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 86vw;
-    max-width: 420px;
-    background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    padding: 100px 24px 32px; /* Adjusted padding for logo space */
-    transform: translateX(100%);
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(.22, 1, .36, 1);
     z-index: 1000;
   }
 
@@ -179,189 +98,55 @@
     transform: translateX(0);
   }
 
-  /* Mobile logo (now stays inside panel) */
+  /* Logo positioning inside the Menu */
   .mobile-brand {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-bottom: 40px;
-    display: block;
+    margin-left: 0 !important; /* Forces removal of the 'jumpy' offset */
+    padding: 0 !important;
   }
 
-  .mobile-brand svg {
+  .mobile-brand .logo-svg {
     width: 120px;
-    height: auto;
-    display: block;
+    filter: invert(1) brightness(2); /* Makes dark logo white */
   }
 
-  /* MAIN MENU STACK */
+  /* Mobile Link Styles */
   .nav-links a.nav-main {
-    font-size: 22px;
-    color: #fff;
+    font-size: 24px;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 500;
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 768px) {
-  /* Toggle Button positioning */
-  @media (max-width: 768px) {
-  .nav-toggle {
-    position: relative;
-    z-index: 1100; /* Stays above the overlay */
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 10px;
-  }
-
-  .nav-toggle span {
-    display: block;
-    width: 28px;
-    height: 3px;
-    background: #111;
-    transition: all 0.3s ease-in-out;
-  }
-
-  /* Animation when .nav has the .open class */
-  .nav.open ~ .nav-toggle span {
-    background: #fff; /* Turns white for contrast on black panel */
-  }
-
-  .nav.open ~ .nav-toggle span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-  }
-
-  .nav.open ~ .nav-toggle span:nth-child(2) {
+    margin-bottom: 25px;
+    width: 100%;
     opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
   }
 
-  .nav.open ~ .nav-toggle span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+  .nav.open .nav-links a.nav-main {
+    opacity: 1;
+    transform: translateY(0);
   }
-}
 
-  /* Bottom actions pinned */
+  /* Socials at the bottom */
   .mobile-nav-actions {
     margin-top: auto;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.2);
     width: 100%;
-  }
-
-  .mobile-contact {
-    width: 100%;
-    text-align: center;
-    padding: 14px;
-    border-radius: 12px;
-    background: #fff;
-    color: #111;
-    font-weight: 600;
-    text-decoration: none;
-    display: block;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
 
   .mobile-socials {
     display: flex;
     justify-content: center;
-    gap: 14px;
-    margin-top: 14px;
+    gap: 20px;
   }
 
   .mobile-socials a {
     color: #fff;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.3);
-    text-decoration: none;
-  }
-}
-
-
-/* ==========================
-   DESKTOP: HIDE MOBILE ITEMS
-========================== */
-
-@media (min-width: 769px) {
-  .mobile-brand,
-  .mobile-nav-actions {
-    display: none !important;
-  }
-}
-
-/* =====================
-   DESKTOP NAV LAYOUT FIX
-   ===================== */
-
-@media (min-width: 769px) {
-  .nav {
-    display: flex;
-    align-items: center;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-}
-/* Add this to your main CSS file */
-body.lock-scroll {
-  overflow: hidden;
-}
-/* === HARD LOCK LOGO SIZE === */
-.header .logo-svg {
-  width: 96px;
-  min-width: 96px;
-  max-width: 96px;
-  height: auto;
-}
-/* This controls the logo size on ALL pages */
-.logo-svg {
-  width: 130px; /* Adjust this value to your preferred size */
-  height: auto;
-  display: block;
-}
-
-/* Adjust for mobile screens */
-@media (max-width: 768px) {
-  .logo-svg {
-    width: 90px; 
-  }
-}
-/* =====================
-   BRAND & LOGO - UNIFIED
-   ===================== */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.logo-svg {
-  width: 120px; /* Standardized Desktop Size */
-  height: auto;
-  display: block;
-  image-rendering: auto;
-  transition: transform 0.3s ease;
-}
-
-/* Hover Effect for Desktop */
-@media (hover: hover) {
-  .brand:hover .logo-svg {
-    transform: scale(1.05);
-  }
-}
-
-/* Standardized Mobile Size */
-@media (max-width: 764px) {
-  .logo-svg {
-    width: 96px; 
-  }
-  
-  .brand-text {
-    font-size: 14px;
+    font-size: 24px;
   }
 }
