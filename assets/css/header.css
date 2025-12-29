@@ -20,7 +20,7 @@
 }
 
 .nav {
-  display: flex;
+  display: block;
   align-items: center;
   gap: 32px;
 }
@@ -101,7 +101,7 @@
    NAV TOGGLE (HAMBURGER)
    ================================================== */
 .nav-toggle {
-  display: block;
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -163,4 +163,9 @@
   .mobile-nav-actions { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
   .mobile-socials { display: flex; gap: 20px; justify-content: center; }
   .mobile-socials a { color: #fff; font-size: 24px; }
+}
+/* Disable the underline animation for social icon containers */
+.mobile-socials a::after {
+    display: none !important;
+    content: none !important;
 }
