@@ -1,152 +1,166 @@
 /* ==================================================
-   GLOBAL RESET (HEADER SCOPE ONLY)
-   ================================================== */
-
-.header * {
-  box-sizing: border-box;
-}
-
-/* ==================================================
    HEADER BASE
    ================================================== */
-
 .header {
   position: sticky;
   top: 0;
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
   z-index: 1000;
+  height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 /* ==================================================
-   BRAND / LOGO
+   BRANDING
    ================================================== */
-
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
-  color: inherit;
-}
-
-.brand:visited,
-.brand:hover,
-.brand:active {
-  color: inherit;
-  text-decoration: none;
-}
-
-.brand-copy {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-text {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.brand-tagline {
-  font-size: 11px;
-  color: #6b7280;
+  color: #111;
 }
 
 .logo-svg {
-  width: 120px;
+  width: 100px;
   height: auto;
-  display: block;
+  transition: transform 0.3s ease;
 }
 
+.brand:hover .logo-svg { transform: scale(1.05); }
+
+.brand-copy { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-text { font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.brand-tagline { font-size: 11px; color: #6b7280; font-weight: 400; }
+
 /* ==================================================
-   MOBILE NAV — CLEAN & UNIFIED
+   DESKTOP NAV & MEGA MENU
    ================================================== */
-@media (max-width: 768px) {
-  
-  /* Prevent background scrolling when menu is open */
-  body.lock-scroll {
-    overflow: hidden;
-    height: 100vh;
-  }
+.desktop-only { display: none; }
 
-  /* Unified Slide Panel */
-  .nav-links {
-    position: fixed;
-    inset: 0 0 0 auto;
-    width: 85vw;
-    max-width: 400px;
-    height: 100vh;
-    background: #111; /* Dark premium background */
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center everything for a clean look */
-    text-align: center;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(.22, 1, .36, 1);
-    z-index: 1000;
-  }
+@media (min-width: 992px) {
+  .desktop-only { display: block; }
 
-  .nav.open .nav-links {
-    transform: translateX(0);
-  }
-
-  /* Logo positioning inside the Menu */
-  .mobile-brand {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 40px;
-    margin-left: 0 !important; /* Forces removal of the 'jumpy' offset */
-    padding: 0 !important;
-  }
-
-  .mobile-brand .logo-svg {
-    width: 120px;
-    filter: invert(1) brightness(2); /* Makes dark logo white */
-  }
-
-  /* Mobile Link Styles */
-  .nav-links a.nav-main {
-    font-size: 24px;
-    color: #ffffff;
+  .nav-link {
     text-decoration: none;
-    font-weight: 500;
-    margin-bottom: 25px;
-    width: 100%;
+    color: #111;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .nav-item.has-mega { position: relative; padding-bottom: 5px; }
+
+  .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    width: 600px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     opacity: 0;
-    transform: translateY(10px);
+    pointer-events: none;
     transition: all 0.3s ease;
   }
 
-  .nav.open .nav-links a.nav-main {
+  .nav-item.has-mega:hover .mega-menu {
     opacity: 1;
-    transform: translateY(0);
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
   }
 
-  /* Socials at the bottom */
-  .mobile-nav-actions {
-    margin-top: auto;
-    width: 100%;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
+  .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .mega-card { padding: 16px; border-radius: 12px; background: #f9fafb; transition: background 0.2s; }
+  .mega-card:hover { background: #f3f4f6; }
+  .mega-card i { font-size: 20px; color: #111; margin-bottom: 8px; display: block; }
+  .mega-card h4 { font-size: 14px; margin-bottom: 4px; font-weight: 700; }
+  .mega-card p { font-size: 12px; color: #666; margin: 0; }
+}
 
-  .mobile-socials {
+/* ==================================================
+   NAV TOGGLE (HAMBURGER)
+   ================================================== */
+.nav-toggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2001;
+  position: relative;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #111;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* X Animation when Open */
+.nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: #fff; }
+.nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: #fff; }
+
+@media (min-width: 992px) {
+  .nav-toggle { display: none; }
+}
+
+/* ==================================================
+   MOBILE NAV PANEL
+   ================================================== */
+@media (max-width: 991px) {
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    width: 80%; max-width: 350px;
+    height: 100vh;
+    background: #111;
+    padding: 80px 40px;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 2000;
   }
 
-  .mobile-socials a {
+  .nav.open .nav-links { transform: translateX(0); }
+
+  .mobile-brand { margin-bottom: 40px; }
+  .mobile-brand .logo-svg { width: 100px; filter: invert(1) brightness(2); }
+
+  .nav-main {
     color: #fff;
-    font-size: 24px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    transition: opacity 0.2s;
   }
+
+  .mobile-nav-actions { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .mobile-socials { display: flex; gap: 20px; justify-content: center; }
+  .mobile-socials a { color: #fff; font-size: 24px; }
 }
