@@ -1078,18 +1078,61 @@ body {
     margin: 0 auto;
   }
 }
+
+/* iOS drag handle */
+.why-modal::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+
+  background: rgba(0,0,0,0.18);
+
+  margin: 0 auto 14px;
+}
+
+
 @media (max-width: 764px) {
   .why-modal-overlay {
-    align-items: flex-end; /* bottom-aligned for mobile UX */
+    align-items: flex-end;
   }
 
   .why-modal {
     width: 100%;
     max-width: 100%;
-    border-radius: 20px 20px 0 0;
-    padding: 28px 22px;
 
-    animation: modalSlideUp .25s cubic-bezier(.22,1,.36,1);
+    /* iOS-style curves */
+    border-radius: 28px 28px 0 0;
+
+    padding: 28px 22px 32px;
+
+    /* Softer iOS-like glass */
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    /* iOS bottom sheet shadow */
+    box-shadow:
+      0 -10px 30px rgba(0,0,0,0.12),
+      0 -2px 6px rgba(0,0,0,0.06);
+
+    animation: modalSlideUp .18s cubic-bezier(.22,1,.36,1);
+  }
+}
+
+@media (max-width: 764px) {
+  .why-close {
+    top: 14px;
+    right: 14px;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+
+    backdrop-filter: blur(6px);
   }
 }
 
