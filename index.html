@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bagground | Your Full Digital Groundwork Bag</title>
-  
+   
   <link rel="icon" type="image/png" href="https://i.ibb.co/N61SZKtX/BG-3-removebg-preview.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,15 +16,16 @@
 
 <style>
 
+/* FIX: Removed height constraint to keep background visible */
 body.lock-scroll {
   overflow: hidden;
-  height: 100vh;
+  width: 100%;
 }
 
 
 /* =====================
-   VARIABLES & RESET
-   ===================== */
+    VARIABLES & RESET
+    ===================== */
 
 :root {
   --dark:#111111;
@@ -45,10 +46,10 @@ body.lock-scroll {
 
 
 * { box-sizing:border-box; }
-  
-/* ===============================
-   🌍 GLOBAL AUTO-SCALE ENGINE
-   =============================== */
+   
+  /* ===============================
+    🌍 GLOBAL AUTO-SCALE ENGINE
+    =============================== */
 
 html {
   font-size: clamp(14px, 1.05vw, 16px);
@@ -59,18 +60,67 @@ body {
   font-family: var(--font-body);
   background:#ffffff;
   color:#111111;
+}
+
+  html, body {
   overflow-x: hidden;
 }
-  
+   
 .container {
   max-width:1200px;
   margin:auto;
   padding:0 22px;
 }
 
+
 /* =====================
-   BUTTONS
-   ===================== */
+    MODAL CLOSE BUTTON (ALL DEVICES)
+    ===================== */
+
+.why-close {
+  all: unset;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.06);
+  color: #666;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.why-close:hover {
+  background: rgba(0,0,0,0.12);
+  color: #111;
+  transform: scale(0.95);
+}
+
+.why-close:focus {
+  outline: none;
+}
+
+.why-close:focus-visible {
+  outline: 2px solid rgba(0,0,0,0.35);
+  outline-offset: 3px;
+}
+
+.why-close svg {
+  pointer-events: none;
+}
+
+
+/* =====================
+    BUTTONS
+    ===================== */
 
 .btn-primary {
   background:#111;
@@ -78,7 +128,6 @@ body {
   padding:16px 34px;
   border-radius:10px;
   font-weight:600;
-  display: inline-block;
 
   box-shadow:
     0 10px 28px rgba(0,0,0,.22),
@@ -115,7 +164,6 @@ body {
   border:1px solid rgba(255,255,255,0.35);
   color:#ffffff;
   text-decoration:none;
-  display: inline-block;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -124,9 +172,23 @@ body {
   border-color: rgba(255,255,255,0.6);
 }
 
+.btn-outline {
+  padding: 16px 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,.45);
+}
+
+
 /* =====================
-   HERO (DESKTOP BASE)
-   ===================== */
+    HERO (DESKTOP BASE)
+    ===================== */
 
 .hero-premium {
   position: relative;
@@ -213,7 +275,7 @@ body {
   display:flex;
   gap:18px;
 }
-  
+   
   /* HERO BUTTON CONTROL — FINAL */
 
 /* Desktop only */
@@ -247,19 +309,19 @@ body {
 }
 
 /* =====================
-   HERO BUTTONS — MOBILE PILL STYLE
-   ===================== */
+    HERO BUTTONS — MOBILE PILL STYLE
+    ===================== */
 @media (max-width: 764px) {
   .hero-actions {
-    flex-direction: row;              /* ⬅️ side by side */
+    flex-direction: row;            /* ⬅️ side by side */
     gap: 10px;
   }
 
   .hero-actions a {
     flex: 1;
-    padding: 10px 14px;            /* ⬅️ smaller */
+    padding: 10px 14px;           /* ⬅️ smaller */
     font-size: 12.5px;
-    border-radius: 999px;          /* ⬅️ pill */
+    border-radius: 999px;         /* ⬅️ pill */
     text-align: center;
   }
 
@@ -281,8 +343,8 @@ body {
 }
 
 /* =====================
-   SERVICES (DESKTOP BASE)
-   ===================== */
+    SERVICES (DESKTOP BASE)
+    ===================== */
 
 .services-premium {
   padding:120px 0;
@@ -347,8 +409,8 @@ body {
 }
 
 /* =====================
-   WHY US (CLEAN + FINAL)
-   ===================== */
+    WHY US (CLEAN + FINAL)
+    ===================== */
 
 .why-us {
   padding: 120px 0;
@@ -421,8 +483,8 @@ body {
 }
 
 /* =====================
-   CTA
-   ===================== */
+    CTA
+    ===================== */
 
 /* SEPARATION BETWEEN WHY US & CTA */
 .cta-premium {
@@ -473,7 +535,7 @@ body {
       linear-gradient(180deg, #181818, #0f0f0f);
   }
 }
-  
+   
   @media (max-width: 764px) {
   .cta-eyebrow {
     color: #ffffff;
@@ -487,7 +549,7 @@ body {
     color: #ffffff;
   }
 }
-  
+   
 .cta-accent {
   display: block;
   width: 48px;
@@ -528,10 +590,10 @@ body {
     line-height: 1.45;
     margin-bottom: 22px;
   }
-  
+   
   /* =====================
-   CTA TEXT COLOR FIX (ALL DEVICES)
-   ===================== */
+    CTA TEXT COLOR FIX (ALL DEVICES)
+    ===================== */
 
 .cta-card {
   color: #ffffff;
@@ -561,7 +623,7 @@ body {
     font-size: 13px;
   }
 }
-  
+   
 @media (max-width: 764px) {
   .cta-actions {
     flex-direction: column;
@@ -574,8 +636,8 @@ body {
 }
 
 /* =====================
-   CTA BUTTONS — MOBILE PILL STYLE
-   ===================== */
+    CTA BUTTONS — MOBILE PILL STYLE
+    ===================== */
 @media (max-width: 764px) {
   .cta-actions {
     flex-direction: column;   /* stacked but compact */
@@ -585,13 +647,15 @@ body {
   .cta-actions a {
     padding: 11px 16px;
     font-size: 12.5px;
-    border-radius: 999px;      /* ⬅️ pill */
+    border-radius: 999px;     /* ⬅️ pill */
   }
 }
 
+
+
 /* =========================
-   MOBILE TUNING ONLY
-   ========================= */
+    MOBILE TUNING ONLY
+    ========================= */
 
 @media (max-width: 764px) {
 
@@ -617,7 +681,7 @@ body {
 
   /* Main heading */
   .hero-card h1 {
-    font-size: 28px;                  /* ⬅️ from 40px → 28px */
+    font-size: 28px;                 /* ⬅️ from 40px → 28px */
     line-height: 1.18;
     margin-bottom: 14px;
   }
@@ -641,11 +705,16 @@ body {
   }
 
 }
-  
+   
   /* General */
   body {
     font-size:1rem;
   }
+
+  .container {
+    padding:0 18px;
+  }
+
 
   .hero-card h1 {
     font-size:40px;
@@ -659,7 +728,7 @@ body {
   .hero-bg-track {
     animation-duration:45s;
   }
-  
+   
     /* SERVICES */
   .services-premium {
     padding:100px 0;
@@ -739,8 +808,8 @@ body {
 
 
 /* =====================
-   PREMIUM WHY CARDS
-   ===================== */
+    PREMIUM WHY CARDS
+    ===================== */
 
 .why-card {
   background: rgba(255,255,255,0.75);
@@ -779,14 +848,14 @@ body {
 .why-modal h3 {
   opacity: 0;
   transform: translateY(10px);
-  animation: modalTitle .5s ease forwards;
+  animation: modalTitle .25s ease forwards; /* FIX: Faster animation */
 }
 
 .why-modal p {
   opacity: 0;
   transform: translateY(10px);
-  animation: modalText .5s ease forwards;
-  animation-delay: .15s;
+  animation: modalText .25s ease forwards; /* FIX: Faster animation */
+  animation-delay: .05s; /* FIX: Reduced delay from .15s */
 }
 
 @keyframes modalTitle {
@@ -842,7 +911,19 @@ body {
   .cta-actions {
     flex-direction: column;
   }
-  
+   
+  /* =====================
+    LOGO TEXT ONLOAD ANIMATION
+    ===================== */
+/* (Animations removed as they applied to header elements) */
+
+
+/* Footer layout control */
+/* (Footer layout CSS removed) */
+
+   
+   
+
 /* Force mobile card structure on desktop */
 .why-card {
   display: flex;
@@ -886,14 +967,14 @@ body {
 .why-modal h3 {
   opacity: 0;
   transform: translateY(8px);
-  animation: modalTitleIn .45s ease forwards;
+  animation: modalTitleIn .25s ease forwards; /* FIX: Faster */
 }
 
 .why-modal p {
   opacity: 0;
   transform: translateY(6px);
-  animation: modalTextIn .45s ease forwards;
-  animation-delay: .15s;
+  animation: modalTextIn .25s ease forwards; /* FIX: Faster */
+  animation-delay: .05s; /* FIX: Less delay */
 }
 
 @keyframes modalTitleIn {
@@ -909,15 +990,15 @@ body {
     transform: translateY(0);
   }
 }
-  
+   
 /* ===== Modal Overlay ===== */
 
 .why-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  
+  /* FIX: REMOVED backdrop-filter to prevent rendering lag */
+  background: rgba(255, 255, 255, 0.65); /* Simple tint */
 
   display: none;
   align-items: center;
@@ -925,16 +1006,17 @@ body {
   z-index: 2000;
   padding: 20px;
 
-  animation: overlayFade .35s ease;
+  animation: overlayFade .2s ease; /* FIX: Faster fade */
 }
 
 .why-modal-overlay.active {
   display: flex;
 }
 .why-modal {
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.85); /* Slightly less transp for readability */
+  backdrop-filter: blur(14px); /* Keep blur on card only (lighter) */
   -webkit-backdrop-filter: blur(14px);
+  will-change: transform, opacity; /* FIX: Hint browser to optimize */
 
   max-width: 520px;
   width: 100%;
@@ -949,14 +1031,14 @@ body {
 
   position: relative;
 
-  animation: modalFloatUp .45s cubic-bezier(.22,1,.36,1);
+  animation: modalFloatUp .3s cubic-bezier(.22,1,.36,1); /* FIX: Faster float */
 }
 
 /* ===== Modal Animations ===== */
 
 @keyframes modalFloatUp {
   from {
-    transform: translateY(24px) scale(.97);
+    transform: translateY(16px) scale(.98); /* FIX: Less distance to travel */
     opacity: 0;
   }
   to {
@@ -971,8 +1053,8 @@ body {
 }
 
 /* =====================
-   FIX WHY CARD TEXT ON MOBILE
-   ===================== */
+    FIX WHY CARD TEXT ON MOBILE
+    ===================== */
 
 @media (max-width: 764px) {
 
@@ -1017,8 +1099,8 @@ body {
 
 
 /* =====================
-   BAGGROUND SIGNATURE BUTTON
-   ===================== */
+    BAGGROUND SIGNATURE BUTTON
+    ===================== */
 
 .btn-plate {
   position: relative;
@@ -1026,9 +1108,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  padding: 14px 26px;    /* ⬅️ smaller */
+  padding: 14px 26px;   /* ⬅️ smaller */
   font-weight: 600;
-  font-size: 14px;       /* ⬅️ smaller text */
+  font-size: 14px;      /* ⬅️ smaller text */
   color: #ffffff;
   text-decoration: none;
 
@@ -1073,6 +1155,7 @@ body {
 .btn-plate.light::before {
   background: #f3f4f6;
 }
+<a class="btn-plate light">Contact</a>
 
 .btn-plate.outline::before {
   background: transparent;
@@ -1086,8 +1169,8 @@ body {
 }
 
 /* ===============================
-   CTA BUTTON HOVER ELEVATION
-   =============================== */
+    CTA BUTTON HOVER ELEVATION
+    =============================== */
 
 @media (hover: hover) {
   .cta-actions a {
@@ -1107,8 +1190,8 @@ body {
   .cta-actions a:nth-child(3):hover { transition-delay: 80ms; }
 }
 /* ===============================
-   CTA ENTRANCE ANIMATION
-   =============================== */
+    CTA ENTRANCE ANIMATION
+    =============================== */
 
 .cta-actions a {
   opacity: 0;
@@ -1131,8 +1214,8 @@ body {
 
 
 /* =====================
-   CTA ACTIONS — FINAL
-   ===================== */
+    CTA ACTIONS — FINAL
+    ===================== */
 
 .cta-actions {
   display: flex;
@@ -1154,8 +1237,8 @@ body {
 }
 
   /* ===============================
-   🔤 FLUID TYPOGRAPHY
-   =============================== */
+    🔤 FLUID TYPOGRAPHY
+    =============================== */
 
 h1 {
   font-size: clamp(24px, 4.2vw, 46px);
@@ -1185,7 +1268,7 @@ h3, h4 {
   font-weight: 600;
 }
 
-  
+   
   /* Center content vertically */
   .hero-center {
     min-height: calc(100svh - 72px);
@@ -1240,8 +1323,8 @@ h3, h4 {
     font-size: 14px !important;
   }
 }
-  
-  
+   
+   
   /* Card sizing */
   .hero-card {
     width: 100%;
@@ -1270,13 +1353,15 @@ h3, h4 {
     margin-bottom: 16px;
   }
 
-  
+   
 }
-  
-  
-  
+   
+   
+   
   @media (max-width: 764px) {
 
+  /* Header height lock */
+  /* (Removed .header height) */
 
   /* Hero occupies remaining viewport */
   .hero-premium {
@@ -1291,10 +1376,10 @@ h3, h4 {
     align-items: center;
   }
 }
-  
+   
   @media (max-width: 764px) {
 
-  
+   
   .hero-eyebrow {
     font-size: 9px !important;
     letter-spacing: 0.12em;
@@ -1317,10 +1402,10 @@ h3, h4 {
     font-size: 13px !important;
   }
 }
-  
+   
   /* =====================
-   SECTION TITLES
-   ===================== */
+    SECTION TITLES
+    ===================== */
 
 .section-title {
   font-family: var(--font-heading);
@@ -1339,7 +1424,7 @@ h3, h4 {
   color: #6b7280;
   letter-spacing: 0;
 }
-  
+   
 /* Mobile refinement */
 @media (max-width: 764px) {
   .section-title {
@@ -1350,7 +1435,7 @@ h3, h4 {
     font-size: 15px;
   }
 }
-  
+   
   .section-title {
   font-weight: 600;
 }
@@ -1371,11 +1456,11 @@ h3, h4 {
     font-size: 14px;
   }
 }
-  
-  
+   
+   
   /* =====================
-   CTA BUTTON LAYOUT — FINAL FIX
-   ===================== */
+    CTA BUTTON LAYOUT — FINAL FIX
+    ===================== */
 
 /* Base */
 .cta-actions {
@@ -1420,8 +1505,8 @@ h3, h4 {
 }
 
 /* =====================
-   CTA TEXT FIX — DESKTOP & MOBILE
-   ===================== */
+    CTA TEXT FIX — DESKTOP & MOBILE
+    ===================== */
 
 .cta-card,
 .cta-card * {
@@ -1446,8 +1531,8 @@ h3, h4 {
   }
 }
 /* =====================
-   HERO CARD — FINAL SIZE LOCK
-   ===================== */
+    HERO CARD — FINAL SIZE LOCK
+    ===================== */
 
 /* Desktop */
 @media (min-width: 764px) {
@@ -1467,9 +1552,9 @@ h3, h4 {
 }
 
 
-  /* =====================
-   EXTRA SMALL PHONES (≤ 420px)
-   ===================== */
+/* =====================
+    EXTRA SMALL PHONES (≤ 420px)
+    ===================== */
 @media (max-width: 420px) {
   .hero-card {
     padding: 22px 18px;
@@ -1485,8 +1570,8 @@ h3, h4 {
 }
 
 /* =====================
-   SHORT HEIGHT SCREENS
-   ===================== */
+    SHORT HEIGHT SCREENS
+    ===================== */
 @media (max-height: 700px) {
   .hero-card {
     max-height: 78vh;
@@ -1494,8 +1579,8 @@ h3, h4 {
   }
 }
 /* =====================
-   TOUCH OPTIMIZATION
-   ===================== */
+    TOUCH OPTIMIZATION
+    ===================== */
 @media (hover: none) {
   button,
   a {
@@ -1509,8 +1594,8 @@ h3, h4 {
   }
 }
 /* =====================
-   REDUCED MOTION SUPPORT
-   ===================== */
+    REDUCED MOTION SUPPORT
+    ===================== */
 @media (prefers-reduced-motion: reduce) {
   .hero-bg-track {
     animation: none;
@@ -1522,8 +1607,8 @@ h3, h4 {
 }
 
   /* =====================
-   PAGE BOUNCE (MOBILE)
-   ===================== */
+    PAGE BOUNCE (MOBILE)
+    ===================== */
 @media (max-width: 764px) {
   body.page-bounce {
     transform: translateY(-12px);
@@ -1536,7 +1621,7 @@ h3, h4 {
   }
 }
 
-  
+   
 </style>
 </head>
 
@@ -1610,7 +1695,8 @@ h3, h4 {
       </div>
     </div>
   </div>
-    </section>
+   
+    </div>
     
     <section class="why-us">
   <div class="container">
@@ -1701,9 +1787,13 @@ h3, h4 {
 
 
 <script>
-  
+   
   let scrollY = 0;
+  
   const body = document.body;
+
+  window.history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
 
   /* =====================
       WHY MODAL LOGIC
@@ -1733,71 +1823,68 @@ h3, h4 {
   const contentEl = document.getElementById("whyModalContent");
   const closeBtn = overlay.querySelector(".why-close");
 
+  /* Function to close modal safely */
+  function closeModal() {
+      overlay.classList.remove("active");
+      body.classList.remove("lock-scroll");
+
+      // Reset styles
+      body.style.position = "";
+      body.style.top = "";
+      body.style.width = "";
+      body.style.paddingRight = ""; // Remove scrollbar compensation
+
+      window.scrollTo(0, scrollY);
+  }
+
   document.querySelectorAll(".why-card").forEach(card => {
     card.addEventListener("click", () => {
       const key = card.dataset.modal;
       titleEl.textContent = modalData[key].title;
-      document.getElementById("whyModalIcon").innerHTML =
-  `<i class="${modalData[key].icon}"></i>`;
-
+      document.getElementById("whyModalIcon").innerHTML = `<i class="${modalData[key].icon}"></i>`;
       contentEl.textContent = modalData[key].content;
 
       scrollY = window.scrollY;
 
-body.style.position = "fixed";
-body.style.top = `-${scrollY}px`;
-body.style.width = "100%";
+      // Calculate scrollbar width to prevent layout jump
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-overlay.classList.add("active");
-body.classList.add("lock-scroll");
+      // Lock scroll with fixed positioning to handle iOS safely
+      body.style.position = "fixed";
+      body.style.top = `-${scrollY}px`;
+      body.style.width = "100%";
+      body.style.paddingRight = `${scrollbarWidth}px`; // Add padding to fill scrollbar gap
 
+      overlay.classList.add("active");
+      body.classList.add("lock-scroll");
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    overlay.classList.remove("active");
-body.classList.remove("lock-scroll");
-
-body.style.position = "";
-body.style.top = "";
-body.style.width = "";
-
-window.scrollTo(0, scrollY);
-
-  });
+  closeBtn.addEventListener("click", closeModal);
 
   overlay.addEventListener("click", e => {
     if (e.target === overlay) {
-      overlay.classList.remove("active");
-body.classList.remove("lock-scroll");
-
-body.style.position = "";
-body.style.top = "";
-body.style.width = "";
-
-window.scrollTo(0, scrollY);
-
+      closeModal();
     }
   });
-  
+   
   document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && overlay.classList.contains("active")) {
-    overlay.classList.remove("active");
-body.classList.remove("lock-scroll");
+    if (e.key === "Escape" && overlay.classList.contains("active")) {
+      closeModal();
+    }
+  });
 
-body.style.position = "";
-body.style.top = "";
-body.style.width = "";
-
-window.scrollTo(0, scrollY);
-
-  }
+/* =====================
+    ONLOAD BRAND ANIMATION
+    ===================== */
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
 });
 
 
 /* =====================
-   MOBILE PAGE BOUNCE
-   ===================== */
+    MOBILE PAGE BOUNCE
+    ===================== */
 let bouncing = false;
 
 window.addEventListener("scroll", () => {
