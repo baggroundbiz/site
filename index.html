@@ -1028,10 +1028,20 @@ body {
   }
 
   .why-modal {
+    width: 100%;
     max-width: 100%;
-    border-radius: 20px 20px 0 0;
-    padding: 28px 22px;
-    animation: modalSlideUp .18s cubic-bezier(.22,1,.36,1);
+
+    /* FORCE bottom attachment */
+    margin-bottom: 0;
+    border-radius: 28px 28px 0 0;
+  }
+}
+
+@media (max-width: 764px) {
+  .why-modal {
+    min-height: 42vh;      /* 👈 feels native */
+    max-height: 88vh;
+    overflow-y: auto;
   }
 }
 
@@ -1076,6 +1086,16 @@ body {
     max-width: 520px;
     width: 100%;
     margin: 0 auto;
+  }
+}
+@media (max-width: 764px) {
+  .why-modal {
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  }
+}
+@media (max-width: 764px) {
+  .why-modal {
+    border-radius: 22px 22px 0 0;
   }
 }
 
