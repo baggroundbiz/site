@@ -81,27 +81,6 @@ body {
     MODAL CLOSE BUTTON (ALL DEVICES)
     ===================== */
 
-.why-close {
-  all: unset;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-
-  background: rgba(0,0,0,0.06);
-  color: #666;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
-}
-
 .why-close:hover {
   background: rgba(0,0,0,0.12);
   color: #111;
@@ -847,13 +826,6 @@ body {
 
 /* PERFECT CLOSE BUTTON — SVG BASED */
 
-/* Modal stagger animation */
-.why-modal {
-  max-height: 85vh;
-  overflow-y: auto;
-  will-change: transform, opacity;
-}
-
 
 .why-modal h3 {
   opacity: 0;
@@ -1000,187 +972,10 @@ body {
     transform: translateY(0);
   }
 }
-/* ===== MODAL OVERLAY (FIXED & CENTERED) ===== */
-.why-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.65);
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 2000;
-}
-
-
-/* Desktop centering */
-@media (min-width: 765px) {
-  .why-modal {
-    margin: 0 auto;
-  }
-}
-
-/* Mobile full-width bottom sheet */
-@media (max-width: 764px) {
-  .why-modal-overlay {
-    align-items: flex-end;
-  }
-
-  .why-modal {
-    width: 100%;
-    max-width: 100%;
-
-    /* FORCE bottom attachment */
-    margin-bottom: 0;
-    border-radius: 28px 28px 0 0;
-  }
-}
-
-@media (max-width: 764px) {
-  .why-modal {
-    min-height: 42vh;      /* 👈 feels native */
-    max-height: 88vh;
-    overflow-y: auto;
-  }
-}
-
-/* Animations */
-@keyframes modalFloatUp {
-  from { transform: translateY(16px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes modalSlideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-.why-modal-overlay.active {
-  display: flex;
-}
-.why-modal {
-  background: rgba(255,255,255,0.85); /* Slightly less transp for readability */
-  backdrop-filter: blur(14px); /* Keep blur on card only (lighter) */
-  -webkit-backdrop-filter: blur(14px);
-  will-change: transform, opacity; /* FIX: Hint browser to optimize */
-
-  max-width: 520px;
-  width: 100%;
-  border-radius: 26px;
-  padding: 40px 38px;
-
-  border: 1px solid rgba(255,255,255,0.55);
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.9);
-
-  position: relative;
-
-  animation: modalFloatUp .16s cubic-bezier(.22,1,.36,1); /* FIX: Faster float */
-}
-
-@media (min-width: 765px) {
-  .why-modal {
-    max-width: 520px;
-    width: 100%;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 764px) {
-  .why-modal {
-    padding-bottom: calc(32px + env(safe-area-inset-bottom));
-  }
-}
-@media (max-width: 764px) {
-  .why-modal {
-    border-radius: 22px 22px 0 0;
-  }
-}
-
-/* iOS drag handle */
-.why-modal::before {
-  content: "";
-  display: block;
-  width: 42px;
-  height: 4px;
-  border-radius: 999px;
-
-  background: rgba(0,0,0,0.18);
-
-  margin: 0 auto 14px;
-}
-
-
-@media (max-width: 764px) {
-  .why-modal-overlay {
-    align-items: flex-end;
-  }
-
-  .why-modal {
-    width: 100%;
-    max-width: 100%;
-
-    /* iOS-style curves */
-    border-radius: 28px 28px 0 0;
-
-    padding: 28px 22px 32px;
-
-    /* Softer iOS-like glass */
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    /* iOS bottom sheet shadow */
-    box-shadow:
-      0 -10px 30px rgba(0,0,0,0.12),
-      0 -2px 6px rgba(0,0,0,0.06);
-
-    animation: modalSlideUp .18s cubic-bezier(.22,1,.36,1);
-  }
-}
-
-@media (max-width: 764px) {
-  .why-close {
-    top: 14px;
-    right: 14px;
-
-    width: 32px;
-    height: 32px;
-
-    border-radius: 50%;
-    background: rgba(0,0,0,0.08);
-
-    backdrop-filter: blur(6px);
-  }
-}
 
 
 /* ===== Modal Animations ===== */
 
-@keyframes modalSlideUp {
-  from {
-    transform: translateY(18px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-
-@keyframes modalFloatUp {
-  from {
-    transform: translateY(8px) scale(.985);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
 
 @keyframes overlayFade {
   from { opacity: 0; }
@@ -1753,6 +1548,109 @@ h3, h4 {
     transform: translateY(0);
     transition: transform 0.45s cubic-bezier(.22,1,.36,1);
   }
+}
+
+/* =====================
+   FINAL MODAL SYSTEM
+   ===================== */
+
+.why-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.why-modal-overlay.active {
+  display: flex;
+}
+
+/* ===== DESKTOP MODAL ===== */
+@media (min-width: 765px) {
+  .why-modal {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(14px);
+    border-radius: 24px;
+    padding: 40px 38px;
+
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    animation: modalFloatUp 0.16s cubic-bezier(.22,1,.36,1);
+  }
+}
+
+/* ===== MOBILE iOS / ANDROID BOTTOM SHEET ===== */
+@media (max-width: 764px) {
+  .why-modal-overlay {
+    align-items: flex-end;
+  }
+
+  .why-modal {
+    width: 100%;
+    max-width: 100%;
+    min-height: 45vh;
+    max-height: 90vh;
+
+    margin: 0;
+    padding: 28px 22px calc(32px + env(safe-area-inset-bottom));
+
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 26px 26px 0 0;
+
+    box-shadow:
+      0 -10px 30px rgba(0,0,0,0.12),
+      0 -2px 6px rgba(0,0,0,0.06);
+
+    overflow-y: auto;
+    animation: modalSlideUp 0.18s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* iOS / Android handle */
+  .why-modal::before {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.2);
+    margin: 0 auto 14px;
+  }
+}
+
+/* ===== CLOSE BUTTON ===== */
+.why-close {
+  all: unset;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes modalFloatUp {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(18px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
    
