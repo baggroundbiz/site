@@ -23,7 +23,7 @@
 /* FIX: Removed height constraint to keep background visible */
 body.lock-scroll {
   overflow: hidden;
-  width: 100%;
+  position: relative; /* IMPORTANT */
 }
 
 
@@ -1863,12 +1863,9 @@ h3, h4 {
       body.classList.remove("lock-scroll");
 
       // Reset styles
-      body.style.position = "";
-      body.style.top = "";
-      body.style.width = "";
-      body.style.paddingRight = ""; // Remove scrollbar compensation
-
-      window.scrollTo(0, scrollY);
+    body.classList.remove("lock-scroll");
+overlay.classList.remove("active");
+window.scrollTo(0, scrollY);
   }
 
   document.querySelectorAll(".why-card").forEach(card => {
@@ -1884,10 +1881,11 @@ h3, h4 {
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
       // Lock scroll with fixed positioning to handle iOS safely
-      body.style.position = "fixed";
-      body.style.top = `-${scrollY}px`;
-      body.style.width = "100%";
-      body.style.paddingRight = `${scrollbarWidth}px`; // Add padding to fill scrollbar gap
+      scrollY = window.scrollY;
+
+body.classList.add("lock-scroll");
+overlay.classList.add("active");
+
 
       overlay.classList.add("active");
       body.classList.add("lock-scroll");
