@@ -848,6 +848,12 @@ body {
 /* PERFECT CLOSE BUTTON — SVG BASED */
 
 /* Modal stagger animation */
+.why-modal {
+  max-height: 85vh;
+  overflow-y: auto;
+  will-change: transform, opacity;
+}
+
 
 .why-modal h3 {
   opacity: 0;
@@ -994,23 +1000,50 @@ body {
     transform: translateY(0);
   }
 }
-   
-/* ===== Modal Overlay ===== */
-
+/* ===== MODAL OVERLAY (FIXED & CENTERED) ===== */
 .why-modal-overlay {
   position: fixed;
   inset: 0;
-  
-  /* FIX: REMOVED backdrop-filter to prevent rendering lag */
-  background: rgba(255, 255, 255, 0.65); /* Simple tint */
+  background: rgba(255, 255, 255, 0.65);
 
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
-  padding: 20px;
 
-  animation: overlayFade .2s ease; /* FIX: Faster fade */
+  z-index: 2000;
+}
+
+
+/* Desktop centering */
+@media (min-width: 765px) {
+  .why-modal {
+    margin: 0 auto;
+  }
+}
+
+/* Mobile full-width bottom sheet */
+@media (max-width: 764px) {
+  .why-modal-overlay {
+    align-items: flex-end;
+  }
+
+  .why-modal {
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 28px 22px;
+    animation: modalSlideUp .18s cubic-bezier(.22,1,.36,1);
+  }
+}
+
+/* Animations */
+@keyframes modalFloatUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 .why-modal-overlay.active {
@@ -1035,14 +1068,49 @@ body {
 
   position: relative;
 
-  animation: modalFloatUp .3s cubic-bezier(.22,1,.36,1); /* FIX: Faster float */
+  animation: modalFloatUp .16s cubic-bezier(.22,1,.36,1); /* FIX: Faster float */
 }
+
+@media (min-width: 765px) {
+  .why-modal {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 764px) {
+  .why-modal-overlay {
+    align-items: flex-end; /* bottom-aligned for mobile UX */
+  }
+
+  .why-modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 28px 22px;
+
+    animation: modalSlideUp .25s cubic-bezier(.22,1,.36,1);
+  }
+}
+
 
 /* ===== Modal Animations ===== */
 
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(18px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
 @keyframes modalFloatUp {
   from {
-    transform: translateY(16px) scale(.98); /* FIX: Less distance to travel */
+    transform: translateY(8px) scale(.985);
     opacity: 0;
   }
   to {
@@ -1159,7 +1227,6 @@ body {
 .btn-plate.light::before {
   background: #f3f4f6;
 }
-<a class="btn-plate light">Contact</a>
 
 .btn-plate.outline::before {
   background: transparent;
@@ -1628,7 +1695,7 @@ h3, h4 {
    
 </style>
 </head>
-  
+
 <body>
 
 <div data-include="components/header.html"></div>
@@ -1920,8 +1987,8 @@ window.addEventListener("scroll", () => {
 
 </script>
 
-  <div data-include="components/footer.html"></div>
+<div data-include="components/footer.html"></div>
 <script src="js/include.js"></script>
-  
+
 </body>
 </html>
