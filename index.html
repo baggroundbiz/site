@@ -1653,6 +1653,16 @@ h3, h4 {
   to   { transform: translateY(0); opacity: 1; }
 }
 
+   /* ===== MOBILE iOS / ANDROID BOTTOM SHEET ===== */
+@media (max-width: 764px) {
+  .why-modal-overlay {
+    align-items: flex-end;
+    justify-content: flex-end; /* Ensures it stays at bottom */
+    flex-direction: column;    /* ✅ Safety: Forces vertical stacking so nothing sits side-by-side */
+  }
+
+  /* ... rest of your code ... */
+}
    
 </style>
 </head>
@@ -1815,13 +1825,8 @@ h3, h4 {
 
   <div class="why-modal-icon" id="whyModalIcon"></div>
   <h3 id="whyModalTitle"></h3>
-  <p id="whyModalContent"></p>
-</div>
-
-
-
-<script>
-   
+    <p id="whyModalContent"></p>
+  </div> </div> <script>
   let scrollY = 0;
   
   const body = document.body;
