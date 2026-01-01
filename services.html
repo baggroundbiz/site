@@ -23,21 +23,24 @@
   --font-body: Manrope, system-ui, sans-serif;
   --font-heading: "Playfair Display", serif;
 }
+
+/* --- EXACT MATCH WITH INDEX.HTML --- */
 body { 
   margin:0; 
   font-family: var(--font-body); 
   background:#ffffff; 
   color:#111111;
-  overflow-x: hidden; /* FIX: Removes the right-side shadow */
-  width: 100%;
 }
 
-/* FIX: Prevents "Full Page" menu glitch by keeping background visible */
+html, body {
+  overflow-x: hidden; /* Fixes the side shadow */
+}
+
 body.lock-scroll { 
   overflow: hidden; 
-  position: relative; 
-  height: auto !important;
+  position: relative; /* Keeps content visible when menu opens */
 }
+/* ----------------------------------- */
 
 .container { max-width:1200px; margin:auto; padding:0 22px; }
 
