@@ -294,8 +294,20 @@ input[type="number"], input[type="url"], select, textarea {
 </div>
 
 <script>
+  // 1. AUTO-FILL LOGIC (Runs immediately when page loads)
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const plan = urlParams.get('plan');
+    const select = document.getElementById('interestedPlan');
+    
+    // If a plan exists in URL and matches one of our options, select it
+    if (plan && select) {
+       select.value = plan;
+    }
+  });
+
+  // 2. EXISTING FORM LOGIC
   // IMPORTANT: This uses the LAST URL you provided (ending in jm8).
-  // If this is not your latest deployment, paste your new URL here.
   const scriptURL = 'https://script.google.com/macros/s/AKfycbx_EMLEdOE0A28Wo3-c5qTp_XKPYels3cU77En68V8oRwjXpe2l1bERfp34h5aQxjm8/exec';
   
   const form = document.getElementById('contactForm');
@@ -305,11 +317,11 @@ input[type="number"], input[type="url"], select, textarea {
   form.addEventListener('submit', e => {
     e.preventDefault();
     
-    // 1. Loading State
+    // Loading State
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Sending... <i class="ri-loader-4-line ri-spin"></i>';
     
-    // 2. Prepare Data
+    // Prepare Data
     let formData = new FormData(form);
     let data = {};
     let addons = [];
@@ -320,7 +332,7 @@ input[type="number"], input[type="url"], select, textarea {
     });
     data['Addons'] = addons.join(', ');
 
-    // 3. Send
+    // Send
     fetch(scriptURL, { 
         method: 'POST', 
         body: JSON.stringify(data),
@@ -332,10 +344,8 @@ input[type="number"], input[type="url"], select, textarea {
         submitBtn.innerHTML = 'Sent!';
         submitBtn.style.backgroundColor = '#10b981';
         
-        // Open Modal
         modal.classList.add('active');
         
-        // Reset form
         form.reset();
         
         // Reset Button
