@@ -220,6 +220,7 @@
   }
 
   .mobile-nav-actions {
+    display: block;
     margin-top: auto;
     padding-top: 24px;
     padding-bottom: 8px;
@@ -346,14 +347,21 @@ html {
 
 .nav-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 2003; /* 🔥 ABOVE OVERLAY */
-  font-size: 26px;
-  background: none;
-  border: none;
+  top: 24px;    /* Adjusted for better spacing */
+  right: 24px;  /* Pushed to the corner */
+  z-index: 2005; /* Ensure it stays on top */
+  
+  /* Optional: Make it look like a button */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 50%;
+  font-size: 20px;
   cursor: pointer;
-  color: #111;
+  border: none; 
 }
 
 .mobile-nav-actions {
