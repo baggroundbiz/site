@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">  
+  
   <title>Bagground | Your Full Digital Groundwork Bag</title>
    
   <link rel="icon" type="image/png" href="https://i.ibb.co/N61SZKtX/BG-3-removebg-preview.png">
@@ -1586,43 +1589,33 @@ h3, h4 {
 }
 
 /* ===== MOBILE iOS / ANDROID BOTTOM SHEET ===== */
+/* ===== MOBILE iOS / ANDROID BOTTOM SHEET ===== */
 @media (max-width: 764px) {
   .why-modal-overlay {
-    align-items: flex-end;
+    align-items: flex-end; /* Align to bottom */
+    padding: 0;
   }
 
   .why-modal {
     width: 100%;
     max-width: 100%;
-    min-height: 45vh;
-    max-height: 90vh;
-
     margin: 0;
-    padding: 28px 22px calc(32px + env(safe-area-inset-bottom));
+    /* Handle iPhone Home Bar area safely */
+    padding: 28px 22px calc(20px + env(safe-area-inset-bottom)); 
 
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: #ffffff; /* Solid background for app feel */
+    border-radius: 24px 24px 0 0; /* Round top corners only */
 
-    border-radius: 26px 26px 0 0;
-
-    box-shadow:
-      0 -10px 30px rgba(0,0,0,0.12),
-      0 -2px 6px rgba(0,0,0,0.06);
-
-    overflow-y: auto;
-    animation: modalSlideUp 0.18s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+    transform: translateY(100%); /* Start hidden */
+    animation: modalSlideUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards; /* Bouncy entry */
   }
 
-  /* iOS / Android handle */
+  /* The Grey "Handle" at the top */
   .why-modal::before {
-    content: "";
-    display: block;
-    width: 42px;
-    height: 4px;
-    border-radius: 999px;
-    background: rgba(0,0,0,0.2);
-    margin: 0 auto 14px;
+    content: ""; display: block; width: 40px; height: 5px;
+    background: #e5e5e5; border-radius: 100px;
+    margin: 0 auto 20px;
   }
 }
 
@@ -1663,7 +1656,34 @@ h3, h4 {
 
   /* ... rest of your code ... */
 }
-   
+   /* =========================================
+   📱 NATIVE APP FEEL (Mobile Only)
+   ========================================= */
+@media (max-width: 768px) {
+  /* 1. Remove grey tap box & handle iPhone Notch */
+  * { -webkit-tap-highlight-color: transparent; }
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    -webkit-user-select: none; user-select: none; /* No text selection */
+    cursor: default;
+  }
+
+  /* 2. Tactile "Press" Effect (Instant Shrink) */
+  .btn-primary:active, .btn-ghost:active, .btn-plate:active, 
+  .why-card:active, .nav-main:active, .hero-actions a:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.05s ease-out !important;
+    opacity: 0.9;
+  }
+
+  /* 3. Reset Hover Effects (Fixes "Sticky" buttons on mobile) */
+  .btn-primary:hover, .why-card:hover { transform: none; box-shadow: inherit; }
+
+  /* 4. Tighter, App-Like Typography */
+  h1, h2 { letter-spacing: -0.03em !important; }
+  p, .hero-subtext { font-size: 16px !important; line-height: 1.5; }
+}
 </style>
 </head>
 
