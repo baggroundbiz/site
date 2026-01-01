@@ -222,12 +222,12 @@
    ========================================= */
 @media (max-width: 768px) {
 
-   /* KILL SIDE SCROLL / SHADOW */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-}
+  /* KILL SIDE SCROLL / SHADOW - SAFER METHOD */
+  html, body {
+    overflow-x: hidden;
+    margin: 0;
+  }
+  
   /* 1. Remove grey tap box & handle iPhone Notch */
   * { -webkit-tap-highlight-color: transparent; }
   
