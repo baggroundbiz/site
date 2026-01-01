@@ -1678,29 +1678,29 @@ h3, h4 {
   p, .hero-subtext { font-size: 16px !important; line-height: 1.5; }
 }
 
-  /* =====================
-   SCROLL LOCK & BLUR FIX
+ /* =====================
+   SCROLL LOCK & BLUR FIX (FINAL)
    ===================== */
-
-/* 1. Fix the "Blank Screen" by forcing width */
 body.lock-scroll {
-  position: fixed;
-  width: 100%;        /* Prevents content from collapsing */
-  overflow: hidden;   /* Hides scrollbars */
-  /* Top position is handled by JS */
+  position: fixed;      /* Must be FIXED, not RELATIVE */
+  top: 0;               /* JavaScript will override this dynamically */
+  left: 0;
+  width: 100%;          /* Forces full width so it doesn't collapse */
+  height: 100%;         /* Forces full height */
+  overflow: hidden;     /* Hides the double scrollbar */
 }
 
-/* 2. Apply Blur to everything EXCEPT the modal */
+/* Blur everything inside body EXCEPT the modal */
 body.lock-scroll > *:not(.why-modal-overlay) {
   filter: blur(5px);
+  pointer-events: none; /* Stops you from clicking links in the background */
   transition: filter 0.3s ease;
-  pointer-events: none; /* Prevent clicking background items */
 }
 
-/* 3. Ensure the Modal stays sharp and on top */
+/* Ensure Modal stays sharp */
 .why-modal-overlay {
-  z-index: 3001; /* Higher than everything else */
-  filter: none !important; /* robust safety */
+  z-index: 3001;
+  filter: none !important;
 }
   
 </style>
