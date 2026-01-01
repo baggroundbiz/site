@@ -221,6 +221,13 @@
    📱 GLOBAL NATIVE APP FEEL (Applies to all pages)
    ========================================= */
 @media (max-width: 768px) {
+
+   /* KILL SIDE SCROLL / SHADOW */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
   /* 1. Remove grey tap box & handle iPhone Notch */
   * { -webkit-tap-highlight-color: transparent; }
   
