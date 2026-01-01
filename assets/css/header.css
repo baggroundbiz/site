@@ -257,4 +257,17 @@
   h1, h2, h3 { letter-spacing: -0.02em !important; }
   p { font-size: 16px !important; line-height: 1.5; }
 }
+/* ====================================
+   MOBILE NAV HEIGHT FIX (SAFE)
+   ==================================== */
+@media (max-width: 768px) {
+
+  /* ONLY affect mobile menu panel */
+  .nav.open .nav-links {
+    height: auto;
+    max-height: calc(100svh - 72px); /* header height */
+    overflow-y: auto;
+  }
+
+}
 
