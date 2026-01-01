@@ -259,16 +259,28 @@
 }
 
 /* ====================================
-   MOBILE NAV WIDTH NORMALIZATION
+   MOBILE HALF-SCREEN NAV DRAWER
    ==================================== */
 @media (max-width: 768px) {
 
   .nav-links {
-    width: 100vw;
-    max-width: 100vw;
-    left: 0;
-    right: 0;
+    position: fixed;
+    top: 0;
+    right: -50vw;        /* hidden offscreen */
+    width: 50vw;         /* half screen */
+    max-width: 360px;    /* optional safety cap */
+    height: 100svh;
+
+    background: #ffffff;
+    z-index: 999;
+    overflow-y: auto;
+
+    transition: right 0.35s cubic-bezier(.22,1,.36,1);
     box-sizing: border-box;
+  }
+
+  .nav.open .nav-links {
+    right: 0;
   }
 
 }
