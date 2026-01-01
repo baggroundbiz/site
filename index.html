@@ -1611,6 +1611,13 @@ h3, h4 {
     margin: 0 auto 20px;
   }
 }
+  @media (max-width: 764px) {
+  .why-modal {
+    touch-action: none; /* allow custom swipe */
+    will-change: transform;
+  }
+}
+
 
 /* ===== CLOSE BUTTON ===== */
 .why-close {
@@ -1687,6 +1694,7 @@ body.lock-scroll {
   left: 0;
   width: 100%;
   overflow: hidden;
+  background: #ffffff;
 }
 
 
@@ -1933,6 +1941,52 @@ document.addEventListener("keydown", e => {
   window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
+
+/* =====================
+   SWIPE DOWN TO CLOSE (MOBILE)
+   ===================== */
+
+let startY = 0;
+let currentY = 0;
+let isDragging = false;
+
+const modal = document.querySelector(".why-modal");
+
+if (modal) {
+  modal.addEventListener("touchstart", e => {
+    if (window.innerWidth > 764) return;
+
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    modal.style.transition = "none";
+  });
+
+  modal.addEventListener("touchmove", e => {
+    if (!isDragging) return;
+
+    currentY = e.touches[0].clientY;
+    const diff = currentY - startY;
+
+    if (diff > 0) {
+      modal.style.transform = `translateY(${diff}px)`;
+    }
+  });
+
+  modal.addEventListener("touchend", () => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    modal.style.transition = "transform 0.25s cubic-bezier(.22,1,.36,1)";
+
+    if (currentY - startY > 120) {
+      closeModal(); // 🔥 dismiss
+    } else {
+      modal.style.transform = "translateY(0)"; // snap back
+    }
+
+    startY = currentY = 0;
+  });
+}
 
    
 </script>
