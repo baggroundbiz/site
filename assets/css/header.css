@@ -173,6 +173,7 @@
   width: 60vw;
   max-width: 420px;
   height: 100svh;
+  min-height: 100svh;
 
   background: #ffffff;
   padding: calc(80px + env(safe-area-inset-top)) 32px 32px;
@@ -221,6 +222,7 @@
   .mobile-nav-actions {
     margin-top: auto;
     padding-top: 24px;
+    padding-bottom: 8px;
     border-top: 1px solid #e5e7eb;
     width: 100%;
   }
@@ -344,17 +346,14 @@ html {
 
 .nav-close {
   position: absolute;
-  top: 18px;
+  top: 20px;
   right: 20px;
+  z-index: 2003; /* 🔥 ABOVE OVERLAY */
   font-size: 26px;
   background: none;
   border: none;
   cursor: pointer;
   color: #111;
-}
-.nav-links {
-  display: flex;
-  flex-direction: column;
 }
 
 .mobile-nav-actions {
