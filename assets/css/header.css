@@ -216,3 +216,37 @@
 .footer-socials a:hover { background: #f3f4f6; transform: translateY(-3px); }
 .footer-copy { color: #6b7280; font-size: 14px; }
 @media (max-width: 768px) { .footer-inner { flex-direction: column; gap: 20px; text-align: center; } }
+
+/* =========================================
+   📱 GLOBAL NATIVE APP FEEL (Applies to all pages)
+   ========================================= */
+@media (max-width: 768px) {
+  /* 1. Remove grey tap box & handle iPhone Notch */
+  * { -webkit-tap-highlight-color: transparent; }
+  
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    -webkit-user-select: none; user-select: none;
+    cursor: default;
+  }
+
+  /* 2. Tactile "Press" Effect (Instant Shrink) */
+  .btn-primary:active, .btn-ghost:active, .btn-plate:active, 
+  .why-card:active, .s-card:active, .nav-main:active, 
+  .term-card:active, .hero-actions a:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.05s ease-out !important;
+    opacity: 0.9;
+  }
+
+  /* 3. Reset Hover Effects (Fixes "Sticky" buttons on mobile) */
+  .btn-primary:hover, .why-card:hover, .s-card:hover { 
+    transform: none; 
+    box-shadow: inherit; 
+  }
+
+  /* 4. App-Like Text */
+  h1, h2, h3 { letter-spacing: -0.02em !important; }
+  p { font-size: 16px !important; line-height: 1.5; }
+}
