@@ -1682,6 +1682,10 @@ h3, h4 {
    SCROLL LOCK & BLUR FIX (CORRECTED)
    ===================== */
 body.lock-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -1856,8 +1860,9 @@ body.lock-scroll {
     <p id="whyModalContent"></p>
   </div> </div> 
   
-  <script>
+ <script>
 const body = document.body;
+let scrollY = 0;
 
 const modalData = {
   "modal-1": {
@@ -1892,7 +1897,13 @@ document.querySelectorAll(".why-card").forEach(card => {
       `<i class="${modalData[key].icon}"></i>`;
     contentEl.textContent = modalData[key].content;
 
+    // ✅ Save current scroll position
+    scrollY = window.scrollY;
+
+    // ✅ Freeze body in place
+    body.style.top = `-${scrollY}px`;
     body.classList.add("lock-scroll");
+
     overlay.classList.add("active");
   });
 });
@@ -1901,6 +1912,10 @@ document.querySelectorAll(".why-card").forEach(card => {
 function closeModal() {
   overlay.classList.remove("active");
   body.classList.remove("lock-scroll");
+
+  // ✅ Restore scroll position
+  body.style.top = "";
+  window.scrollTo(0, scrollY);
 }
 
 closeBtn.addEventListener("click", closeModal);
@@ -1915,10 +1930,11 @@ document.addEventListener("keydown", e => {
   }
 });
 
-    window.addEventListener("load", () => {
+  window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
+   
 </script>
 
 
