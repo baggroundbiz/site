@@ -24,7 +24,11 @@
   --font-heading: "Playfair Display", serif;
 }
 
-/* --- EXACT MATCH WITH INDEX.HTML --- */
+/* 1. EXACT MATCH WITH INDEX.HTML to fix Shadow & Menu */
+html, body {
+  overflow-x: hidden;
+}
+
 body { 
   margin:0; 
   font-family: var(--font-body); 
@@ -32,15 +36,11 @@ body {
   color:#111;
 }
 
-html, body {
-  overflow-x: hidden; /* Fixes the side shadow */
-}
-
+/* 2. EXACT MATCH WITH INDEX.HTML to fix Menu Glitch */
 body.lock-scroll { 
   overflow: hidden; 
-  position: relative; /* Keeps content visible when menu opens */
+  position: relative; 
 }
-/* ----------------------------------- */
 
 .container { max-width:1200px; margin:auto; padding:0 22px; }
 
