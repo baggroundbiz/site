@@ -301,14 +301,71 @@
 /* ==================================================
    6. GLOBAL FOOTER
    ================================================== */
-.footer { border-top: 1px solid #e5e7eb; padding: 40px 0; background: #fff; margin-top: auto; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; }
-.footer-socials { display: flex; gap: 12px; }
-/* FIX: Removed Underscore from Social Icons */
-.footer-socials a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #fff; border: 1px solid #eee; color: #111; font-size: 18px; transition: all 0.2s ease; text-decoration: none; }
-.footer-socials a:hover { background: #f3f4f6; transform: translateY(-3px); }
-.footer-copy { color: #6b7280; font-size: 14px; }
-@media (max-width: 768px) { .footer-inner { flex-direction: column; gap: 20px; text-align: center; } }
+.footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 40px 0;
+  background: #fff;
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Social Icons */
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+  color: #111;
+  font-size: 18px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  background: #f3f4f6;
+  transform: translateY(-3px);
+  border-color: #111;
+}
+
+/* Footer Text */
+.footer-copy {
+  color: #6b7280;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .footer-copy {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer-copy span[style*="|"] {
+    display: none;
+  }
+}
 
 /* =========================================
    📱 GLOBAL NATIVE APP FEEL (Applies to all pages)
