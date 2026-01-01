@@ -1839,7 +1839,9 @@ h3, h4 {
   <div class="why-modal-icon" id="whyModalIcon"></div>
   <h3 id="whyModalTitle"></h3>
     <p id="whyModalContent"></p>
-  </div> </div> <script>
+  </div> </div> 
+  
+  <script>
   let scrollY = 0;
   
   const body = document.body;
@@ -1870,59 +1872,59 @@ h3, h4 {
 };
 
 
-  const overlay = document.getElementById("whyModal");
-  const titleEl = document.getElementById("whyModalTitle");
-  const contentEl = document.getElementById("whyModalContent");
-  const closeBtn = overlay.querySelector(".why-close");
+  /* =====================
+    UPDATED WHY MODAL LOGIC
+   ===================== */
 
-  /* Function to close modal safely */
-  function closeModal() {
-      overlay.classList.remove("active");
-      body.classList.remove("lock-scroll");
+const overlay = document.getElementById("whyModal");
+const titleEl = document.getElementById("whyModalTitle");
+const contentEl = document.getElementById("whyModalContent");
+const closeBtn = overlay.querySelector(".why-close");
 
-      // Reset styles
+/* Function to close modal safely */
+function closeModal() {
+    overlay.classList.remove("active");
     body.classList.remove("lock-scroll");
-overlay.classList.remove("active");
-window.scrollTo(0, scrollY);
+
+    // RESET: Remove the manual top offset
+    body.style.top = "";
+    
+    // RESTORE: Scroll back to the exact position
+    window.scrollTo(0, scrollY);
+}
+
+document.querySelectorAll(".why-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.modal;
+    titleEl.textContent = modalData[key].title;
+    document.getElementById("whyModalIcon").innerHTML = `<i class="${modalData[key].icon}"></i>`;
+    contentEl.textContent = modalData[key].content;
+
+    // 1. Capture exact scroll position
+    scrollY = window.scrollY;
+
+    // 2. Offset the body by that amount (This prevents the jump!)
+    body.style.top = `-${scrollY}px`;
+
+    // 3. Lock the scroll
+    body.classList.add("lock-scroll");
+    overlay.classList.add("active");
+  });
+});
+
+closeBtn.addEventListener("click", closeModal);
+
+overlay.addEventListener("click", e => {
+  if (e.target === overlay) {
+    closeModal();
   }
+});
 
-  document.querySelectorAll(".why-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const key = card.dataset.modal;
-      titleEl.textContent = modalData[key].title;
-      document.getElementById("whyModalIcon").innerHTML = `<i class="${modalData[key].icon}"></i>`;
-      contentEl.textContent = modalData[key].content;
-
-      scrollY = window.scrollY;
-
-      // Calculate scrollbar width to prevent layout jump
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-      // Lock scroll with fixed positioning to handle iOS safely
-      scrollY = window.scrollY;
-
-body.classList.add("lock-scroll");
-overlay.classList.add("active");
-
-
-      overlay.classList.add("active");
-      body.classList.add("lock-scroll");
-    });
-  });
-
-  closeBtn.addEventListener("click", closeModal);
-
-  overlay.addEventListener("click", e => {
-    if (e.target === overlay) {
-      closeModal();
-    }
-  });
-   
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && overlay.classList.contains("active")) {
-      closeModal();
-    }
-  });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && overlay.classList.contains("active")) {
+    closeModal();
+  }
+});
 
 /* =====================
     ONLOAD BRAND ANIMATION
