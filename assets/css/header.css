@@ -319,15 +319,6 @@ body.lock-scroll {
 }
 
 
-@media (max-width: 768px) {
-  body.lock-scroll::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    z-index: 998;
-  }
-}
 .mobile-terms {
   display: block;
   margin-top: 16px;
