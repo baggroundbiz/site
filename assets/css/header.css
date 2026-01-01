@@ -144,7 +144,11 @@
     top: 0; right: 0;
     width: 85%; max-width: 350px;
     height: 100vh;
-    background: #111;
+    background: rgba(17, 17, 17, 0.95); /* Slight transparency */
+    backdrop-filter: blur(20px);         /* Blur the content behind it */
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+    padding-top: calc(80px + env(safe-area-inset-top)); /* Push content down safely */
     padding: 80px 40px;
     display: flex;
     flex-direction: column;
@@ -167,7 +171,16 @@
   .mobile-brand { display: block; margin-bottom: 40px; width: 100%; }
   .mobile-brand .logo-svg { width: 100px; filter: brightness(0) invert(1); } /* White Logo */
 
-  .nav-main { display: block; color: #fff; font-size: 20px; margin-bottom: 24px; width: 100%; }
+  .nav-main { 
+  display: block; 
+  color: #fff; 
+  font-size: 22px; 
+  font-weight: 600;
+  padding: 15px 0; /* Bigger tap area */
+  margin-bottom: 0; 
+  width: 100%; 
+  border-bottom: 1px solid rgba(255,255,255,0.08); /* Separator lines */
+}
 
   .mobile-nav-actions { display: block; margin-top: auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.15); width: 100%; }
   .mobile-socials { display: flex; gap: 20px; }
