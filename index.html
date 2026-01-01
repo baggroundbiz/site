@@ -1682,20 +1682,9 @@ h3, h4 {
    SCROLL LOCK & BLUR FIX (CORRECTED)
    ===================== */
 body.lock-scroll {
-  position: fixed;
-  width: 100%;
-  /* REMOVED height: 100% - This was causing the blank screen */
   overflow: hidden;
-  left: 0;
-  /* Top is handled by JS */
 }
 
-/* Blur everything inside body EXCEPT the modal */
-body.lock-scroll > *:not(.why-modal-overlay) {
-  filter: blur(5px);
-  pointer-events: none;
-  transition: filter 0.3s ease;
-}
 
 /* Ensure Modal stays sharp */
 .why-modal-overlay {
@@ -1868,18 +1857,9 @@ body.lock-scroll > *:not(.why-modal-overlay) {
   </div> </div> 
   
   <script>
-  let scrollY = 0;
-  
-  const body = document.body;
+const body = document.body;
 
-  window.history.scrollRestoration = 'manual';
-  window.scrollTo(0, 0);
-
-  /* =====================
-      WHY MODAL LOGIC
-      ===================== */
-
-  const modalData = {
+const modalData = {
   "modal-1": {
     icon: "ri-shape-line",
     title: "No Templates. No Guesswork.",
@@ -1897,100 +1877,50 @@ body.lock-scroll > *:not(.why-modal-overlay) {
   }
 };
 
-
-  /* =====================
-    UPDATED WHY MODAL LOGIC
-   ===================== */
-
 const overlay = document.getElementById("whyModal");
 const titleEl = document.getElementById("whyModalTitle");
 const contentEl = document.getElementById("whyModalContent");
 const closeBtn = overlay.querySelector(".why-close");
 
-/* Function to close modal safely */
-function closeModal() {
-    overlay.classList.remove("active");
-    body.classList.remove("lock-scroll");
-
-    // RESET: Remove the manual top offset
-    body.style.top = "";
-    
-    // RESTORE: Scroll back to the exact position
-    window.scrollTo(0, scrollY);
-}
-
+/* OPEN MODAL */
 document.querySelectorAll(".why-card").forEach(card => {
   card.addEventListener("click", () => {
     const key = card.dataset.modal;
+
     titleEl.textContent = modalData[key].title;
-    document.getElementById("whyModalIcon").innerHTML = `<i class="${modalData[key].icon}"></i>`;
+    document.getElementById("whyModalIcon").innerHTML =
+      `<i class="${modalData[key].icon}"></i>`;
     contentEl.textContent = modalData[key].content;
 
-    // 1. Capture exact scroll position
-    scrollY = window.scrollY;
-
-    // 2. Offset the body by that amount (This prevents the jump!)
-    body.style.top = `-${scrollY}px`;
-
-    // 3. Lock the scroll
     body.classList.add("lock-scroll");
     overlay.classList.add("active");
   });
 });
 
+/* CLOSE MODAL */
+function closeModal() {
+  overlay.classList.remove("active");
+  body.classList.remove("lock-scroll");
+}
+
 closeBtn.addEventListener("click", closeModal);
 
 overlay.addEventListener("click", e => {
-  if (e.target === overlay) {
-    closeModal();
-  }
+  if (e.target === overlay) closeModal();
 });
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", e => {
   if (e.key === "Escape" && overlay.classList.contains("active")) {
     closeModal();
   }
 });
 
-/* =====================
-    ONLOAD BRAND ANIMATION
-    ===================== */
-window.addEventListener("load", () => {
+    window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
-
-/* =====================
-    MOBILE PAGE BOUNCE
-    ===================== */
-let bouncing = false;
-
-window.addEventListener("scroll", () => {
-  if (window.innerWidth > 764) return;
-
-  const atBottom =
-    window.innerHeight + window.scrollY >=
-    document.documentElement.scrollHeight - 2;
-
-  if (atBottom && !bouncing) {
-    bouncing = true;
-
-    document.body.classList.add("page-bounce");
-
-    setTimeout(() => {
-      document.body.classList.remove("page-bounce");
-      document.body.classList.add("page-bounce-release");
-
-      setTimeout(() => {
-        document.body.classList.remove("page-bounce-release");
-        bouncing = false;
-      }, 450);
-    }, 120);
-  }
-});
-
-
 </script>
+
 
 <div data-include="components/footer.html"></div>
 <script src="js/include.js"></script>
