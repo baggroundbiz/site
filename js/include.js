@@ -39,20 +39,3 @@ function initNav() {
 
 document.addEventListener('DOMContentLoaded', includeHTML);
 window.addEventListener("load", () => document.body.classList.add("loaded"));
-
-
-<script>
-  const nav = document.querySelector('.nav');
-  const toggle = document.querySelector('.nav-toggle');
-  const closeBtn = document.querySelector('.nav-close');
-
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    document.body.classList.toggle('lock-scroll');
-  });
-
-  closeBtn.addEventListener('click', () => {
-    nav.classList.remove('open');
-    document.body.classList.remove('lock-scroll');
-  });
-</script>
