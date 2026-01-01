@@ -29,9 +29,14 @@ body.lock-scroll { overflow: hidden; height: 100vh; }
 .container { max-width:1200px; margin:auto; padding:0 22px; }
 
 /* CONTACT HERO */
-.contact-hero { padding: 60px 0; background:#fafafa; text-align: center; }
-.contact-hero h1 { font-family: var(--font-heading); font-size: 42px; margin-bottom: 10px; }
+.contact-hero { 
+  background:#fafafa; 
+  text-align: center;
+  /* Combine padding + safe area fix in one line */
+  padding: calc(60px + env(safe-area-inset-top)) 0 60px; 
+}.contact-hero h1 { font-family: var(--font-heading); font-size: 42px; margin-bottom: 10px; }
 .contact-hero p { max-width:600px; margin: auto; color:#475569; font-size:17px; }
+
 
 /* CONTACT FORM */
 .contact-section { padding: 80px 0; background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f") center/cover; position: relative; }
