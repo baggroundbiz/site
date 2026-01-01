@@ -125,17 +125,12 @@
 .mega-card h4 { font-size: 14px; margin-bottom: 4px; font-weight: 700; color: #111; }
 .mega-card p { font-size: 12px; color: #666; margin: 0; }
 
-
-  }
 /* ==================================================
    MOBILE NAV (FINAL – HALF SCREEN)
    ================================================== */
 @media (max-width: 768px) {
 
-.nav-close {
-  display: none;  /* ✅ mobile only */
-   
-   /* Force vertical layout on mobile */
+/* Force vertical layout on mobile */
 .nav-links > * {
   width: 100%;
 }
@@ -364,4 +359,30 @@ html {
   margin-top: auto; /* pushes it to bottom */
 }
 
+/* =====================
+   NAV CLOSE BUTTON (CLEAN & FINAL)
+   ===================== */
 
+/* Hidden by default (desktop) */
+.nav-close {
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  z-index: 2005;
+}
+
+/* Visible ONLY on mobile */
+@media (max-width: 768px) {
+  .nav.open .nav-close {
+    display: flex;
+  }
+}
