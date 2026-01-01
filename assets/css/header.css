@@ -258,27 +258,3 @@
   p { font-size: 16px !important; line-height: 1.5; }
 }
 
-/* ====================================
-   MOBILE NAV – FORCE SAME BEHAVIOR
-   ACROSS ALL PAGES
-   ==================================== */
-@media (max-width: 768px) {
-
-  .nav {
-    position: fixed;
-    top: 64px; /* height of header */
-    height: calc(100vh - 64px);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 64px);
-    max-height: calc(100vh - 64px);
-    overflow-y: auto;
-    background: #ffffff;
-  }
-
-  /* Prevent page-specific CSS from stretching nav */
-  .nav-links {
-    min-height: unset;
-    height: auto;
-  }
-}
