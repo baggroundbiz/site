@@ -6,8 +6,12 @@ async function includeHTML() {
             const response = await fetch(file);
             if (response.ok) {
                 el.innerHTML = await response.text();
-                // Initialize nav logic ONLY if header was loaded
+                
+                // Initialize Header Logic
                 if (file.includes('header')) initNav(); 
+                
+                // Initialize Footer Logic (New)
+                if (file.includes('footer')) initFooter();
             }
         } catch (err) {
             console.error("Error loading component:", err);
@@ -44,6 +48,19 @@ function initNav() {
   });
 }
 
+// New Function to handle the Email Link
+function initFooter() {
+  var emailLink = document.getElementById('email-link');
+  if (!emailLink) return;
+
+  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  if (!isMobile) {
+    // Force Gmail on Desktop
+    emailLink.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=bagground.biz@gmail.com';
+    emailLink.target = '_blank';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', includeHTML);
 window.addEventListener("load", () => document.body.classList.add("loaded"));
