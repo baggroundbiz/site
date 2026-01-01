@@ -1,353 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Free Digital Review | Bagground</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Payment Policy | Bagground</title>
+  
   <link rel="icon" type="image/png" href="https://i.ibb.co/N61SZKtX/BG-3-removebg-preview.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
 
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/header.css">
 
-<style>
-:root {
-  --dark:#111;
-  --muted:#6b7280;
-  --accent:#111;
-  --bg:#ffffff;
-  --border:#e5e7eb;
-}
 
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Manrope, sans-serif;
-}
+  <style>
+    /* =====================
+       PAGE SPECIFIC STYLES
+       ===================== */
+    .page-hero { padding: 80px 0 40px; text-align: center; background: #fcfcfc; border-bottom: 1px solid #f0f0f0; }
+    .section-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #6b7280; display: block; margin-bottom: 12px; }
+    .section-title { font-family: var(--font-heading); font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; }
 
-body {
-  background:var(--bg);
-  color:var(--dark);
-}
+    /* Terms Grid */
+    .terms-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
+      gap: 30px; 
+      padding: 60px 0;
+    }
 
-/* =====================
-   LAYOUT
-   ===================== */
+    /* Term Card - Matches .s-card style from Services but for Text */
+    .term-card {
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid #eaeaea;
+      padding: 32px;
+      transition: all 0.4s var(--ease-premium);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
 
-.container {
-  max-width:980px;
-  margin:auto;
-  padding:70px 20px 40px;
-}
+    .term-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+      border-color: #111;
+    }
 
-/* =====================
-   HERO
-   ===================== */
+    .term-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
 
-.hero {
-  text-align:center;
-  margin-bottom:60px;
-}
+    .term-icon {
+        font-size: 24px;
+        color: #111;
+        background: #f3f4f6;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+    }
 
-.hero h1 {
-  font-size:36px;
-  font-weight:700;
-  margin-bottom:14px;
-}
+    .term-num {
+        font-family: var(--font-heading);
+        font-size: 32px;
+        color: #e5e7eb;
+        font-weight: 600;
+    }
 
-.hero p {
-  font-size:18px;
-  color:var(--muted);
-  max-width:620px;
-  margin:auto;
-}
+    .term-card h3 {
+        font-size: 20px;
+        margin: 0 0 12px 0;
+        font-weight: 600;
+        font-family: var(--font-body);
+    }
 
-/* =====================
-   CTA BUTTONS
-   ===================== */
+    .term-card p {
+        color: #6b7280;
+        line-height: 1.6;
+        font-size: 15px;
+        margin: 0;
+    }
 
-.cta-wrap {
-  margin-top:34px;
-  display:flex;
-  gap:14px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.cta-btn {
-  padding:16px 28px;
-  background:var(--accent);
-  color:#fff;
-  text-decoration:none;
-  border-radius:10px;
-  font-weight:600;
-  transition:all 0.25s ease;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
-}
-
-.cta-btn.secondary {
-  background:#fff;
-  color:var(--dark);
-  border:1px solid var(--border);
-  box-shadow:none;
-}
-
-.cta-btn:hover {
-  transform:translateY(-2px);
-  box-shadow:0 12px 28px rgba(0,0,0,0.12);
-}
-
-.cta-btn.secondary:hover {
-  background:#f9fafb;
-}
-
-/* =====================
-   FEATURES
-   ===================== */
-
-.features {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-}
-
-.card {
-  border:1px solid var(--border);
-  padding:26px;
-  border-radius:14px;
-  transition:all 0.25s ease;
-  background:#fff;
-}
-
-.card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 14px 30px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-  font-size:18px;
-  margin-bottom:8px;
-}
-
-.card p {
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.5;
-}
-
-/* =====================
-   FOOTER (Bagground Style)
-   ===================== */
-
-.footer {
-  margin-top:80px;
-  padding-top:30px;
-  border-top:1px solid var(--border);
-  text-align:center;
-}
-
-.footer-brand {
-  font-weight:600;
-  margin-bottom:12px;
-}
-
-.footer-tagline {
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:20px;
-}
-
-.footer-socials {
-  display:flex;
-  justify-content:center;
-  gap:18px;
-}
-
-.footer-socials a {
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--dark);
-  font-size:18px;
-  transition:all 0.25s ease;
-  text-decoration:none;
-}
-
-.footer-socials a:hover {
-  background:var(--dark);
-  color:#fff;
-  transform:translateY(-2px);
-}
-
-/* =====================
-   MOBILE
-   ===================== */
-
-@media(max-width:600px){
-  .hero h1 { font-size:30px; }
-  .hero p { font-size:16px; }
-}
-
-/* =====================
-   HEADER (LOGO ONLY)
-   ===================== */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  z-index: 1000;
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 14px 20px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.brand-logo {
-  width: 110px;
-  height: auto;
-  display: block;
-}
-
-.brand-text-wrap {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-name {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.brand-tagline {
-  font-size: 11px;
-  color: #6b7280;
-}
-
-/* Mobile tweaks */
-@media (max-width: 600px) {
-  .brand-logo {
-    width: 96px;
-  }
-
-  .brand-name {
-    font-size: 14px;
-  }
-
-  .brand-tagline {
-    font-size: 10px;
-  }
-}
-
-
-</style>
+    /* Final Info Box */
+    .info-box {
+        background: #111;
+        color: #fff;
+        border-radius: 24px;
+        padding: 40px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .info-box p { color: #9ca3af; margin-bottom: 0;}
+  </style>
 </head>
 
 <body>
+  
+    <div data-include="components/header.html"></div>
 
-  <div data-include="components/header.html"></div>
-
-<header class="site-header">
-  <div class="header-inner">
-    <a href="https://baggroundbiz.github.io/site/" class="brand">
-      <img 
-        src="https://i.ibb.co/Fk6bwy2M/Untitled-design-9-removebg-preview.png" 
-        alt="Bagground Logo" 
-        class="brand-logo"
-      />
-      <div class="brand-text-wrap">
-        <span class="brand-name">Bagground</span>
-        <span class="brand-tagline">Your Full Digital Groundwork Bag</span>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-tag">Policies</span>
+        <h1 class="section-title">Terms & Payment Policy</h1>
+        <p style="max-width: 600px; margin: auto; color: #6b7280;">Please read our terms carefully regarding our digital services.</p>
       </div>
-    </a>
-  </div>
-</header>
+    </section>
 
-<div class="container">
+    <section class="container">
+      <div class="terms-grid">
+        
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-file-list-3-line"></i></div>
+              <span class="term-num">01</span>
+          </div>
+          <h3>Scope of Services</h3>
+          <p>Bagground provides digital presence services including website creation, portfolio websites, and related digital setup services as agreed upon with the client.</p>
+        </div>
 
-  <div class="hero">
-    <h1>Get a Free Digital Presence Review</h1>
-    <p>For your business, portfolio, or personal brand — no sales pressure.</p>
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-price-tag-3-line"></i></div>
+              <span class="term-num">02</span>
+          </div>
+          <h3>Pricing & Payments</h3>
+          <p>All pricing is discussed and agreed upon before the start of work. Payments are typically collected either fully upfront or as mutually agreed milestones.</p>
+        </div>
 
-    <div class="cta-wrap">
-      <a class="cta-btn" 
-         href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20would%20like%20a%20free%20digital%20presence%20review">
-         Get Free Review on WhatsApp
-      </a>
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-file-paper-2-line"></i></div>
+              <span class="term-num">03</span>
+          </div>
+          <h3>Invoicing</h3>
+          <p>Invoices are issued as non-GST invoices, as Bagground currently operates as a sole proprietorship where GST is not applicable under current regulations.</p>
+        </div>
 
-      <a class="cta-btn secondary" 
-         href="https://baggroundbiz.github.io/site/">
-         Visit Bagground Website
-      </a>
-    </div>
-  </div>
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-time-line"></i></div>
+              <span class="term-num">04</span>
+          </div>
+          <h3>Payment Timeline</h3>
+          <p>Invoices are payable within 7 days from the invoice date unless otherwise agreed in writing.</p>
+        </div>
 
-  <div class="features">
-    <div class="card">
-      <h3>Clarity Check</h3>
-      <p>See whether your online presence clearly explains who you are and what you offer.</p>
-    </div>
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-refund-2-line"></i></div>
+              <span class="term-num">05</span>
+          </div>
+          <h3>Refunds</h3>
+          <p>Due to the nature of digital services, payments made are generally non-refundable once work has commenced.</p>
+        </div>
 
-    <div class="card">
-      <h3>Improvement Suggestions</h3>
-      <p>Actionable tips that can improve trust, credibility, and inquiries.</p>
-    </div>
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-edit-circle-line"></i></div>
+              <span class="term-num">06</span>
+          </div>
+          <h3>Revisions & Changes</h3>
+          <p>Reasonable revisions related to the agreed scope are included. Any major changes outside the original scope may require additional charges.</p>
+        </div>
 
-    <div class="card">
-      <h3>Zero Obligation</h3>
-      <p>No pressure. No upsell. Just honest digital feedback.</p>
-    </div>
-  </div>
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-folder-shield-2-line"></i></div>
+              <span class="term-num">07</span>
+          </div>
+          <h3>Ownership & Handover</h3>
+          <p>Upon full payment, the final website or digital assets will be handed over to the client.</p>
+        </div>
 
- <footer class="footer">
-  <div class="container footer-inner">
+        <div class="term-card">
+          <div class="term-header">
+              <div class="term-icon"><i class="ri-chat-1-line"></i></div>
+              <span class="term-num">08</span>
+          </div>
+          <h3>Communication</h3>
+          <p>All official communication will be conducted via WhatsApp or email for clarity and record-keeping.</p>
+        </div>
 
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/bagground.biz?igsh=NzQzZGt2ZG1nbWU=" aria-label="Instagram" target="_blank">
-        <i class="ri-instagram-line"></i>
-      </a>
-      <a href="https://linkedin.com/company/yourcompany" aria-label="LinkedIn" target="_blank">
-        <i class="ri-linkedin-line"></i>
-      </a>
-      <a href="https://wa.me/9663916454" aria-label="WhatsApp" target="_blank">
-        <i class="ri-whatsapp-line"></i>
-      </a>
-      <a href="mailto:bagground.biz@gmail.com" aria-label="Email">
-        <i class="ri-mail-line"></i>
-      </a>
-    </div>
+      </div>
 
-    <div class="footer-copy">
-      © 2025 Bagground. All rights reserved.
-    </div>
+      <div class="info-box">
+          <i class="ri-information-line" style="font-size: 32px; margin-bottom: 15px; display:block;"></i>
+          <p>These terms are subject to change without prior notice.</p>
+      </div>
 
-  </div>
-</footer>
+    </section>
+  </main>
 
-</div>
+  <script src="main.js"></script>
 
 <div data-include="components/footer.html"></div>
 <script src="js/include.js"></script>
+
 
 </body>
 </html>
