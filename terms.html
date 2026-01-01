@@ -20,6 +20,29 @@
 
 
   <style>
+
+    /* =====================
+       1. GLOBAL RESET (CRITICAL)
+       ===================== */
+    * {
+        box-sizing: border-box; /* Prevents padding from adding extra width */
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        width: 100%;
+        overflow-x: hidden; /* Forces the browser to hide the horizontal scrollbar */
+    }
+    
+    /* Ensure your container is responsive */
+    .container {
+        max-width: 1400px; /* Use max-width, NOT width */
+        width: 100%;       /* Allows it to shrink on smaller screens */
+        margin-inline: auto;
+        padding-inline: 20px; /* Adds breathing room on sides */
+    }
+
     /* =====================
        PAGE SPECIFIC STYLES
        ===================== */
