@@ -168,7 +168,7 @@
 
   position: fixed;
   top: 0;
-  right: -50vw;
+  transform: translateX(100%);
   width: 60vw;
   max-width: 420px;
   height: 100svh;
@@ -178,13 +178,13 @@
   overflow-y: auto;
   box-sizing: border-box;
 
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2002;
 }
 
 
   .nav.open .nav-links {
-    right: 0;
+  transform: translateX(0);
   }
 
   /* Hamburger animation */
@@ -342,5 +342,23 @@ html {
   overscroll-behavior-x: none;
 }
 
+.nav-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111;
+}
+.nav-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-actions {
+  margin-top: auto; /* pushes it to bottom */
+}
 
 
