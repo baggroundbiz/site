@@ -119,8 +119,41 @@
 }
 
 .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.mega-card { padding: 16px; border-radius: 12px; background: #f9fafb; text-decoration: none; display: block; }
-.mega-card:hover { background: #f3f4f6; }
+/* =====================
+   MEGA MENU CARD HOVER ANIMATIONS (DESKTOP)
+   ===================== */
+
+.mega-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f9fafb;
+  text-decoration: none;
+  display: block;
+
+  /* animation base */
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    background 0.3s ease;
+}
+
+/* Card lift + shadow */
+.mega-card:hover {
+  background: #ffffff;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon animation */
+.mega-card i {
+  transition: transform 0.35s ease, color 0.3s ease;
+}
+
+.mega-card:hover i {
+  transform: scale(1.15);
+  color: #000;
+}
+
 .mega-card i { font-size: 20px; color: #111; margin-bottom: 8px; display: block; }
 .mega-card h4 { font-size: 14px; margin-bottom: 4px; font-weight: 700; color: #111; }
 .mega-card p { font-size: 12px; color: #666; margin: 0; }
