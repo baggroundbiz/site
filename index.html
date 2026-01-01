@@ -1678,22 +1678,22 @@ h3, h4 {
   p, .hero-subtext { font-size: 16px !important; line-height: 1.5; }
 }
 
- /* =====================
-   SCROLL LOCK & BLUR FIX (FINAL)
+/* =====================
+   SCROLL LOCK & BLUR FIX (CORRECTED)
    ===================== */
 body.lock-scroll {
-  position: fixed;      /* Must be FIXED, not RELATIVE */
-  top: 0;               /* JavaScript will override this dynamically */
+  position: fixed;
+  width: 100%;
+  /* REMOVED height: 100% - This was causing the blank screen */
+  overflow: hidden;
   left: 0;
-  width: 100%;          /* Forces full width so it doesn't collapse */
-  height: 100%;         /* Forces full height */
-  overflow: hidden;     /* Hides the double scrollbar */
+  /* Top is handled by JS */
 }
 
 /* Blur everything inside body EXCEPT the modal */
 body.lock-scroll > *:not(.why-modal-overlay) {
   filter: blur(5px);
-  pointer-events: none; /* Stops you from clicking links in the background */
+  pointer-events: none;
   transition: filter 0.3s ease;
 }
 
