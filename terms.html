@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  
+   
   <title>Terms & Service Policies | Bagground</title>
    
   <link rel="icon" type="image/png" href="assets/css/bglogo.svg">
@@ -62,7 +62,7 @@
       border-radius: 24px;
       border: 1px solid #eaeaea;
       padding: 32px;
-      transition: all 0.4s var(--ease-premium);
+      transition: all 0.4s var(--ease-premium, ease);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -132,6 +132,83 @@
         margin-bottom: 60px;
     }
     .info-box p { color: #9ca3af; margin-bottom: 0;}
+
+    /* =====================
+       FAQ ACCORDION STYLES
+       ===================== */
+    .faq-section {
+        padding-bottom: 80px;
+    }
+
+    .faq-container {
+        max-width: 800px; /* Narrower width for better reading experience */
+        margin: 0 auto;
+    }
+
+    .faq-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-family: var(--font-heading);
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .faq-question {
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 24px 0;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .faq-question h4 {
+        font-family: var(--font-body); 
+        font-size: 18px;
+        font-weight: 600;
+        color: #111;
+        margin: 0;
+    }
+
+    .faq-question:hover h4 {
+        color: #555;
+    }
+
+    .faq-icon {
+        font-size: 24px;
+        color: #111;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+    }
+
+    /* The hidden content */
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-answer p {
+        padding-bottom: 24px;
+        color: #6b7280;
+        line-height: 1.6;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    /* Active State */
+    .faq-item.active .faq-icon {
+        transform: rotate(45deg); /* Rotates the + to an x */
+    }
   </style>
 </head>
 
@@ -157,7 +234,7 @@
               <span class="term-num">01</span>
           </div>
           <h3>Scope of Work</h3>
-          <br>Bagground delivers services strictly based on the scope agreed upon at the time of purchase or confirmation.</br> <br>Any requests beyond the agreed scope will be treated as additional work and may incur extra charges.</br>
+          <br>Bagground provides services based strictly on the scope discussed and agreed upon at the time of purchase or written confirmation.</br> <br>Any requests that fall outside the agreed scope will be treated as additional work and may require extra time and charges. If something is out of scope, it will always be communicated clearly before proceeding.</br>
         </div>
 
         <div class="term-card">
@@ -166,7 +243,7 @@
               <span class="term-num">02</span>
           </div>
           <h3>Post-Delivery Changes</h3>
-          <br>Projects are delivered as per agreed scope.</br> <br>Content updates or fixes requested after delivery are handled as one-off paid work, unless the client has an active Monthly Support plan.</br> <br>Clients needing frequent updates are recommended to opt for Monthly Support.</br>
+          <br>Projects are delivered as per the agreed scope and approvals.</br> <br>Any content updates, fixes, or changes requested after final delivery are handled as one-off paid work, unless the client has an active Monthly Support plan.</br> <br>For clients who anticipate frequent updates, a Monthly Support plan is recommended for better value and faster turnaround.</br>
         </div>
 
         <div class="term-card">
@@ -175,7 +252,7 @@
               <span class="term-num">03</span>
           </div>
           <h3>Revisions Policy</h3>
-          <br>Each project includes up to 2 revision rounds during the active build phase.</br> <br>Revisions apply only to existing content and layout.</br> <br>New ideas, additional sections, or changes after approval are considered out of scope.</br>
+          <br>Each project includes up to two rounds of revisions during the active build phase.</br> <br>Revisions apply only to adjustments within the existing structure, layout, and provided content.</br> <br>New ideas, additional sections, or major changes introduced after approvals are considered outside the original scope and may be billed separately.</br>
         </div>
 
         <div class="term-card">
@@ -184,7 +261,7 @@
               <span class="term-num">04</span>
           </div>
           <h3>Payment & Invoicing</h3>
-          <br>Full payment (or agreed advance) is required before project initiation.</br> <br>One-off update work must be paid before execution.</br> <br>Invoices are issued as non-GST invoices, as Bagground operates as a sole proprietorship where GST is not applicable.</br> <br>Invoices are issued digitally and are payable within the mentioned timeline.</br>
+          <br>Full payment (or the agreed advance) is required before work begins.</br> <br>Any one-off update or additional work must be paid before execution.</br> <br>Invoices are issued as non-GST invoices, as Bagground operates as a sole proprietorship where GST registration is not applicable.</br> <br>All invoices are issued digitally and must be cleared within the timeline mentioned on the invoice.</br>
         </div>
 
         <div class="term-card">
@@ -193,7 +270,7 @@
               <span class="term-num">05</span>
           </div>
           <h3>Timelines & Delays</h3>
-          <br>Timelines are estimates and depend on timely client input.</br> <br>Delays in feedback may push delivery dates.</br> <br>Invoices are issued as non-GST invoices, as Bagground operates as a sole proprietorship where GST is not applicable.</br>
+          <br>Project timelines are shared as estimates and depend on timely inputs, approvals, and feedback from the client.</br> <br>Delays in providing content, feedback, or approvals may result in adjusted delivery timelines.</br>
         </div>
 
         <div class="term-card">
@@ -202,7 +279,7 @@
               <span class="term-num">06</span>
           </div>
           <h3>Content Responsibility</h3>
-          <br>Clients are responsible for providing accurate text, images, and business information.</br> <br>Bagground is not responsible for incorrect details supplied.</br> <br>Copywriting beyond basic structuring may be charged separately.</br>
+          <br>Clients are responsible for providing accurate text, images, and business information.</br> <br>Bagground is not responsible for errors, omissions, or issues arising from incorrect or incomplete content supplied by the client.</br> <br>Copywriting beyond basic structuring, formatting, or light refinement may be offered as an additional paid service if required.</br>
         </div>
 
         <div class="term-card">
@@ -211,7 +288,7 @@
               <span class="term-num">07</span>
           </div>
           <h3>Ownership & Usage</h3>
-          <br>Upon full payment, the client owns the final website output.</br> <br>Bagground retains the right to showcase the project in its portfolio unless requested otherwise.</br> <br>Design frameworks and internal templates remain Bagground’s IP.</br>
+          <br>Once full payment is received, the client owns the final website output created for them.</br> <br>Bagground reserves the right to showcase completed projects in its portfolio, social media, or marketing materials unless the client requests otherwise in writing.</br> <br>All internal design systems, frameworks, and reusable templates remain the intellectual property of Bagground.</br>
         </div>
 
         <div class="term-card">
@@ -220,7 +297,7 @@
               <span class="term-num">08</span>
           </div>
           <h3>Refund & Cancellation</h3>
-          <br>Once work has started, payments are non-refundable.</br> <br>If canceled mid-way, charges apply based on work completed.</br> <br>Support subscriptions can be canceled anytime and will not auto-renew unless stated.</br>
+          <br>Once work has started, payments are non-refundable.</br> <br>If a project is canceled mid-way, charges will apply based on the amount of work completed up to that point.</br> <br>Monthly Support subscriptions can be canceled at any time and do not auto-renew unless explicitly stated.</br>
         </div>
 
         <div class="term-card">
@@ -229,7 +306,7 @@
               <span class="term-num">09</span>
           </div>
           <h3>Third-Party Tools</h3>
-          <br>Bagground may use a combination of professional tools, frameworks, and workflows to assist in research, drafting, and production.</br> <br>Bagground is not responsible for downtime or policy changes from third-party providers.</br>
+          <br>Bagground may use professional third-party tools, platforms, frameworks, or AI-assisted workflows to support research, drafting, and production.</br> <br>Bagground is not responsible for downtime, pricing changes, feature limitations, or policy updates introduced by third-party providers.</br>
         </div>
 
         <div class="term-card">
@@ -238,24 +315,100 @@
               <span class="term-num">10</span>
           </div>
           <h3>Communication</h3>
-          <br>Official communication is via email or WhatsApp.</br> <br>Support requests are handled during business hours.</br> <br>Priority response is available only under active support plans.</br>
+          <br>Official communication is handled via email or WhatsApp.</br> <br>Support requests are addressed during standard business hours.</br> <br>Priority response and faster turnaround are available only for clients with an active support plan.</br>
         </div>
 
       </div>
 
       <div class="info-box">
           <i class="ri-information-line" style="font-size: 32px; margin-bottom: 15px; display:block;"></i>
-          <p>These terms are subject to change without prior notice.</p>
+          These terms are designed to ensure clarity, fairness, and smooth collaboration for both parties. Bagground may update these terms from time to time, and the latest version will always be available on this page. If you have any questions, feel free to reach out before getting started.
+      </div>
+
+      <div class="faq-section">
+        <div class="faq-container">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <h4>What happens if I need more than 2 revisions?</h4>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Additional revisions beyond the included two rounds are billed at our standard hourly rate. We will always notify you before incurring extra costs so you can approve the budget.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <h4>Do you provide domain and hosting?</h4>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>We can assist you in purchasing them, but for security and ownership reasons, we recommend clients purchase domains and hosting in their own name. We will guide you through the setup process.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <h4>Can I get a refund if I cancel the project?</h4>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>As per our cancellation policy, payments made for work already commenced are non-refundable. This covers the time and resources already allocated to your project.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <h4>How do I pay my invoice?</h4>
+              <div class="faq-icon"><i class="ri-add-line"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Invoices contain a secure payment link (UPI or Bank Transfer). International clients can pay via PayPal or Stripe (subject to transaction fees).</p>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </section>
   </main>
 
   <script src="main.js"></script>
+  
+  <div data-include="components/footer.html"></div>
+  <script src="js/include.js"></script>
 
-<div data-include="components/footer.html"></div>
-<script src="js/include.js"></script>
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
 
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Close all other items (Accordion behavior)
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+          }
+        });
+
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
