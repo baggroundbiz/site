@@ -1703,6 +1703,55 @@ body.lock-scroll {
   filter: none !important;
 }
   
+  /* =====================
+   MOBILE HERO — REMOVE LOGIN LAYOUT
+   ===================== */
+@media (max-width: 764px) {
+
+  /* Stop hero from behaving like a full screen */
+  .hero-premium {
+    min-height: auto !important;
+    padding: 32px 0 24px !important;
+  }
+
+  .hero-center {
+    min-height: auto !important;
+  }
+}
+    
+    @media (max-width: 764px) {
+
+  /* Make background feel like a header, not a screen */
+  .hero-bg-carousel {
+    height: 72% !important;
+  }
+
+  .hero-premium::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.85)
+    ) !important;
+  }
+}
+    
+    @media (max-width: 764px) {
+
+  /* Reduce login-style glass effect */
+  .hero-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255,255,255,0.96) !important;
+  }
+}
+    
+   
+    @media (max-width: 764px) {
+  .services-premium {
+    margin-top: -12px;
+  }
+}
+    
 </style>
 </head>
 
@@ -1841,7 +1890,8 @@ body.lock-scroll {
   </div>
 </section>
 
-
+<div style="height:12px"></div>
+    
 <div class="why-modal-overlay" id="whyModal">
   <div class="why-modal">
   <button class="why-close" aria-label="Close modal">
