@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Pricing | Bagground</title>
 
   <link rel="icon" type="image/png" href="assets/css/bglogo.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -23,26 +22,22 @@
       --light: #ffffff;
       --muted: #6b7280;
       --border: #e5e7eb;
-      --primary: #111111;
       --radius: 16px;
+      --font-heading: "Playfair Display", serif;
+      --font-body: Manrope, system-ui, sans-serif;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-body);
     }
 
     body {
       background: var(--light);
       color: var(--dark);
       line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
     }
 
     .container {
@@ -52,34 +47,98 @@
     }
 
     /* =====================
-       PRICING HERO
+       HERO
        ===================== */
     .pricing-hero {
-      padding: 80px 0 60px;
+      padding: 100px 0 60px;
       text-align: center;
+      background: #fafafa;
     }
 
     .pricing-hero h1 {
-      font-size: 40px;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 500;
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
 
     .pricing-hero p {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--muted);
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
+      line-height: 1.6;
     }
 
     /* =====================
-       PRICING GRID
+       AUDIENCE (Who is this for?)
+       ===================== */
+    .info-section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+        font-family: var(--font-heading);
+        font-size: 32px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    /* Enhanced Audience Card with Hover */
+    .audience-card {
+      padding: 30px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: default;
+    }
+
+    .audience-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        border-color: var(--dark);
+    }
+
+    .audience-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--dark);
+    }
+    
+    .audience-card p { 
+        color: var(--muted); 
+        font-size: 16px; 
+    }
+
+    .core-offering {
+        background: #fdfdfd;
+        padding: 40px;
+        border-radius: 16px;
+        border: 1px dashed var(--border);
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* =====================
+       PRICING PACKAGES
        ===================== */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 80px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 100px;
       align-items: start;
     }
 
@@ -89,7 +148,7 @@
       padding: 32px;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
       background: #fff;
       position: relative;
       height: 100%;
@@ -102,236 +161,245 @@
 
     .price-card.popular {
       border: 2px solid var(--dark);
-      background: #fdfdfd;
+      background: #fff;
+      transform: scale(1.02);
+      z-index: 2;
+    }
+    
+    .price-card.popular:hover {
+        transform: scale(1.02) translateY(-6px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.08);
     }
 
     .badge {
       position: absolute;
-      top: -12px;
+      top: -14px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 12px;
       font-weight: 700;
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: 999px;
       background: var(--dark);
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .plan-tagline {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .plan-name {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .plan-desc {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 24px;
-      min-height: 44px; /* Alignment fix */
-    }
+    .plan-name { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .plan-desc { font-size: 15px; color: var(--muted); margin-bottom: 24px; min-height: 48px; }
 
     .price {
-      font-size: 36px;
+      font-size: 40px;
       font-weight: 800;
       margin-bottom: 24px;
       display: flex;
       align-items: baseline;
       gap: 6px;
+      letter-spacing: -1px;
     }
+    .price span { font-size: 14px; color: var(--muted); font-weight: 500; letter-spacing: 0; }
 
-    .price span {
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .divider { height: 1px; background: var(--border); margin-bottom: 24px; width: 100%; }
 
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 24px;
-      width: 100%;
-    }
-
-    .features {
-      list-style: none;
-      margin-bottom: 32px;
-      flex-grow: 1;
-    }
-
-    .features li {
-      display: flex;
-      gap: 12px;
-      font-size: 14px;
-      margin-bottom: 14px;
-      color: #374151;
-      line-height: 1.4;
-    }
-
-    .features i {
-      color: var(--dark);
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    /* Section headers inside features list */
-    .feature-head {
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--dark);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 1px dashed var(--border);
-      padding-bottom: 4px;
+    .features { list-style: none; margin-bottom: 32px; flex-grow: 1; }
+    .features li { display: flex; gap: 12px; font-size: 15px; margin-bottom: 14px; color: #374151; }
+    .features i { color: var(--dark); font-size: 18px; flex-shrink: 0; }
+    
+    .plus-text {
+        font-weight: 700; font-size: 14px; margin-bottom: 12px;
+        display: block; text-decoration: underline; text-underline-offset: 4px;
     }
 
     .cta-btn {
-      text-align: center;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid var(--dark);
-      font-weight: 600;
-      background: transparent;
-      color: var(--dark);
-      transition: all 0.3s ease;
-      width: 100%;
-      display: block;
+      text-align: center; padding: 16px; border-radius: 12px; border: 1px solid var(--dark);
+      font-weight: 600; background: transparent; color: var(--dark); transition: all 0.3s ease;
+      width: 100%; display: block; text-decoration: none;
     }
-
-    .cta-btn:hover {
-      background: var(--dark);
-      color: #fff;
-    }
-
-    .cta-btn.primary {
-      background: var(--dark);
-      color: #fff;
-    }
-    
-    .cta-btn.primary:hover {
-      background: #333;
-      border-color: #333;
-    }
+    .cta-btn:hover { background: var(--dark); color: #fff; }
+    .cta-btn.primary { background: var(--dark); color: #fff; }
+    .cta-btn.primary:hover { background: #333; border-color: #333; }
 
     /* =====================
-       ADD-ONS & ONE-OFF
+       ADD-ONS & RETAINER
        ===================== */
-    .addons {
+    .addons-section {
       background: #fafafa;
       border-top: 1px solid var(--border);
       padding: 80px 0;
     }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 40px;
+    
+    .addon-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto 80px;
+    }
+    
+    /* Enhanced Addon Item with Hover */
+    .addon-item {
+        background: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
     }
 
-    .section-header h2 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 8px;
+    .addon-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-color: var(--dark);
+    }
+    
+    .addon-name { font-weight: 600; font-size: 16px; }
+    .addon-price { font-weight: 700; color: var(--dark); font-size: 16px; }
+
+    .retainer-card {
+        background: #111;
+        color: #fff;
+        border-radius: 24px;
+        padding: 60px 40px;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    .retainer-card h3 { font-family: var(--font-heading); font-size: 28px; margin-bottom: 12px; }
+    .retainer-card .price { justify-content: center; color: #fff; margin-bottom: 10px; }
+    .retainer-card p { color: #9ca3af; margin-bottom: 30px; }
+    
+    .retainer-list { 
+        text-align: left; max-width: 320px; margin: 0 auto 40px; 
+    }
+    .retainer-list li { 
+        margin-bottom: 12px; color: #d1d5db; list-style: none; display: flex; gap: 12px; 
+    }
+    .retainer-list i { color: #10b981; }
+
+    /* Enhanced Retainer Button */
+    .retainer-btn {
+        display: inline-block;
+        padding: 16px 32px;
+        border-radius: 12px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: transparent;
     }
 
-    .section-header p {
-      color: var(--muted);
-    }
-
-    .addon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .addon-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      background: #fff;
-      transition: all 0.3s ease;
-    }
-
-    .addon-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-      border-color: var(--dark);
-    }
-
-    .addon-card h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .addon-card p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .addon-price {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--dark);
+    .retainer-btn:hover {
+        background: #fff;
+        color: #000;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255,255,255,0.4);
     }
 
     /* =====================
-       CTA FOOTER
+       ENHANCED COMPARISON TABLE
        ===================== */
-    .pricing-cta {
-      padding: 100px 20px;
-      text-align: center;
+    .comparison-section {
+        padding: 80px 0 100px;
     }
 
-    .pricing-cta h2 {
-      font-size: 36px;
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
-
-    .pricing-cta p {
-      color: var(--muted);
-      margin-bottom: 32px;
-      font-size: 16px;
-    }
-
-    .pricing-cta a {
-      display: inline-block;
-      padding: 16px 32px;
-      border-radius: 999px;
-      background: var(--dark);
-      color: #fff;
-      font-weight: 600;
-      font-size: 16px;
-      transition: transform 0.2s ease;
+    .table-wrapper {
+        overflow-x: auto;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
     }
     
-    .pricing-cta a:hover {
-        transform: scale(1.05);
+    .comp-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 800px;
+        background: #fff;
     }
+    
+    .comp-table th, .comp-table td {
+        padding: 20px 24px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        font-size: 15px;
+    }
+
+    /* Sticky Header */
+    .comp-table th {
+        background: #f8f9fa;
+        font-family: var(--font-heading);
+        font-size: 18px;
+        color: var(--dark);
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+    }
+
+    /* Sticky First Column for Mobile */
+    .comp-table th:first-child, 
+    .comp-table td:first-child {
+        text-align: left;
+        font-weight: 700;
+        width: 25%;
+        position: sticky;
+        left: 0;
+        background: #fff;
+        z-index: 10;
+        border-right: 1px solid var(--border);
+    }
+
+    /* Fix header z-index overlap */
+    .comp-table th:first-child {
+        z-index: 30;
+        background: #f8f9fa;
+    }
+
+    /* Zebra Striping */
+    .comp-table tbody tr:nth-child(even) td {
+        background-color: #fafafa;
+    }
+    
+    /* Maintain sticky column background on zebra rows */
+    .comp-table tbody tr:nth-child(even) td:first-child {
+        background-color: #fafafa;
+    }
+
+    /* Row Hover Effect */
+    .comp-table tbody tr:hover td {
+        background-color: #f1f1f1;
+        transition: background-color 0.2s ease;
+    }
+    
+    .comp-table tr:last-child td { border-bottom: none; }
+    
+    .check { color: #111; font-weight: 800; font-size: 18px; }
+    .dash { color: #e5e7eb; font-weight: 400; font-size: 18px; }
 
     /* =====================
        RESPONSIVE
        ===================== */
     @media (max-width: 768px) {
-      .pricing-hero h1 { font-size: 30px; }
+      .pricing-hero h1 { font-size: 32px; }
       .price-card { padding: 24px; }
-      .price { font-size: 32px; }
-      .pricing-cta h2 { font-size: 28px; }
+      .price-card.popular { transform: none; }
+      .price-card.popular:hover { transform: translateY(-6px); }
+      
+      .comp-table th, .comp-table td { padding: 16px; font-size: 14px; }
+      .comp-table th { font-size: 16px; }
+      
+      /* On mobile, remove sticky column if it causes issues, or keep it */
+      .comp-table th:first-child, 
+      .comp-table td:first-child {
+          box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Shadow to show separation */
+      }
     }
   </style>
 </head>
@@ -340,145 +408,243 @@
 
   <div data-include="components/header.html"></div>
 
-  <section class="pricing-hero container">
-    <h1>Clear Pricing. No Hidden Fees.</h1>
-    <p>
-      Professional digital groundwork for creators and businesses. 
-      One-time investment, yours to keep forever.
-    </p>
+  <section class="pricing-hero">
+    <div class="container">
+      <h1>Premium digital presence.<br>Built to convert.</h1>
+      <p>
+        At Bagground, we design focused one-page websites and brand assets for artists and small businesses that want to look credible, modern, and intentional.
+        <br><br>
+        <strong>No templates. No clutter. Only what your audience actually needs.</strong>
+      </p>
+    </div>
   </section>
 
-  <section class="container pricing-grid">
+  <section class="info-section">
+    <div class="container">
+        <h2 class="section-title">Who is this for?</h2>
+        <div class="audience-grid">
+            <div class="audience-card">
+                <h3>A) Artists / Creators</h3>
+                <p>Freelancers & creatives who need a portfolio, links, and instant credibility.</p>
+            </div>
+            <div class="audience-card">
+                <h3>B) Small Businesses</h3>
+                <p>Local businesses that need customers, WhatsApp leads, and visibility.</p>
+            </div>
+            <div class="audience-card">
+                <h3>C) Growing Brands</h3>
+                <p>Startups & brands that need design consistency + upgrades over time.</p>
+            </div>
+        </div>
+        
+        <div class="core-offering">
+            <h1 style="margin-bottom: 12px; font-weight: 700; font-size: 20px;">Our Core Offerings</h1>
+            <p style="color: var(--muted); margin-bottom: 0;">
+                Faster delivery • Higher margins • Easier yes • Looks modern • Perfect for Artists & SMBs
+            </p>
+        </div>
+    </div>
+  </section>
+
+  <section class="container pricing-grid" id="packages">
 
     <div class="price-card">
-      <div class="plan-tagline">Establish Presence</div>
-      <div class="plan-name">Starter Ground</div>
-      <div class="plan-desc">Perfect for personal portfolios, bio links, and landing pages.</div>
-      <div class="price">₹3,999 <span>/ one-time</span></div>
+      <div class="plan-name">Starter Presence</div>
+      <div class="plan-desc">For artists, freelancers, and creators who need a clean professional presence.</div>
+      <div class="price">₹7,999</div>
       <div class="divider"></div>
 
       <ul class="features">
-        <li><i class="ri-check-line"></i> <strong>Single-Page</strong> Impact Site</li>
-        <li><i class="ri-check-line"></i> Mobile-First Design</li>
-        <li><i class="ri-check-line"></i> Direct WhatsApp Button</li>
-        <li><i class="ri-check-line"></i> Free Hosting (GitHub Pages)</li>
-        <li><i class="ri-check-line"></i> Basic SEO Setup</li>
+        <li><i class="ri-check-line"></i> One-page website (mobile-first)</li>
+        <li><i class="ri-check-line"></i> Hero, About, Work / Services, Contact</li>
+        <li><i class="ri-check-line"></i> WhatsApp, Instagram & Email integration</li>
+        <li><i class="ri-check-line"></i> Clean, minimal design</li>
+        <li><i class="ri-check-line"></i> Hosting guidance</li>
+        <li><i class="ri-time-line"></i> Delivery in 5–7 days</li>
       </ul>
 
-      <a href="contact.html?plan=Starter Ground" class="cta-btn">Get Started</a>
+      <a href="contact.html?plan=Starter Presence" class="cta-btn">Get Started</a>
     </div>
 
     <div class="price-card popular">
-      <span class="badge">Most Popular</span>
-      <div class="plan-tagline">Expand Reach</div>
-      <div class="plan-name">Business Ground</div>
-      <div class="plan-desc">Designed for service businesses, agencies, and consultants.</div>
-      <div class="price">₹7,999 <span>/ one-time</span></div>
+      <span class="badge">Most Chosen</span>
+      <div class="plan-name">Professional Presence</div>
+      <div class="plan-desc">For small businesses that want inquiries—not just a website.</div>
+      <div class="price">₹14,999</div>
       <div class="divider"></div>
 
       <ul class="features">
-        <li><i class="ri-check-line"></i> <strong>Up to 5</strong> Custom Pages</li>
-        <li><i class="ri-check-line"></i> Unique Brand UI (No templates)</li>
-        <li><i class="ri-check-line"></i> Contact Form to Email</li>
-        <li><i class="ri-check-line"></i> Google Maps Integration</li>
-        <li><i class="ri-check-line"></i> Technical Speed Optimization</li>
+        <span class="plus-text">Everything in Starter, plus:</span>
+        <li><i class="ri-check-line"></i> Custom design aligned to your brand</li>
+        <li><i class="ri-check-line"></i> Lead-focused layout & call-to-action</li>
+        <li><i class="ri-check-line"></i> SEO-ready structure</li>
+        <li><i class="ri-check-line"></i> Contact form integration</li>
+        <li><i class="ri-check-line"></i> Two refinement rounds</li>
+        <li><i class="ri-time-line"></i> Delivery in 7–10 days</li>
       </ul>
 
-      <a href="contact.html?plan=Business Ground" class="cta-btn primary">Choose Business</a>
+      <a href="contact.html?plan=Professional Presence" class="cta-btn primary">Choose Professional</a>
     </div>
 
     <div class="price-card">
-      <div class="plan-tagline">Dominate & Grow</div>
-      <div class="plan-name">Pro Ground</div>
-      <div class="plan-desc">A complete business site plus a marketing launch kit to get traffic.</div>
-      <div class="price">₹15,999 <span>/ one-time</span></div>
+      <div class="plan-name">Brand Presence</div>
+      <div class="plan-desc">For serious creators and growing brands that want a complete online identity.</div>
+      <div class="price">₹24,999</div>
       <div class="divider"></div>
 
       <ul class="features">
-        <li><i class="ri-check-line"></i> <strong>Everything in Business</strong></li>
-        <li><i class="ri-check-line"></i> Premium Animations & Motion</li>
-        
-        <li class="feature-head">Advanced SEO Setup</li>
-        <li><i class="ri-check-double-line"></i> Keyword Research & Meta Tags</li>
-        <li><i class="ri-check-double-line"></i> Google Business Profile Setup</li>
-
-        <li class="feature-head">Social Media Kit (1st Month)</li>
-        <li><i class="ri-instagram-line"></i> <strong>12 Branded Posts</strong> (Design + Copy)</li>
-        <li><i class="ri-calendar-check-line"></i> Content Strategy & Calendar</li>
-        <li><i class="ri-hashtag"></i> Bio & Hashtag Optimization</li>
+        <span class="plus-text">Everything in Professional, plus:</span>
+        <li><i class="ri-check-line"></i> Copywriting assistance (headlines)</li>
+        <li><i class="ri-check-line"></i> Logo refinement (if needed)</li>
+        <li><i class="ri-check-line"></i> Social media profile optimisation</li>
+        <li><i class="ri-check-line"></i> Google Business profile setup</li>
+        <li><i class="ri-check-line"></i> Priority support</li>
+        <li><i class="ri-time-line"></i> Delivery in 10–14 days</li>
       </ul>
 
-      <a href="contact.html?plan=Growth Ground" class="cta-btn">Start Growing</a>
+      <a href="contact.html?plan=Brand Presence" class="cta-btn">Go Big</a>
     </div>
 
   </section>
 
-  <section class="addons">
+  <section class="addons-section">
     <div class="container">
+      <h2 class="section-title">Add-ons</h2>
+      <p style="text-align: center; color: var(--muted); margin-bottom: 40px; margin-top: -30px;">
+        Available with any package to customize your growth.
+      </p>
       
-      <div class="section-header">
-        <h2>Optional Power-Ups</h2>
-        <p>Enhance your site with these specific upgrades.</p>
+      <ul class="addon-list">
+          <li class="addon-item">
+              <span class="addon-name">Logo design</span>
+              <span class="addon-price">₹4,999</span>
+          </li>
+          <li class="addon-item">
+              <span class="addon-name">Social media post pack (10 creatives)</span>
+              <span class="addon-price">₹3,999</span>
+          </li>
+          <li class="addon-item">
+              <span class="addon-name">Instagram bio & highlights</span>
+              <span class="addon-price">₹1,499</span>
+          </li>
+          <li class="addon-item">
+              <span class="addon-name">Additional page</span>
+              <span class="addon-price">₹2,999</span>
+          </li>
+          <li class="addon-item">
+              <span class="addon-name">Domain & hosting setup</span>
+              <span class="addon-price">₹1,499</span>
+          </li>
+          <li class="addon-item">
+              <span class="addon-name">Monthly website updates</span>
+              <span class="addon-price">₹1,999</span>
+          </li>
+      </ul>
+      
+      <div class="retainer-card">
+          <h3>OPTIONAL: Growth Support</h3>
+          <p>Only after website delivery. Keep your business moving.</p>
+          <div class="price">₹6,999<span>/ month</span></div>
+          <ul class="retainer-list">
+              <li><i class="ri-check-line"></i> Small website edits</li>
+              <li><i class="ri-check-line"></i> Social media guidance</li>
+              <li><i class="ri-check-line"></i> 2 creatives/month</li>
+              <li><i class="ri-check-line"></i> Priority WhatsApp support</li>
+          </ul>
+          <a href="contact.html?plan=Growth Support" class="retainer-btn">Request Growth Support</a>
       </div>
-
-      <div class="addon-grid">
-        <div class="addon-card">
-          <h3>Brand Identity Pack</h3>
-          <p>We create a professional logo, color palette, and typography guide for your brand.</p>
-          <div class="addon-price">₹5,000</div>
-        </div>
-
-        <div class="addon-card">
-          <h3>Peace of Mind Support</h3>
-          <p>We handle monthly content text updates and technical health checks.</p>
-          <div class="addon-price">₹999 / month</div>
-        </div>
-
-        <div class="addon-card">
-          <h3>Priority Partner</h3>
-          <p>Priority turnaround for updates, regular backups, and site monitoring.</p>
-          <div class="addon-price">₹2,999 / month</div>
-        </div>
-      </div>
-
-      <div class="section-header" style="margin-top: 80px;">
-        <h2>On-Demand Maintenance (Post Delivery)</h2>
-        <p>Already have a site? Pay only when you need updates. No contracts.</p>
-      </div>
-
-      <div class="addon-grid">
-        <div class="addon-card">
-          <h3>Quick Update</h3>
-          <p>Text changes, image swaps, or updating contact details.</p>
-          <div class="addon-price">₹499</div>
-        </div>
-
-        <div class="addon-card">
-          <h3>New Section</h3>
-          <p>Design and build a new block (e.g., Testimonials, Services) on an existing page.</p>
-          <div class="addon-price">₹999</div>
-        </div>
-
-        <div class="addon-card">
-          <h3>Technical Fix</h3>
-          <p>Fixing layout bugs, mobile responsiveness issues, or broken links.</p>
-          <div class="addon-price">₹1,999</div>
-        </div>
-
-        <div class="addon-card">
-          <h3>Feature Add-on</h3>
-          <p>integrating CTA's, popups, forms or 3rd party tools.</p>
-          <div class="addon-price">From ₹2,999</div>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <section class="pricing-cta">
-    <h2>Not sure which plan fits?</h2>
-    <p>We analyze your requirements first, then recommend the groundwork you actually need.</p>
-    <a href="contact.html">Book a Free Strategy Call</a>
+  <section class="comparison-section container">
+      <h2 class="section-title">Compare Plans</h2>
+      
+      <div class="table-wrapper">
+          <table class="comp-table">
+              <thead>
+                  <tr>
+                      <th>Feature</th>
+                      <th>Starter</th>
+                      <th>Professional</th>
+                      <th>Brand</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>One-page website</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Mobile-first design</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Custom design</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Lead-focused layout</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>SEO-ready structure</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Copywriting assistance</td>
+                      <td class="dash">—</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Logo refinement</td>
+                      <td class="dash">—</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Social media optimisation</td>
+                      <td class="dash">—</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Google Business setup</td>
+                      <td class="dash">—</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Priority support</td>
+                      <td class="dash">—</td>
+                      <td class="dash">—</td>
+                      <td class="check">✔</td>
+                  </tr>
+                  <tr>
+                      <td>Delivery time</td>
+                      <td>5–7 days</td>
+                      <td>7–10 days</td>
+                      <td>10–14 days</td>
+                  </tr>
+                  <tr>
+                      <td><strong>Price</strong></td>
+                      <td><strong>₹7,999</strong></td>
+                      <td><strong>₹14,999</strong></td>
+                      <td><strong>₹24,999</strong></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </section>
 
   <div data-include="components/footer.html"></div>
